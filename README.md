@@ -26,7 +26,7 @@ In order to run this project locally, simply fork and clone the repository or do
 In the first terminal
 
 ```
-$ cd client
+$ cd Fronted
 $ npm install (to install client-side dependencies)
 $ npm run dev(to start the client)
 ```
@@ -40,7 +40,7 @@ In the second terminal
 ```
 # --- Terminal ---
 
-$ cd server
+$ cd Backend
 $ npm install (to install server-side dependencies)
 $ npm start (to start the server)
 ```
@@ -70,7 +70,7 @@ This project was created using the following technologies.
 - [React Hooks  ](https://reactjs.org/docs/hooks-intro.html) - For managing and centralizing application state
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom) - To handle routing
 - [axios](https://www.npmjs.com/package/axios) - For making Api calls
-- [SCSS](https://sass-lang.com/) - For User Interface
+- [Tailwind CSS](https://tailwindcss.com/) - For User Interface
 - [React icons](https://react-icons.github.io/react-icons/) -
  Small library that helps you add icons  to your react apps.
 
