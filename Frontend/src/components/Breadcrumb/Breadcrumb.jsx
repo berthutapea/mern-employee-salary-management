@@ -11,7 +11,7 @@ const Breadcrumb = (props) => {
       <nav>
         <ol className='flex items-center gap-2'>
           <li>
-            <Link to='/'>Dashboard /</Link>
+            <Link to='/admin/dashboard'>Dashboard /</Link>
           </li>
           <li className='text-primary'>{props.pageName}</li>
         </ol>
