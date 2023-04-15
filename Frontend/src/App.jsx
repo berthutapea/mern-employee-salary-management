@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import DashboardAdmin from './pages/Dashboard/DashboardAdmin/DashboardAdmin'
 import Calendar from './pages/Calendar'
+import DataPegawai from './pages/MasterData/DataPegawai/DataPegawai'
+import DataJabatan from './pages/MasterData/DataJabatan/DataJabatan'
 import Profile from './pages/Profile'
 import FormElements from './pages/Form/FormElements'
 import FormLayout from './pages/Form/FormLayout'
@@ -37,6 +39,8 @@ const App = () => {
           <Route exact path='/' element={<LoginAdmin />} />
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
           <Route path='/admin/calendar' element={<Calendar />} />
+          <Route path='/admin/masterdata/data-pegawai' element={<DataPegawai />} />
+          <Route path='/admin/masterdata/data-jabatan' element={<DataJabatan />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/forms/form-layout' element={<FormLayout />} />
