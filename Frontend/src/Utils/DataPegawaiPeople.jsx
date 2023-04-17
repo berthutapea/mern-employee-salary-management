@@ -43,7 +43,7 @@ const DataPegawaiPeople = [
     {
         id: 5,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User3} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -52,7 +52,7 @@ const DataPegawaiPeople = [
     {
         id: 6,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User2} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -61,7 +61,7 @@ const DataPegawaiPeople = [
     {
         id: 7,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User1} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -79,7 +79,7 @@ const DataPegawaiPeople = [
     {
         id: 9,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User2} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -88,7 +88,7 @@ const DataPegawaiPeople = [
     {
         id: 10,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User3} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -106,7 +106,7 @@ const DataPegawaiPeople = [
     {
         id: 12,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User1} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -124,7 +124,7 @@ const DataPegawaiPeople = [
     {
         id: 14,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User3} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -133,7 +133,7 @@ const DataPegawaiPeople = [
     {
         id: 15,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User2} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -142,7 +142,7 @@ const DataPegawaiPeople = [
     {
         id: 16,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User1} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
@@ -151,7 +151,7 @@ const DataPegawaiPeople = [
     {
         id: 17,
         namaPegawai: "Nana Silaban",
-        photo: <img src={User4} alt="Nana Silaban" />,
+        photo: <img src={User2} alt="Nana Silaban" />,
         nik: "1218052110020005",
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
