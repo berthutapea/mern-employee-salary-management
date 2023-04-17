@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import DefaultLayout from '../../../layout/DefaultLayout';
 import User1 from '../../../Assets/images/user/gilbert.png'
 import User2 from '../../../Assets/images/user/user-02.png'
@@ -7,6 +7,10 @@ import User4 from '../../../Assets/images/user/user-04.png'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 import { FaRegEdit } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
+import { BiSearch } from 'react-icons/bi'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+
+
 
 const DataPegawai = () => {
     return (
@@ -14,7 +18,32 @@ const DataPegawai = () => {
             <Breadcrumb pageName='Data Pegawai' />
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1'>
-                <div className='max-w-full overflow-x-auto'>
+                <div className="flex flex-col md:flex-row md:justify-between">
+                    <div className="relative flex-1 md:mr-2 mb-4 md:mb-0 ">
+                        <div className='relative'>
+                            <span className='absolute top-1/2 left-48 z-30 -translate-y-1/2 text-xl'>
+                                <MdOutlineKeyboardArrowDown />
+                            </span>
+                            <select className='relative  appearance-none rounded border border-stroke bg-transparent py-3 px-8 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'>
+                                <option value=''>Status</option>
+                                <option value=''>Karyawan Tetap</option>
+                                <option value=''>Karyawan Tidak Tetap</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="relative flex-2 mb-4 md:mb-0">
+                        <input
+                            type='text'
+                            placeholder='Type to search..'
+                            className='rounded-lg border-[1.5px] border-stroke bg-transparent py-2 pl-10 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary left-0'
+                        />
+                        <span className='absolute left-2 py-3 text-xl'>
+                            <BiSearch />
+                        </span>
+                    </div>
+                </div>
+
+                <div className='max-w-full overflow-x-auto py-4'>
                     <table className='w-full table-auto'>
                         <thead>
                             <tr className='bg-gray-2 text-left dark:bg-meta-4'>
@@ -66,10 +95,10 @@ const DataPegawai = () => {
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                     <div className='flex items-center space-x-3.5'>
                                         <button className='hover:text-black'>
-                                            <FaRegEdit className="text-primary text-xl hover:text-black" />
+                                            <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                         <button className='hover:text-black'>
-                                            <BsTrash3 className="text-danger text-xl hover:text-black" />
+                                            <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                     </div>
                                 </td>
@@ -99,10 +128,10 @@ const DataPegawai = () => {
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                     <div className='flex items-center space-x-3.5'>
                                         <button className='hover:text-black'>
-                                            <FaRegEdit className="text-primary text-xl hover:text-black" />
+                                            <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                         <button className='hover:text-black'>
-                                            <BsTrash3 className="text-danger text-xl hover:text-black" />
+                                            <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                     </div>
                                 </td>
@@ -132,10 +161,10 @@ const DataPegawai = () => {
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                     <div className='flex items-center space-x-3.5'>
                                         <button className='hover:text-black'>
-                                            <FaRegEdit className="text-primary text-xl hover:text-black" />
+                                            <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                         <button className='hover:text-black'>
-                                            <BsTrash3 className="text-danger text-xl hover:text-black" />
+                                            <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                     </div>
                                 </td>
@@ -165,10 +194,10 @@ const DataPegawai = () => {
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                     <div className='flex items-center space-x-3.5'>
                                         <button className='hover:text-black'>
-                                            <FaRegEdit className="text-primary text-xl hover:text-black" />
+                                            <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                         <button className='hover:text-black'>
-                                            <BsTrash3 className="text-danger text-xl hover:text-black" />
+                                            <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
                                         </button>
                                     </div>
                                 </td>
