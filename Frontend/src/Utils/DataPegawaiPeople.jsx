@@ -12,6 +12,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Laki-Laki",
         tanggalMasuk: "15-01-2023",
         status: "Karyawan Tetap",
+        hakAkses: "Admin",
     },
     {
         id: 2,
@@ -21,6 +22,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "16-02-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 3,
@@ -30,6 +32,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Laki-Laki",
         tanggalMasuk: "17-03-2023",
         status: "Karyawan Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 4,
@@ -39,6 +42,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 5,
@@ -48,6 +52,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 6,
@@ -57,6 +62,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 7,
@@ -66,6 +72,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 8,
@@ -75,6 +82,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 9,
@@ -84,6 +92,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 10,
@@ -93,6 +102,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 11,
@@ -102,6 +112,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 12,
@@ -111,6 +122,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 13,
@@ -120,6 +132,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 14,
@@ -129,6 +142,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 15,
@@ -138,6 +152,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 16,
@@ -147,6 +162,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
     {
         id: 17,
@@ -156,6 +172,7 @@ const DataPegawaiPeople = [
         jenisKelamin: "Perempuan",
         tanggalMasuk: "18-04-2023",
         status: "Karyawan Tidak Tetap",
+        hakAkses: "Pegawai",
     },
 ];
 

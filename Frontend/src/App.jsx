@@ -6,7 +6,7 @@ import DataPegawai from './pages/MasterData/DataPegawai/DataPegawai'
 import DataJabatan from './pages/MasterData/DataJabatan/DataJabatan'
 import Profile from './pages/Profile'
 import FormElements from './pages/Form/FormElements'
-import FormLayout from './pages/Form/FormLayout'
+import FormDataPegawai from './pages/Form/FormDataPegawai'
 import Tables from './pages/Tables'
 import Settings from './pages/Settings'
 import Alerts from './pages/UiElements/Alerts'
@@ -39,11 +39,11 @@ const App = () => {
           <Route exact path='/' element={<LoginAdmin />} />
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
           <Route path='/admin/calendar' element={<Calendar />} />
-          <Route path='/admin/masterdata/data-pegawai' element={<DataPegawai />} />
-          <Route path='/admin/masterdata/data-jabatan' element={<DataJabatan />} />
+          <Route path='/admin/master-data/data-pegawai' element={<DataPegawai />} />
+          <Route path='/admin/master-data/data-jabatan' element={<DataJabatan />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
-          <Route path='/forms/form-layout' element={<FormLayout />} />
+          <Route path='/admin/master-data/data-pegawai/form-data-pegawai' element={<FormDataPegawai />} />
           <Route path='/tables' element={<Tables />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/ui/alerts' element={<Alerts />} />
