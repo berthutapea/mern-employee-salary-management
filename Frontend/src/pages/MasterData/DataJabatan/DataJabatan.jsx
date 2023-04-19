@@ -7,7 +7,6 @@ import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 const ITEMS_PER_PAGE = 4;
 
@@ -43,7 +42,7 @@ const DataJabatan = () => {
     return (
         <DefaultLayout>
             <Breadcrumb pageName='Data Jabatan' />
-            <Link to="/admin/master-data/data-pegawai/form-data-pegawai" >
+            <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
                     <span>Tambah Jabatan</span>
                     <span>

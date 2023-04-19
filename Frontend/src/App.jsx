@@ -7,6 +7,7 @@ import DataJabatan from './pages/MasterData/DataJabatan/DataJabatan'
 import Profile from './pages/Profile'
 import FormElements from './pages/Form/FormElements'
 import FormDataPegawai from './pages/Form/FormDataPegawai'
+import FormDataJabatan from './pages/Form/FormDataJabatan'
 import Tables from './pages/Tables'
 import Settings from './pages/Settings'
 import Alerts from './pages/UiElements/Alerts'
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/admin/master-data/data-pegawai/form-data-pegawai' element={<FormDataPegawai />} />
+          <Route path='/admin/master-data/data-jabatan/form-data-jabatan' element={<FormDataJabatan />} />
           <Route path='/tables' element={<Tables />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/ui/alerts' element={<Alerts />} />
