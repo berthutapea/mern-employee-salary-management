@@ -1,6 +1,6 @@
 import React from 'react';
-import DefaultLayout from '../layout/DefaultLayout';
-import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import DefaultLayout from '../../layout/DefaultLayout';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 
 const Calendar = () => {
   return (

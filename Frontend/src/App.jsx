@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import DashboardAdmin from './pages/Dashboard/DashboardAdmin/DashboardAdmin'
-import Calendar from './pages/Calendar'
+import Calendar from './pages/Calender/Calendar'
 import DataPegawai from './pages/MasterData/DataPegawai/DataPegawai'
 import DataJabatan from './pages/MasterData/DataJabatan/DataJabatan'
 import Profile from './pages/Profile'
