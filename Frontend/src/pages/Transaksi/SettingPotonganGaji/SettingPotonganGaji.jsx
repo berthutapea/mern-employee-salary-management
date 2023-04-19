@@ -14,12 +14,12 @@ const SettingPotonganGaji = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
-    const [dataPegawai, setDataPegawai] = useState([]);
+    const [dataJabatan, setDataJabatan] = useState([]);
 
     const totalPages = Math.ceil(DataJabatanPeople.length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        setDataPegawai(DataJabatanPeople.slice(startIndex, endIndex));
+        setDataJabatan(DataJabatanPeople.slice(startIndex, endIndex));
     }, [startIndex, endIndex]);
 
     const goToPrevPage = () => {
@@ -41,7 +41,7 @@ const SettingPotonganGaji = () => {
 
     return (
         <DefaultLayout>
-            <Breadcrumb pageName='Data Jabatan' />
+            <Breadcrumb pageName='Setting Potongan Gaji' />
             <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
                     <span>Tambah Jabatan</span>
@@ -89,35 +89,37 @@ const SettingPotonganGaji = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataPegawai.map(({ _id, titleJabatan, gajiPokok, tunjanganTransport, uangMakan, total }) => (
-                                <tr key={_id}>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{titleJabatan}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{gajiPokok}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{tunjanganTransport}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{uangMakan}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{total}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <div className='flex items-center space-x-3.5'>
-                                            <button className='hover:text-black'>
-                                                <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                            <button className='hover:text-black'>
-                                                <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                            {dataJabatan.map((dataJabatan) => {
+                                return (
+                                    <tr key={dataJabatan.id}>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.titleJabatan}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.gajiPokok}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.tunjanganTransport}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.uangMakan}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.total}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <div className='flex items-center space-x-3.5'>
+                                                <button className='hover:text-black'>
+                                                    <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                                <button className='hover:text-black'>
+                                                    <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -125,7 +127,7 @@ const SettingPotonganGaji = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Pegawai
+                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Jabatan
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>

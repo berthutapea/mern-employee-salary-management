@@ -14,12 +14,12 @@ const DataAbsensi = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
-    const [dataPegawai, setDataPegawai] = useState([]);
+    const [dataJabatan, setDataJabatan] = useState([]);
 
     const totalPages = Math.ceil(DataJabatanPeople.length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        setDataPegawai(DataJabatanPeople.slice(startIndex, endIndex));
+        setDataJabatan(DataJabatanPeople.slice(startIndex, endIndex));
     }, [startIndex, endIndex]);
 
     const goToPrevPage = () => {
@@ -38,9 +38,10 @@ const DataAbsensi = () => {
         }
     };
 
+
     return (
         <DefaultLayout>
-            <Breadcrumb pageName='Data Jabatan' />
+            <Breadcrumb pageName='Data Absensi Pegawai' />
             <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
                     <span>Tambah Jabatan</span>
@@ -88,23 +89,23 @@ const DataAbsensi = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataPegawai.map((dataPegawai) => {
+                            {dataJabatan.map((dataJabatan) => {
                                 return (
-                                    <tr key={dataPegawai.id}>
+                                    <tr key={dataJabatan.id}>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.titleJabatan}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.titleJabatan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.gajiPokok}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.gajiPokok}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.tunjanganTransport}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.tunjanganTransport}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.uangMakan}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.uangMakan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.total}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.total}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
@@ -126,7 +127,7 @@ const DataAbsensi = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Pegawai
+                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Jabatan
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>
