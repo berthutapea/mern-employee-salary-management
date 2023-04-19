@@ -175,11 +175,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }}
               </SidebarLinkGroup>
               {/* <!-- Master Data Admin --> */}
-              
+
               {/* <!-- Transaksi Admin --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === '/masterdata' || pathname.includes('masterdata')
+                  pathname === '/transaksi' || pathname.includes('transaksi')
                 }
               >
                 {(handleClick, open) => {
@@ -187,8 +187,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to='#'
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/masterdata' ||
-                          pathname.includes('masterdata')) &&
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/transaksi' ||
+                          pathname.includes('transaksi')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
@@ -211,7 +211,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
                           <li>
                             <NavLink
-                              to='/admin/master-data/data-pegawai'
+                              to='/admin/transaksi/data-absensi'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -222,7 +222,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/master-data/data-jabatan'
+                              to='/admin/transaksi/setting-potongan-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -233,7 +233,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/master-data/data-jabatan'
+                              to='/admin/transaksi/data-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -470,8 +470,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           {/* <div>
             <ul className='mb-6 flex flex-col gap-1.5'> */}
 
-              {/* <!-- Ui Elements --> */}
-              {/* <SidebarLinkGroup
+          {/* <!-- Ui Elements --> */}
+          {/* <SidebarLinkGroup
                 activeCondition={pathname === '/ui' || pathname.includes('ui')}
               >
                 {(handleClick, open) => {
@@ -575,10 +575,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   )
                 }}
               </SidebarLinkGroup> */}
-              {/* <!-- Ui Elements --> */}
+          {/* <!-- Ui Elements --> */}
 
-              {/* <!-- Auth Pages --> */}
-              {/* <SidebarLinkGroup
+          {/* <!-- Auth Pages --> */}
+          {/* <SidebarLinkGroup
                 activeCondition={
                   pathname === '/auth' || pathname.includes('auth')
                 }
@@ -680,8 +680,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   )
                 }}
               </SidebarLinkGroup> */}
-              {/* <!-- Auth Pages --> */}
-            {/* </ul>
+          {/* <!-- Auth Pages --> */}
+          {/* </ul>
           </div> */}
         </nav>
         {/* <!-- Sidebar Menu --> */}

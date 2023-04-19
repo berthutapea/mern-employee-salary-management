@@ -108,43 +108,45 @@ const DataPegawai = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataPegawai.map(({ _id, photo, nik, namaPegawai, jenisKelamin, tanggalMasuk, status, hakAkses }) => (
-                                <tr key={_id}>
-                                    <td className='border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark'>
-                                        <div className="h-12.5 w-15">
-                                            <div className='rounded-full overflow-hidden'> {photo}</div>
-                                        </div>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{nik}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{namaPegawai}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{jenisKelamin}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{tanggalMasuk}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{status}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{hakAkses}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <div className='flex items-center space-x-3.5'>
-                                            <button className='hover:text-black'>
-                                                <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                            <button className='hover:text-black'>
-                                                <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                            {dataPegawai.map((dataPegawai) => {
+                                return (
+                                    <tr key={dataPegawai.id}>
+                                        <td className='border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark'>
+                                            <div className="h-12.5 w-15">
+                                                <div className='rounded-full overflow-hidden'>{dataPegawai.photo}</div>
+                                            </div>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.nik}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.namaPegawai}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.jenisKelamin}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.tanggalMasuk}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.status}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.hakAkses}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <div className='flex items-center space-x-3.5'>
+                                                <button className='hover:text-black'>
+                                                    <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                                <button className='hover:text-black'>
+                                                    <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>

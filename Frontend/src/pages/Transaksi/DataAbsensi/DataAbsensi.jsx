@@ -10,7 +10,7 @@ import { BiSearch } from 'react-icons/bi'
 
 const ITEMS_PER_PAGE = 4;
 
-const DataGaji = () => {
+const DataAbsensi = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
@@ -37,7 +37,6 @@ const DataGaji = () => {
             setEndIndex((prev) => prev + ITEMS_PER_PAGE);
         }
     };
-
 
     return (
         <DefaultLayout>
@@ -89,35 +88,37 @@ const DataGaji = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataPegawai.map(({ _id, titleJabatan, gajiPokok, tunjanganTransport, uangMakan, total }) => (
-                                <tr key={_id}>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{titleJabatan}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{gajiPokok}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{tunjanganTransport}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{uangMakan}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <p className='text-black dark:text-white'>{total}</p>
-                                    </td>
-                                    <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                        <div className='flex items-center space-x-3.5'>
-                                            <button className='hover:text-black'>
-                                                <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                            <button className='hover:text-black'>
-                                                <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                            {dataPegawai.map((dataPegawai) => {
+                                return (
+                                    <tr key={dataPegawai.id}>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.titleJabatan}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.gajiPokok}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.tunjanganTransport}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.uangMakan}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataPegawai.total}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <div className='flex items-center space-x-3.5'>
+                                                <button className='hover:text-black'>
+                                                    <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                                <button className='hover:text-black'>
+                                                    <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -197,4 +198,4 @@ const DataGaji = () => {
     )
 }
 
-export default DataGaji;
+export default DataAbsensi;
