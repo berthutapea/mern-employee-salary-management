@@ -109,7 +109,7 @@ const DataPegawai = () => {
                         </thead>
                         <tbody>
                             {dataPegawai.map(({ _id, photo, nik, namaPegawai, jenisKelamin, tanggalMasuk, status, hakAkses }) => (
-                                <tr key={dataPegawai.id}>
+                                <tr key={_id}>
                                     <td className='border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark'>
                                         <div className="h-12.5 w-15">
                                             <div className='rounded-full overflow-hidden'> {photo}</div>
