@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import DefaultLayout from '../../../layout/DefaultLayout';
-import DataPegawaiPeople from '../../../Utils/DataJabatanPeople';
+import DataJabatanPeople from '../../../Utils/DataJabatanPeople';
 import { Link } from "react-router-dom";
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
@@ -16,10 +16,10 @@ const DataJabatan = () => {
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
     const [dataPegawai, setDataPegawai] = useState([]);
 
-    const totalPages = Math.ceil(DataPegawaiPeople.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(DataJabatanPeople.length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        setDataPegawai(DataPegawaiPeople.slice(startIndex, endIndex));
+        setDataPegawai(DataJabatanPeople.slice(startIndex, endIndex));
     }, [startIndex, endIndex]);
 
     const goToPrevPage = () => {
@@ -125,7 +125,7 @@ const DataJabatan = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataPegawaiPeople.length} Data Pegawai
+                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Pegawai
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>
