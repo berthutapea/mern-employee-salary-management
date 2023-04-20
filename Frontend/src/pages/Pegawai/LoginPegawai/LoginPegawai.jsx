@@ -1,12 +1,12 @@
 import React from 'react';
-import Logo from '../../Assets/images/logo/logo.svg'
-import LogoDark from '../../Assets/images/logo/logo-dark.svg'
-import LoginImg from '../../Assets/images/LoginImg/login.svg'
+import Logo from '../../../assets/images/logo/logo.svg'
+import LogoDark from '../../../assets/images/logo/logo-dark.svg'
+import LoginImg from '../../../assets/images/LoginImg/login.svg'
 import { FiUser } from 'react-icons/fi'
 import { TfiLock } from 'react-icons/tfi'
 import { Link } from 'react-router-dom'
 
-const LoginAdmin = () => {
+const LoginPegawai = () => {
     return (
         <div className=' min-h-screen rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark '>
             <div className='flex flex-wrap items-center min-h-screen '>
@@ -26,7 +26,7 @@ const LoginAdmin = () => {
                 <div className='w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2'>
                     <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
                         <h2 className='mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2'>
-                            Login to Admin
+                            Login to Pegawai
                         </h2>
 
                         <form>
@@ -59,7 +59,7 @@ const LoginAdmin = () => {
                             </div>
 
                             <div className='mb-5'>
-                                <Link to='/admin/dashboard'>
+                                <Link to='/'>
                                     <input
                                         type='submit'
                                         value='Login'
@@ -75,4 +75,4 @@ const LoginAdmin = () => {
     )
 }
 
-export default LoginAdmin;
+export default LoginPegawai;

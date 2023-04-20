@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import LoginAdmin from './pages/Login/LoginAdmin'
-import LoginKaryawan from './pages/Login/LoginKaryawan'
-import DashboardAdmin from './pages/Dashboard/DashboardAdmin/DashboardAdmin'
+import LoginAdmin from './pages/Admin/LoginAdmin/LoginAdmin'
+import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
+import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
 import Calendar from './pages/Calender/Calendar'
-import DataPegawai from './pages/MasterData/DataPegawai/DataPegawai'
-import DataJabatan from './pages/MasterData/DataJabatan/DataJabatan'
-import DataAbsensi from './pages/Transaksi/DataAbsensi/DataAbsensi'
-import SettingPotonganGaji from './pages/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
-import DataGaji from './pages/Transaksi/DataGaji/DataGaji'
+import DataPegawai from './pages/Admin/MasterData/DataPegawai/DataPegawai'
+import FormDataPegawai from './pages/Admin/Form/FormDataPegawai'
+import DataJabatan from './pages/Admin/MasterData/DataJabatan/DataJabatan'
+import FormDataJabatan from './pages/Admin/Form/FormDataJabatan'
+import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
+import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
+import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
 // 
 import Profile from './pages/Profile'
-import FormElements from './pages/Form/FormElements'
-import FormDataPegawai from './pages/Form/FormDataPegawai'
-import FormDataJabatan from './pages/Form/FormDataJabatan'
+import FormElements from './pages/Admin/Form/FormElements'
 import Tables from './pages/Tables'
 import Settings from './pages/Settings'
 import Alerts from './pages/UiElements/Alerts'
@@ -40,7 +40,7 @@ const App = () => {
       <>
         <Routes>
           <Route exact path='/admin/login' element={<LoginAdmin />} />
-          <Route exact path='/karyawan/login' element={<LoginKaryawan />} />
+          <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           <Route exact path='/' element={<LoginAdmin />} />
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
           <Route path='/admin/calendar' element={<Calendar />} />

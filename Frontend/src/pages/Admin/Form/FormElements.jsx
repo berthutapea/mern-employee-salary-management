@@ -1,15 +1,15 @@
 import React from 'react';
-import DefaultLayout from '../../layout/DefaultLayout';
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import SwitcherOne from '../../components/Switcher/SwitcherOne';
-import SwitcherTwo from '../../components/Switcher/SwitcherTwo';
-import SwitcherFour from '../../components/Switcher/SwitcherFour';
-import SwitcherThree from '../../components/Switcher/SwitcherThree';
-import CheckboxOne from '../../components/Checkbox/CheckboxOne';
-import CheckboxTwo from '../../components/Checkbox/CheckboxTwo';
-import CheckboxThree from '../../components/Checkbox/CheckboxThree';
-import CheckboxFour from '../../components/Checkbox/CheckboxFour';
-import CheckboxFive from '../../components/Checkbox/CheckboxFive';
+import DefaultLayout from '../../../layout/DefaultLayout';
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
+import SwitcherOne from '../../../components/Switcher/SwitcherOne';
+import SwitcherTwo from '../../../components/Switcher/SwitcherTwo';
+import SwitcherFour from '../../../components/Switcher/SwitcherFour';
+import SwitcherThree from '../../../components/Switcher/SwitcherThree';
+import CheckboxOne from '../../../components/Checkbox/CheckboxOne';
+import CheckboxTwo from '../../../components/Checkbox/CheckboxTwo';
+import CheckboxThree from '../../../components/Checkbox/CheckboxThree';
+import CheckboxFour from '../../../components/Checkbox/CheckboxFour';
+import CheckboxFive from '../../../components/Checkbox/CheckboxFive';
 
 const FormElements = () => {
   return (

@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react';
-import DefaultLayout from '../../../layout/DefaultLayout';
-import DataPegawaiPeople from '../../../Utils/DataPegawaiPeople';
+import DefaultLayout from '../../../../layout/DefaultLayout';
+import DataJabatanPeople from '../../../../utils/DataJabatanPeople';
 import { Link } from "react-router-dom";
-import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
-import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
+import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 const ITEMS_PER_PAGE = 4;
 
-const DataPegawai = () => {
+const DataJabatan = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
-    const [dataPegawai, setDataPegawai] = useState([]);
+    const [dataJabatan, setDataJabatan] = useState([]);
 
-    const totalPages = Math.ceil(DataPegawaiPeople.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(DataJabatanPeople.length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        setDataPegawai(DataPegawaiPeople.slice(startIndex, endIndex));
+        setDataJabatan(DataJabatanPeople.slice(startIndex, endIndex));
     }, [startIndex, endIndex]);
 
     const goToPrevPage = () => {
@@ -42,10 +41,10 @@ const DataPegawai = () => {
 
     return (
         <DefaultLayout>
-            <Breadcrumb pageName='Data Pegawai' />
-            <Link to="/admin/master-data/data-pegawai/form-data-pegawai" >
+            <Breadcrumb pageName='Data Jabatan' />
+            <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
-                    <span>Tambah Pegawai</span>
+                    <span>Tambah Jabatan</span>
                     <span>
                         <FaPlus />
                     </span>
@@ -53,18 +52,6 @@ const DataPegawai = () => {
             </Link>
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
-                    <div className="relative flex-1 md:mr-2 mb-4 md:mb-0 ">
-                        <div className='relative'>
-                            <span className='absolute top-1/2 left-48 z-30 -translate-y-1/2 text-xl'>
-                                <MdOutlineKeyboardArrowDown />
-                            </span>
-                            <select className='relative  appearance-none rounded border border-stroke bg-transparent py-3 px-8 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'>
-                                <option value=''>Status</option>
-                                <option value=''>Karyawan Tetap</option>
-                                <option value=''>Karyawan Tidak Tetap</option>
-                            </select>
-                        </div>
-                    </div>
                     <div className="relative flex-2 mb-4 md:mb-0">
                         <input
                             type='text'
@@ -81,26 +68,20 @@ const DataPegawai = () => {
                     <table className='w-full table-auto'>
                         <thead>
                             <tr className='bg-gray-2 text-left dark:bg-meta-4'>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white xl:pl-11'>
-                                    Photo
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white xl:pl-11'>
-                                    NIK
+                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                    Jabatan
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Nama Pegawai
+                                    Gaji Pokok
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Jenis Kelamin
+                                    Tunjangan Transport
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Tanggal Masuk
+                                    Uang Makan
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Status
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Hak Akses
+                                    Total
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     Actions
@@ -108,31 +89,23 @@ const DataPegawai = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataPegawai.map((dataPegawai) => {
+                            {dataJabatan.map((dataJabatan) => {
                                 return (
-                                    <tr key={dataPegawai.id}>
-                                        <td className='border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark'>
-                                            <div className="h-12.5 w-15">
-                                                <div className='rounded-full overflow-hidden'>{dataPegawai.photo}</div>
-                                            </div>
+                                    <tr key={dataJabatan.id}>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataJabatan.titleJabatan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.nik}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.gajiPokok}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.namaPegawai}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.tunjanganTransport}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.jenisKelamin}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.uangMakan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.tanggalMasuk}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.status}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataPegawai.hakAkses}</p>
+                                            <p className='text-black dark:text-white'>{dataJabatan.total}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
@@ -154,7 +127,7 @@ const DataPegawai = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataPegawaiPeople.length} Data Pegawai
+                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Jabatan
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>
@@ -226,4 +199,4 @@ const DataPegawai = () => {
     )
 }
 
-export default DataPegawai;
+export default DataJabatan;

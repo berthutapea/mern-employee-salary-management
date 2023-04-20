@@ -1,7 +1,7 @@
-import User1 from '../Assets/images/user/gilbert.png'
-import User2 from '../Assets/images/user/user-02.png'
-import User3 from '../Assets/images/user/user-01.png'
-import User4 from '../Assets/images/user/user-04.png'
+import User1 from '../assets/images/user/gilbert.png'
+import User2 from '../assets/images/user/user-02.png'
+import User3 from '../assets/images/user/user-01.png'
+import User4 from '../assets/images/user/user-04.png'
 
 const DataPegawaiPeople = [
     {

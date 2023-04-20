@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import DefaultLayout from '../../../layout/DefaultLayout';
-import DataJabatanPeople from '../../../Utils/DataJabatanPeople';
+import DefaultLayout from '../../../../layout/DefaultLayout';
+import DataJabatanPeople from '../../../../utils/DataJabatanPeople';
 import { Link } from "react-router-dom";
-import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
-import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
+import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'

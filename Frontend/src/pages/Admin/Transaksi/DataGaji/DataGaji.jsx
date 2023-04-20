@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import DefaultLayout from '../../../layout/DefaultLayout';
-import DataJabatanPeople from '../../../Utils/DataJabatanPeople';
+import DefaultLayout from '../../../../layout/DefaultLayout';
+import DataJabatanPeople from '../../../../utils/DataJabatanPeople';
 import { Link } from "react-router-dom";
-import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
-import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
+import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 
 const ITEMS_PER_PAGE = 4;
 
-const DataAbsensi = () => {
+const DataGaji = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
@@ -41,7 +41,7 @@ const DataAbsensi = () => {
 
     return (
         <DefaultLayout>
-            <Breadcrumb pageName='Data Absensi Pegawai' />
+            <Breadcrumb pageName='Data Gaji Pegawai' />
             <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
                     <span>Tambah Jabatan</span>
@@ -199,4 +199,4 @@ const DataAbsensi = () => {
     )
 }
 
-export default DataAbsensi;
+export default DataGaji;
