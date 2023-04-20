@@ -149,7 +149,7 @@ const FormDataPegawai = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className='w-full xl:w-1/2'>
                     <label className='mb-2.5 block text-black dark:text-white'>
                       Photo <span className='text-meta-1'>*</span>
@@ -162,14 +162,14 @@ const FormDataPegawai = () => {
                 </div>
                 {/* <!-- Form Data Pegawai --> */}
 
-                <div className='flex flex-wrap gap-3'>
+                <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                   <Link to="/" >
                     <ButtonOne  >
                       <span>Simpan</span>
                     </ButtonOne>
                   </Link>
                   <Link to="/admin/master-data/data-pegawai/form-data-pegawai" >
-                    <ButtonTwo  >
+                    <ButtonTwo>
                       <span>Reset</span>
                     </ButtonTwo>
                   </Link>

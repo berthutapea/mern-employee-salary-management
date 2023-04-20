@@ -7,6 +7,7 @@ import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 const ITEMS_PER_PAGE = 4;
 
@@ -38,18 +39,84 @@ const DataAbsensi = () => {
         }
     };
 
-
     return (
         <DefaultLayout>
             <Breadcrumb pageName='Data Absensi Pegawai' />
-            <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
-                <ButtonOne  >
-                    <span>Tambah Jabatan</span>
-                    <span>
-                        <FaPlus />
-                    </span>
-                </ButtonOne>
-            </Link>
+
+            <div className='rounded-sm border border-stroke bg-white px-5 pt-2 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-10 mt-6'>
+                <div className='border-b border-stroke py-2 dark:border-strokedark'>
+                    <h3 className='font-medium text-black dark:text-white'>
+                        Filter Data Absensi Pegawai
+                    </h3>
+                </div>
+
+                <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
+                    <div className="relative w-full md:w-1/4 md:mr-2 mb-4 md:mb-0">
+                        <div className='relative'><span className='px-4'> Bulan</span>
+                            <span className='absolute top-1/2 left-55 z-30 -translate-y-1/2 text-xl'>
+                                <MdOutlineKeyboardArrowDown />
+                            </span>
+                            <select className='relative appearance-none rounded border border-stroke bg-transparent py-2 px-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'>
+                                <option value=''>Pilih Bulan</option>
+                                <option value=''>Januari</option>
+                                <option value=''>Februari</option>
+                                <option value=''>Maret</option>
+                                <option value=''>April</option>
+                                <option value=''>Mei</option>
+                                <option value=''>Juni</option>
+                                <option value=''>Juli</option>
+                                <option value=''>Agustus</option>
+                                <option value=''>September</option>
+                                <option value=''>Oktober</option>
+                                <option value=''>November</option>
+                                <option value=''>Desember</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="relative w-full md:w-1/4 md:mr-2 mb-4 md:mb-0">
+                        <div className='relative'><span className='px-4'>Tahun</span>
+                            <span className='absolute top-1/2 left-55 z-30 -translate-y-1/2 text-xl'>
+                                <MdOutlineKeyboardArrowDown />
+                            </span>
+                            <select className='relative appearance-none rounded border border-stroke bg-transparent py-2 px-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'>
+                                <option value=''>Pilih Tahun</option>
+                                <option value=''>2020</option>
+                                <option value=''>2021</option>
+                                <option value=''>2022</option>
+                                <option value=''>2023</option>
+                                <option value=''>2024</option>
+                                <option value=''>2025</option>
+                                <option value=''>2026</option>
+                                <option value=''>2027</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='flex flex-col md:flex-row w-full md:w-1/2 justify-between text-center'>
+                        <div className="relative w-full md:w-1/2 mb-4 md:mb-0 ">
+                            <Link to="/admin/master-data/data-jabatan/form-data-jabatan">
+                                <ButtonOne className="bg-primary">
+                                    <span>Tampilkan Data</span>
+                                    <span>
+                                        <FaPlus />
+                                    </span>
+                                </ButtonOne>
+                            </Link>
+                        </div>
+                        <div className="relative w-full md:w-1/2  mb-4 md:mb-0">
+                            <Link to="/admin/master-data/data-jabatan/form-data-jabatan">
+                                <ButtonOne>
+                                    <span>Input Kehadiran</span>
+                                    <span>
+                                        <FaPlus />
+                                    </span>
+                                </ButtonOne>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="relative flex-2 mb-4 md:mb-0">

@@ -70,7 +70,7 @@ const FormDataJabatan = () => {
                                 </div>
                                 {/* <!-- Form Data Jabatan --> */}
 
-                                <div className='flex flex-wrap gap-3'>
+                                <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <Link to="/" >
                                         <ButtonOne  >
                                             <span>Simpan</span>
@@ -78,7 +78,7 @@ const FormDataJabatan = () => {
                                     </Link>
                                     <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                                         <ButtonTwo  >
-                                            <span>Reset</span>
+                                            <span>Resett</span>
                                         </ButtonTwo>
                                     </Link>
                                     <Link to="/admin/master-data/data-jabatan" >
