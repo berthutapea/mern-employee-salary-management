@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import DefaultLayout from '../../../../layout/DefaultLayout';
-import DataJabatanPeople from '../../../../utils/DataJabatanPeople';
+import DataAbsensiPegawai from '../../../../utils/DataAbsensiPegawai';
 import { Link } from "react-router-dom";
 import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
@@ -8,6 +8,7 @@ import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import { TfiEye } from 'react-icons/tfi'
 
 const ITEMS_PER_PAGE = 4;
 
@@ -15,12 +16,12 @@ const DataAbsensi = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
-    const [dataJabatan, setDataJabatan] = useState([]);
+    const [dataAbsensi, setDataAbsensi] = useState([]);
 
-    const totalPages = Math.ceil(DataJabatanPeople.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(DataAbsensiPegawai.length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        setDataJabatan(DataJabatanPeople.slice(startIndex, endIndex));
+        setDataAbsensi(DataAbsensiPegawai.slice(startIndex, endIndex));
     }, [startIndex, endIndex]);
 
     const goToPrevPage = () => {
@@ -93,17 +94,17 @@ const DataAbsensi = () => {
                     </div>
                     <div className='flex flex-col md:flex-row w-full md:w-1/2 justify-between text-center'>
                         <div className="relative w-full md:w-1/2 mb-4 md:mb-0 ">
-                            <Link to="/admin/master-data/data-jabatan/form-data-jabatan">
+                            <Link to="/admin/transaksi/data-absensi">
                                 <ButtonOne className="bg-primary">
                                     <span>Tampilkan Data</span>
                                     <span>
-                                        <FaPlus />
+                                        <TfiEye />
                                     </span>
                                 </ButtonOne>
                             </Link>
                         </div>
                         <div className="relative w-full md:w-1/2  mb-4 md:mb-0">
-                            <Link to="/admin/master-data/data-jabatan/form-data-jabatan">
+                            <Link to="/admin/transaksi/data-absensi">
                                 <ButtonOne>
                                     <span>Input Kehadiran</span>
                                     <span>
@@ -114,8 +115,12 @@ const DataAbsensi = () => {
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div className="bg-gray-2 text-left dark:bg-meta-4 mt-6">
+                    <h2 className="px-4 py-2 text-black dark:text-white">Menampilkan Data Kehadiran Pegawai Bulan:
+                        <span className="font-medium"> April</span> Tahun:<span className="font-medium"> 2023</span></h2>
+                </div>
+            </div>
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
@@ -136,19 +141,25 @@ const DataAbsensi = () => {
                         <thead>
                             <tr className='bg-gray-2 text-left dark:bg-meta-4'>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                    NIK
+                                </th>
+                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                    Nama Pegawai
+                                </th>
+                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                    Jenis Kelamin
+                                </th>
+                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     Jabatan
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Gaji Pokok
+                                    Hadir
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Tunjangan Transport
+                                    Sakit
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Uang Makan
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Total
+                                    Alpha
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     Actions
@@ -156,23 +167,29 @@ const DataAbsensi = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataJabatan.map((dataJabatan) => {
+                            {dataAbsensi.map((dataAbsensi) => {
                                 return (
-                                    <tr key={dataJabatan.id}>
+                                    <tr key={dataAbsensi.id}>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataJabatan.titleJabatan}</p>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.nik}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataJabatan.gajiPokok}</p>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.namaPegawai}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataJabatan.tunjanganTransport}</p>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.jenisKelamin}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataJabatan.uangMakan}</p>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.titleJabatan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataJabatan.total}</p>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.hadir}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.sakit}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{dataAbsensi.alpha}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
@@ -194,7 +211,7 @@ const DataAbsensi = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataJabatanPeople.length} Data Jabatan
+                            Showing {startIndex}-{endIndex} of {DataAbsensiPegawai.length} Data Absensi
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>
