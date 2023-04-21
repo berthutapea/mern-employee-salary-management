@@ -42,7 +42,7 @@ const SettingPotonganGaji = () => {
     return (
         <DefaultLayout>
             <Breadcrumb pageName='Setting Potongan Gaji' />
-            <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
+            <Link to="/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
                 <ButtonOne  >
                     <span>Tambah Potongan</span>
                     <span>

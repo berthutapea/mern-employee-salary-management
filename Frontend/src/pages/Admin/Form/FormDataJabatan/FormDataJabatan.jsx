@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayout from '../../../layout/DefaultLayout';
-import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
-import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
-import ButtonTwo from '../../../components/Buttons/ButtonTwo/ButtonTwo';
-import ButtonThree from '../../../components/Buttons/ButtonThree/ButtonThree';
+import DefaultLayout from '../../../../layout/DefaultLayout';
+import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
+import ButtonTwo from '../../../../components/Buttons/ButtonTwo/ButtonTwo';
+import ButtonThree from '../../../../components/Buttons/ButtonThree/ButtonThree';
 
 const FormDataJabatan = () => {
     return (

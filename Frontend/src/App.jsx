@@ -5,11 +5,12 @@ import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
 import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
 import Calendar from './pages/Calender/Calendar'
 import DataPegawai from './pages/Admin/MasterData/DataPegawai/DataPegawai'
-import FormDataPegawai from './pages/Admin/Form/FormDataPegawai'
+import FormDataPegawai from './pages/Admin/Form/FormDataPegawai/FormDataPegawai'
 import DataJabatan from './pages/Admin/MasterData/DataJabatan/DataJabatan'
-import FormDataJabatan from './pages/Admin/Form/FormDataJabatan'
+import FormDataJabatan from './pages/Admin/Form/FormDataJabatan/FormDataJabatan'
 import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
 import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
+import FormSettingPotonganGaji from './pages/Admin/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
 import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
 // 
 import Profile from './pages/Profile'
@@ -50,6 +51,7 @@ const App = () => {
           <Route path='/admin/master-data/data-jabatan/form-data-jabatan' element={<FormDataJabatan />} />
           <Route path='/admin/transaksi/data-absensi' element={<DataAbsensi />} />
           <Route path='/admin/transaksi/setting-potongan-gaji' element={<SettingPotonganGaji />} />
+          <Route path='/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji' element={<FormSettingPotonganGaji />} />
           <Route path='/admin/transaksi/data-gaji' element={<DataGaji />} />
           {/*  */}
           <Route path='/profile' element={<Profile />} />
