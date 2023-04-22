@@ -88,6 +88,8 @@ const App = () => {
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           {/* Dashboard Admin */}
           <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
+          {/* Calender Admin */}
+          <Route path='/pegawai/calendar' element={<Calendar />} />
 
           {/*  */}
           <Route path='/profile' element={<Profile />} />
