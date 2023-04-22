@@ -25,8 +25,9 @@ import UbahPassword from './pages/Admin/Pengaturan/UbahPassword/UbahPassword'
 
 // Import Pegawai
 import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
-//  Import Dashboard Admin
+//  Import Dashboard Pegawai
 import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
+//  Import Data Gaji Pegawai Pegawai
 import DataGajiPegawai from './pages/Pegawai/DataGajiPegawai/DataGajiPegawai'
 
 // 
@@ -83,9 +84,12 @@ const App = () => {
           {/* Route Pegawai */}
           {/* Login Pegawai */}
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
-          {/* Dashboard Admin */}
+          {/* Dashboard Pegawai */}
           <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
+          {/* Dashboard Data Gaji Pegawai */}
           <Route exact path='/pegawai/data-gaji' element={<DataGajiPegawai />} />
+
+
           {/*  */}
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/tables' element={<Tables />} />

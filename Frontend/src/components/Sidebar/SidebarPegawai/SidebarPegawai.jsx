@@ -85,7 +85,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
             <ul className='mb-6 flex flex-col gap-1.5'>
               {/* <!--Dashboard Admin--> */}
-
               <NavLink
                 to='/pegawai/dashboard'
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('dashboard') &&
@@ -157,7 +156,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/'
+                              to='/pegawai/login'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
