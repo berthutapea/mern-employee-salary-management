@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import SidebarLinkGroup from './SidebarLinkGroup'
-import Logo from '../../Assets/images/logo/logo.svg'
+import Logo from '../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
 import { SlCalender } from 'react-icons/sl'
@@ -327,10 +327,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </SidebarLinkGroup>
               {/* <!-- Laporan Admin --> */}
 
-              {/* <!-- Pegaturan Admin --> */}
+              {/* <!-- Pengaturan Admin --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === '/laporan' || pathname.includes('laporan')
+                  pathname === '/pengaturan' || pathname.includes('pengaturan')
                 }
               >
                 {(handleClick, open) => {
@@ -338,8 +338,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to='#'
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/laporan' ||
-                          pathname.includes('laporan')) &&
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/pengaturan' ||
+                          pathname.includes('pengaturan')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                         onClick={(e) => {
