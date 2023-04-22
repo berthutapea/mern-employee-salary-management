@@ -15,6 +15,7 @@ import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
 import LaporanGaji from './pages/Admin/Laporan/LaporanGaji/LaporanGaji'
 import LaporanAbsensi from './pages/Admin/Laporan/LaporanAbsensi/LaporanAbsensi'
 import SlipGaji from './pages/Admin/Laporan/SlipGaji/SlipGaji'
+import UbahPassword from './pages/Admin/Pengaturan/UbahPassword/UbahPassword'
 // 
 import Profile from './pages/Profile'
 import FormElements from './pages/Admin/Form/FormElements'
@@ -47,7 +48,9 @@ const App = () => {
           <Route exact path='/admin/login' element={<LoginAdmin />} />
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           <Route exact path='/' element={<LoginAdmin />} />
+          {/* Dashboard Admin */}
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
+          {/* Calender Admin */}
           <Route path='/admin/calendar' element={<Calendar />} />
           {/* Master Data Admin */}
           <Route path='/admin/master-data/data-pegawai' element={<DataPegawai />} />
@@ -63,6 +66,8 @@ const App = () => {
           <Route path='/admin/laporan/laporan-gaji' element={<LaporanGaji />} />
           <Route path='/admin/laporan/laporan-absensi' element={<LaporanAbsensi />} />
           <Route path='/admin/laporan/slip-gaji' element={<SlipGaji />} />
+          {/* Pengaturan Admin */}
+          <Route path='/admin/pengaturan/ubah-password' element={<UbahPassword />} />
           {/*  */}
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
