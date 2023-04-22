@@ -41,7 +41,7 @@ const SlipGaji = () => {
 
     return (
         <DefaultLayout>
-            <Breadcrumb pageName='Laporan Absensi' />
+            <Breadcrumb pageName='Slip Gaji' />
             <Link to="/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
                 <ButtonOne  >
                     <span>Tambah Potongan</span>
