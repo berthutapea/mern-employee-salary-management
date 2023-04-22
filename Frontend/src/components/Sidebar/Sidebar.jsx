@@ -4,7 +4,6 @@ import SidebarLinkGroup from './SidebarLinkGroup'
 import Logo from '../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
-import { SlCalender } from 'react-icons/sl'
 import { FiDatabase, FiSettings } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
@@ -98,20 +97,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 Dashboard
               </NavLink>
               {/* <!-- Dashboard Admin --> */}
-
-              {/* <!-- Calendar Admin--> */}
-              <li>
-                <NavLink
-                  to='/admin/calendar'
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('calendar') &&
-                    'bg-graydark dark:bg-meta-4'
-                    }`}
-                >
-                  <SlCalender />
-                  Calendar
-                </NavLink>
-              </li>
-              {/* <!-- Calendar Admin --> */}
 
               {/* <!-- Master Data Admin --> */}
               <SidebarLinkGroup

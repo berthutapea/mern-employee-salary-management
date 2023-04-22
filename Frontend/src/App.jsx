@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Calendar from './pages/Calender/Calendar'
 // Import Admin
 
 //  Import login Admin
@@ -30,7 +29,6 @@ import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
 import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
 
 // 
-import Profile from './pages/Profile'
 import FormElements from './pages/Admin/Form/FormElements'
 import Tables from './pages/Tables'
 import Settings from './pages/Settings'
@@ -64,8 +62,6 @@ const App = () => {
           <Route exact path='/' element={<LoginAdmin />} />
           {/* Dashboard Admin */}
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
-          {/* Calender Admin */}
-          <Route path='/admin/calendar' element={<Calendar />} />
           {/* Master Data Admin */}
           <Route path='/admin/master-data/data-pegawai' element={<DataPegawai />} />
           <Route path='/admin/master-data/data-pegawai/form-data-pegawai' element={<FormDataPegawai />} />
@@ -88,11 +84,7 @@ const App = () => {
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           {/* Dashboard Admin */}
           <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
-          {/* Calender Admin */}
-          <Route path='/pegawai/calendar' element={<Calendar />} />
-
           {/*  */}
-          <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/tables' element={<Tables />} />
           <Route path='/settings' element={<Settings />} />
