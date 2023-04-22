@@ -8,7 +8,6 @@ const DataSettingPotonganGaji = [
         id: 2,
         potonganGaji: "Sakit",
         jumlahPotongan: "Rp. 0",
-
     }
 ];
 
