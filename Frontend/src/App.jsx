@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import LoginAdmin from './pages/Admin/LoginAdmin/LoginAdmin'
-import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
-import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
 import Calendar from './pages/Calender/Calendar'
+// Import Admin
+
+//  Import login Admin
+import LoginAdmin from './pages/Admin/LoginAdmin/LoginAdmin'
+//  Import Dashboard Admin
+import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
+//  Import Master Data Admin
 import DataPegawai from './pages/Admin/MasterData/DataPegawai/DataPegawai'
 import FormDataPegawai from './pages/Admin/Form/FormDataPegawai/FormDataPegawai'
 import DataJabatan from './pages/Admin/MasterData/DataJabatan/DataJabatan'
 import FormDataJabatan from './pages/Admin/Form/FormDataJabatan/FormDataJabatan'
+//  Import Transaksi Admin
 import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
 import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
 import FormSettingPotonganGaji from './pages/Admin/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
 import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
+//  Import laporan Admin
 import LaporanGaji from './pages/Admin/Laporan/LaporanGaji/LaporanGaji'
 import LaporanAbsensi from './pages/Admin/Laporan/LaporanAbsensi/LaporanAbsensi'
 import SlipGaji from './pages/Admin/Laporan/SlipGaji/SlipGaji'
+//  Import Pengaturan Admin
 import UbahPassword from './pages/Admin/Pengaturan/UbahPassword/UbahPassword'
-// 
+
+// Import Pegawai
+import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
 import Profile from './pages/Profile'
 import FormElements from './pages/Admin/Form/FormElements'
 import Tables from './pages/Tables'
@@ -45,8 +54,9 @@ const App = () => {
     !loading && (
       <>
         <Routes>
+          {/* Route Admin */}
+          {/* Login Admin */}
           <Route exact path='/admin/login' element={<LoginAdmin />} />
-          <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           <Route exact path='/' element={<LoginAdmin />} />
           {/* Dashboard Admin */}
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
@@ -68,7 +78,10 @@ const App = () => {
           <Route path='/admin/laporan/slip-gaji' element={<SlipGaji />} />
           {/* Pengaturan Admin */}
           <Route path='/admin/pengaturan/ubah-password' element={<UbahPassword />} />
-          {/*  */}
+
+          {/* Route Pegawai */}
+          {/* Login Pegawai */}
+          <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/tables' element={<Tables />} />
