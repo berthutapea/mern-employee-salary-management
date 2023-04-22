@@ -4,6 +4,7 @@ import SidebarLinkGroup from '../SidebarLinkGroup'
 import Logo from '../../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
+import { FaRegMoneyBillAlt } from 'react-icons/fa'
 import { FiSettings } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
@@ -86,7 +87,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!--Dashboard Admin--> */}
 
               <NavLink
-                to='/pegawai/dashboard'
+                to='/admin/dashboard'
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('dashboard') &&
                   'bg-graydark dark:bg-meta-4'
                   }`}
@@ -95,6 +96,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 Dashboard
               </NavLink>
               {/* <!-- Dashboard Admin --> */}
+
+              {/* <!-- Data Gaji Pegawai--> */}
+              <li>
+                <NavLink
+                  to='/pegawai/data-gaji'
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('datagaji') &&
+                    'bg-graydark dark:bg-meta-4'
+                    }`}
+                >
+                  <FaRegMoneyBillAlt />
+                  Data Gaji
+                </NavLink>
+              </li>
+              {/* <!-- Data Gaji Pegawai --> */}
 
               {/* <!-- Pengaturan Admin --> */}
               <SidebarLinkGroup
