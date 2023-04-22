@@ -27,6 +27,7 @@ import UbahPassword from './pages/Admin/Pengaturan/UbahPassword/UbahPassword'
 import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
 //  Import Dashboard Admin
 import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
+import DataGajiPegawai from './pages/Pegawai/DataGajiPegawai/DataGajiPegawai'
 
 // 
 import FormElements from './pages/Admin/Form/FormElements'
@@ -84,6 +85,7 @@ const App = () => {
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
           {/* Dashboard Admin */}
           <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
+          <Route exact path='/pegawai/data-gaji' element={<DataGajiPegawai />} />
           {/*  */}
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/tables' element={<Tables />} />
