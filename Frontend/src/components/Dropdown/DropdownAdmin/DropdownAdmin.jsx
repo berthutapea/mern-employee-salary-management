@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import UserOne from '../../Assets/images/user/admin.svg'
+import AdminPhoto from '../../../assets/images/user/admin.svg'
 import { BiLogOut } from 'react-icons/bi'
 import { FiSettings } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 
-const DropdownUser = () => {
+const DropdownAdmin = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const trigger = useRef(null)
@@ -48,13 +48,13 @@ const DropdownUser = () => {
       >
         <span className='hidden text-right lg:block'>
           <span className='block text-sm font-medium text-black dark:text-white'>
-            Gilbert Hutapea
+            Admin
           </span>
           <span className='block text-xs'>Admin HSC</span>
         </span>
 
         <span className='h-12 w-12 rounded-full'>
-          <img src={UserOne} alt='User' />
+          <img src={AdminPhoto} alt='Admin' />
         </span>
 
         <MdKeyboardArrowDown className="text-xl" />
@@ -96,4 +96,4 @@ const DropdownUser = () => {
   )
 }
 
-export default DropdownUser
+export default DropdownAdmin;

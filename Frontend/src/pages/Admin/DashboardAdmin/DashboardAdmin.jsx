@@ -8,7 +8,7 @@ import ChartOne from '../../../components/Chart/ChartOne';
 import ChartTwo from '../../../components/Chart/ChartTwo';
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
-const Analytics = () => {
+const DashboardAdmin = () => {
   return (
     <DefaultLayout>
       <Breadcrumb pageName='Dashboard' />
@@ -33,4 +33,4 @@ const Analytics = () => {
   )
 }
 
-export default Analytics;
+export default DashboardAdmin;

@@ -26,6 +26,10 @@ import UbahPassword from './pages/Admin/Pengaturan/UbahPassword/UbahPassword'
 
 // Import Pegawai
 import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
+//  Import Dashboard Admin
+import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
+
+// 
 import Profile from './pages/Profile'
 import FormElements from './pages/Admin/Form/FormElements'
 import Tables from './pages/Tables'
@@ -82,6 +86,10 @@ const App = () => {
           {/* Route Pegawai */}
           {/* Login Pegawai */}
           <Route exact path='/pegawai/login' element={<LoginPegawai />} />
+          {/* Dashboard Admin */}
+          <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
+
+          {/*  */}
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />
           <Route path='/tables' element={<Tables />} />

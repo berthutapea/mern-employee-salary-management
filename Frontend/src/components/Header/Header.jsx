@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import LogoIcon from '../../Assets/images/logo/logo-icon.svg'
-import DropdownNotification from '../Dropdown/DropdownNotification'
-import DropdownUser from '../Dropdown/DropdownUser'
+import DropdownNotification from '../Dropdown/DropdownNotification/DropdownNotification'
+import DropdownUser from '../Dropdown/DropdownAdmin/DropdownAdmin'
 import DarkModeSwitcher from '../DarkMode/DarkModeSwitcher'
 import { Link } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi'
@@ -63,7 +62,7 @@ const Header = (
           <form action='https://formbold.com/s/unique_form_id' method='POST'>
             <div className='relative'>
               <button className='absolute top-1/2 left-0 -translate-y-1/2'>
-              <BiSearch className='fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary text-xl'/>
+                <BiSearch className='fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary text-xl' />
               </button>
 
               <input

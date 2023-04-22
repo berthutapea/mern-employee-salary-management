@@ -59,7 +59,7 @@ const LoginPegawai = () => {
                             </div>
 
                             <div className='mb-5'>
-                                <Link to='/'>
+                                <Link to='/pegawai/dashboard'>
                                     <input
                                         type='submit'
                                         value='Login'
