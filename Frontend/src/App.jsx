@@ -8,13 +8,13 @@ import LoginAdmin from './pages/Admin/LoginAdmin/LoginAdmin'
 import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
 //  Import Master Data Admin
 import DataPegawai from './pages/Admin/MasterData/DataPegawai/DataPegawai'
-import FormDataPegawai from './pages/Admin/Form/FormDataPegawai/FormDataPegawai'
+import FormDataPegawai from './components/Form/FormDataPegawai/FormDataPegawai'
 import DataJabatan from './pages/Admin/MasterData/DataJabatan/DataJabatan'
-import FormDataJabatan from './pages/Admin/Form/FormDataJabatan/FormDataJabatan'
+import FormDataJabatan from './components/Form/FormDataJabatan/FormDataJabatan'
 //  Import Transaksi Admin
 import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
 import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
-import FormSettingPotonganGaji from './pages/Admin/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
+import FormSettingPotonganGaji from './components/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
 import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
 //  Import laporan Admin
 import LaporanGaji from './pages/Admin/Laporan/LaporanGaji/LaporanGaji'
@@ -29,14 +29,8 @@ import LoginPegawai from './pages/Pegawai/LoginPegawai/LoginPegawai'
 import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
 //  Import Data Gaji Pegawai Pegawai
 import DataGajiPegawai from './pages/Pegawai/DataGajiPegawai/DataGajiPegawai'
-
-// 
-import FormElements from './pages/Admin/Form/FormElements'
-import Tables from './pages/Tables'
-import Settings from './pages/Settings'
-import Alerts from './pages/UiElements/Alerts'
-import Buttons from './pages/UiElements/Buttons'
-
+//  Import Pengaturan Pegawai
+import UbahPasswordPegawai from './pages/Pegawai/PengaturanPegawai/UbahPasswordPegawai'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -88,14 +82,7 @@ const App = () => {
           <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
           {/* Dashboard Data Gaji Pegawai */}
           <Route exact path='/pegawai/data-gaji' element={<DataGajiPegawai />} />
-
-
-          {/*  */}
-          <Route path='/forms/form-elements' element={<FormElements />} />
-          <Route path='/tables' element={<Tables />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/ui/alerts' element={<Alerts />} />
-          <Route path='/ui/buttons' element={<Buttons />} />
+          <Route exact path='/pegawai/pengaturan/ubah-password' element={<UbahPasswordPegawai />} />
         </Routes>
       </>
     )
