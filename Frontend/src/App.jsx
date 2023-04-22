@@ -30,7 +30,7 @@ import DashboardPegawai from './pages/Pegawai/DashboardPegawai/DashboardPegawai'
 //  Import Data Gaji Pegawai Pegawai
 import DataGajiPegawai from './pages/Pegawai/DataGajiPegawai/DataGajiPegawai'
 //  Import Pengaturan Pegawai
-import UbahPasswordPegawai from './pages/Pegawai/PengaturanPegawai/UbahPasswordPegawai'
+import UbahPasswordPegawai from './pages/Pegawai/PengaturanPegawai/UbahPasswordPegawai/UbahPasswordPegawai'
 
 const App = () => {
   const [loading, setLoading] = useState(true)

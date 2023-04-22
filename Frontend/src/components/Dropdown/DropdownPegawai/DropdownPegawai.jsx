@@ -71,7 +71,7 @@ const DropdownPegawai = () => {
                 <ul className='flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark'>
                     <li>
                         <Link
-                            to='/admin/pengaturan/ubah-password'
+                            to='/pegawai/pengaturan/ubah-password'
                             className='flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base'
                         >
                             <FiSettings className="text-xl" />
@@ -82,7 +82,7 @@ const DropdownPegawai = () => {
                     </li>
                     <li>
                         <Link
-                            to='/'
+                            to='/pegawai/login'
                             className='flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base'
                         >
                             <BiLogOut className="text-xl" />

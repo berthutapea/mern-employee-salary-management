@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayoutPegawai from '../../../layout/DefaultLayoutPegawai/DefaultLayoutPegawai';
-import BreadcrumbPegawai from '../../../components/Breadcrumb/BreadcrumbPegawai/BreadcrumbPegawai';
-import ButtonOne from '../../../components/Buttons/ButtonOne/ButtonOne';
+import DefaultLayoutPegawai from '../../../../layout/DefaultLayoutPegawai/DefaultLayoutPegawai';
+import BreadcrumbPegawai from '../../../../components/Breadcrumb/BreadcrumbPegawai/BreadcrumbPegawai';
+import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { TfiLock } from 'react-icons/tfi'
 
 const UbahPasswordPegawai = () => {
