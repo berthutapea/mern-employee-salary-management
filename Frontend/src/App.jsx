@@ -12,6 +12,9 @@ import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
 import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
 import FormSettingPotonganGaji from './pages/Admin/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
 import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
+import LaporanGaji from './pages/Admin/Laporan/LaporanGaji/LaporanGaji'
+import LaporanAbsensi from './pages/Admin/Laporan/LaporanAbsensi/LaporanAbsensi'
+import SlipGaji from './pages/Admin/Laporan/SlipGaji/SlipGaji'
 // 
 import Profile from './pages/Profile'
 import FormElements from './pages/Admin/Form/FormElements'
@@ -19,6 +22,7 @@ import Tables from './pages/Tables'
 import Settings from './pages/Settings'
 import Alerts from './pages/UiElements/Alerts'
 import Buttons from './pages/UiElements/Buttons'
+
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -45,14 +49,20 @@ const App = () => {
           <Route exact path='/' element={<LoginAdmin />} />
           <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
           <Route path='/admin/calendar' element={<Calendar />} />
+          {/* Master Data Admin */}
           <Route path='/admin/master-data/data-pegawai' element={<DataPegawai />} />
           <Route path='/admin/master-data/data-pegawai/form-data-pegawai' element={<FormDataPegawai />} />
           <Route path='/admin/master-data/data-jabatan' element={<DataJabatan />} />
           <Route path='/admin/master-data/data-jabatan/form-data-jabatan' element={<FormDataJabatan />} />
+          {/* Transaksi Admin */}
           <Route path='/admin/transaksi/data-absensi' element={<DataAbsensi />} />
           <Route path='/admin/transaksi/setting-potongan-gaji' element={<SettingPotonganGaji />} />
           <Route path='/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji' element={<FormSettingPotonganGaji />} />
           <Route path='/admin/transaksi/data-gaji' element={<DataGaji />} />
+          {/* Laporan Admin */}
+          <Route path='/admin/laporan/laporan-gaji' element={<LaporanGaji />} />
+          <Route path='/admin/laporan/laporan-absensi' element={<LaporanAbsensi />} />
+          <Route path='/admin/laporan/slip-gaji' element={<SlipGaji />} />
           {/*  */}
           <Route path='/profile' element={<Profile />} />
           <Route path='/forms/form-elements' element={<FormElements />} />

@@ -8,6 +8,7 @@ import { SlCalender } from 'react-icons/sl'
 import { FiDatabase } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
+import { RiFileCopy2Line } from 'react-icons/ri'
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation()
@@ -250,6 +251,81 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }}
               </SidebarLinkGroup>
               {/* <!-- Transaksi Admin --> */}
+
+              {/* <!-- Laporan Admin --> */}
+              <SidebarLinkGroup
+                activeCondition={
+                  pathname === '/laporan' || pathname.includes('laporan')
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <React.Fragment>
+                      <NavLink
+                        to='#'
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/laporan' ||
+                          pathname.includes('laporan')) &&
+                          'bg-graydark dark:bg-meta-4'
+                          }`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          sidebarExpanded
+                            ? handleClick()
+                            : setSidebarExpanded(true)
+                        }}
+                      >
+                        <RiFileCopy2Line />
+                        Laporan
+                        <MdKeyboardArrowDown className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current text-2xl ${open && 'rotate-180'
+                          }`} />
+                      </NavLink>
+                      {/* <!-- Dropdown Menu Start --> */}
+                      <div
+                        className={`translate transform overflow-hidden ${!open && 'hidden'
+                          }`}
+                      >
+                        <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
+                          <li>
+                            <NavLink
+                              to='/admin/laporan/laporan-gaji'
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
+                                (isActive && '!text-white')
+                              }
+                            >
+                              Laporan Gaji
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to='/admin/laporan/laporan-absensi'
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
+                                (isActive && '!text-white')
+                              }
+                            >
+                              Laporan Absensi
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to='/admin/laporan/slip-gaji'
+                              className={({ isActive }) =>
+                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
+                                (isActive && '!text-white')
+                              }
+                            >
+                              Slip Gaji
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
+                      {/* <!-- Dropdown Menu End --> */}
+                    </React.Fragment>
+                  )
+                }}
+              </SidebarLinkGroup>
+              {/* <!-- Laporan Admin --> */}
 
               {/* <!-- Profile --> */}
               {/* <li>
