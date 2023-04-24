@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import SidebarLinkGroup from './SidebarLinkGroup'
-import Logo from '../../assets/images/logo/logo.svg'
+import SidebarLinkGroup from '../SidebarLinkGroup'
+import Logo from '../../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
 import { FiDatabase, FiSettings } from 'react-icons/fi'
@@ -9,7 +9,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
 import { TfiPrinter } from 'react-icons/tfi'
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation()
   const { pathname } = location
 
@@ -383,4 +383,4 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   )
 }
 
-export default Sidebar;
+export default SidebarAdmin;

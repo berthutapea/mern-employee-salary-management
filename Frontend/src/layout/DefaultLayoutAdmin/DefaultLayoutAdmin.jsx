@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import SidebarAdmin from '../../components/Sidebar/SidebarAdmin/SidebarAdmin';
 import Header from '../../components/Header/Header';
 
 const DefaultLayoutAdmin = ({ children }) => {
@@ -10,7 +10,7 @@ const DefaultLayoutAdmin = ({ children }) => {
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className='flex h-screen overflow-hidden'>
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <SidebarAdmin sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
