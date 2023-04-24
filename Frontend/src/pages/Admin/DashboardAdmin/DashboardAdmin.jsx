@@ -1,11 +1,11 @@
 import React from 'react';
 import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import CardOne from '../../../components/Card/CardOne';
-import CardTwo from '../../../components/Card/CardTwo';
-import CardThree from '../../../components/Card/CardThree'
-import CardFour from '../../../components/Card/CardFour';
-import ChartOne from '../../../components/Chart/ChartOne';
-import ChartTwo from '../../../components/Chart/ChartTwo';
+import CardOne from '../../../components/Card/CardOne/CardOne';
+import CardTwo from '../../../components/Card/CardTwo/CardTwo';
+import CardThree from '../../../components/Card/CardThree/CardThree'
+import CardFour from '../../../components/Card/CardFour/CardFour';
+import ChartOne from '../../../components/Chart/ChartOne/ChartOne';
+import ChartTwo from '../../../components/Chart/ChartTwo/ChartTwo';
 import BreadcrumbAdmin from '../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 
 const DashboardAdmin = () => {
