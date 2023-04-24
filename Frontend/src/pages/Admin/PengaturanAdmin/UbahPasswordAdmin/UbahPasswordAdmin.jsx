@@ -4,7 +4,7 @@ import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLay
 import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
 import { TfiLock } from 'react-icons/tfi'
 
-const UbahPassword = () => {
+const UbahPasswordAdmin = () => {
     return (
         <DefaultLayoutAdmin>
             <BreadcrumbAdmin pageName='Form Ganti Password' />
@@ -60,4 +60,4 @@ const UbahPassword = () => {
     )
 }
 
-export default UbahPassword;
+export default UbahPasswordAdmin;
