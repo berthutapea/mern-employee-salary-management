@@ -1,12 +1,12 @@
 import React from 'react'
-import LogoIcon from '../../Assets/images/logo/logo-icon.svg'
-import DropdownNotification from '../Dropdown/DropdownNotification/DropdownNotification'
-import DropdownUser from '../Dropdown/DropdownAdmin/DropdownAdmin'
-import DarkModeSwitcher from '../DarkMode/DarkModeSwitcher'
+import LogoIcon from '../../../assets/images/logo/logo-icon.svg'
+import DropdownNotification from '../../Dropdown/DropdownNotification/DropdownNotification'
+import DropdownUser from '../../Dropdown/DropdownAdmin/DropdownAdmin'
+import DarkModeSwitcher from '../../DarkMode/DarkModeSwitcher'
 import { Link } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi'
 
-const Header = (
+const HeaderAdmin = (
   props
 ) => {
 
@@ -94,4 +94,4 @@ const Header = (
   )
 }
 
-export default Header
+export default HeaderAdmin;
