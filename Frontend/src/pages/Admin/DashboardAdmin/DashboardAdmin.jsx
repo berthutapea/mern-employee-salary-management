@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultLayout from '../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import CardOne from '../../../components/Card/CardOne';
 import CardTwo from '../../../components/Card/CardTwo';
 import CardThree from '../../../components/Card/CardThree'
@@ -10,7 +10,7 @@ import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 
 const DashboardAdmin = () => {
   return (
-    <DefaultLayout>
+    <DefaultLayoutAdmin>
       <Breadcrumb pageName='Dashboard' />
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5'>
         <CardOne />
@@ -29,7 +29,7 @@ const DashboardAdmin = () => {
       </div>
 
 
-    </DefaultLayout>
+    </DefaultLayoutAdmin>
   )
 }
 

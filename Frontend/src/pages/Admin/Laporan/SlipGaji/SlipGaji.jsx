@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayout from '../../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
@@ -8,7 +8,7 @@ import { TfiPrinter } from 'react-icons/tfi'
 
 const SlipGaji = () => {
     return (
-        <DefaultLayout>
+        <DefaultLayoutAdmin>
             <Breadcrumb pageName='Slip Gaji Pegawai' />
 
             <div className='sm:grid-cols-2'>
@@ -103,7 +103,7 @@ const SlipGaji = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayout>
+        </DefaultLayoutAdmin>
     )
 }
 

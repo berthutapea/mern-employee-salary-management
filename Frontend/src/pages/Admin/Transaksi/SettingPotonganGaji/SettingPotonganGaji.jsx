@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DefaultLayout from '../../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import DataSettingPotonganGaji from '../../../../utils/DataSettingPotonganGaji';
 import { Link } from "react-router-dom";
 import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
@@ -40,7 +40,7 @@ const SettingPotonganGaji = () => {
 
 
     return (
-        <DefaultLayout>
+        <DefaultLayoutAdmin>
             <Breadcrumb pageName='Setting Potongan Gaji' />
             <Link to="/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
                 <ButtonOne  >
@@ -177,7 +177,7 @@ const SettingPotonganGaji = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayout>
+        </DefaultLayoutAdmin>
     )
 }
 

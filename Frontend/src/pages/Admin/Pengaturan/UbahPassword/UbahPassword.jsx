@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayout from '../../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { TfiLock } from 'react-icons/tfi'
 
 const UbahPassword = () => {
     return (
-        <DefaultLayout>
+        <DefaultLayoutAdmin>
             <Breadcrumb pageName='Form Ganti Password' />
 
             <div className='sm:grid-cols-2'>
@@ -57,7 +57,7 @@ const UbahPassword = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayout>
+        </DefaultLayoutAdmin>
     )
 }
 

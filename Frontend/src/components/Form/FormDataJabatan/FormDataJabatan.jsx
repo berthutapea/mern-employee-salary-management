@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayout from '../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import Breadcrumb from '../../Breadcrumb/Breadcrumb';
 import ButtonOne from '../../Buttons/ButtonOne/ButtonOne';
 import ButtonTwo from '../../Buttons/ButtonTwo/ButtonTwo';
@@ -8,7 +8,7 @@ import ButtonThree from '../../Buttons/ButtonThree/ButtonThree';
 
 const FormDataJabatan = () => {
     return (
-        <DefaultLayout>
+        <DefaultLayoutAdmin>
             <Breadcrumb pageName='Form Jabatan' />
 
             <div className='sm:grid-cols-2'>
@@ -92,7 +92,7 @@ const FormDataJabatan = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayout>
+        </DefaultLayoutAdmin>
     )
 }
 

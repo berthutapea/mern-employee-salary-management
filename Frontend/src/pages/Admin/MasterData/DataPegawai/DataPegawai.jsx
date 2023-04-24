@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DefaultLayout from '../../../../layout/DefaultLayout';
+import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import DataPegawaiPeople from '../../../../Utils/DataPegawaiPeople';
 import { Link } from "react-router-dom";
 import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
@@ -41,7 +41,7 @@ const DataPegawai = () => {
 
 
     return (
-        <DefaultLayout>
+        <DefaultLayoutAdmin>
             <Breadcrumb pageName='Data Pegawai' />
             <Link to="/admin/master-data/data-pegawai/form-data-pegawai" >
                 <ButtonOne  >
@@ -222,7 +222,7 @@ const DataPegawai = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayout>
+        </DefaultLayoutAdmin>
     )
 }
 
