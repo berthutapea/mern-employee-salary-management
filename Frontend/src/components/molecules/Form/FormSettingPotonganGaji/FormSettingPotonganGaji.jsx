@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import { BreadcrumbAdmin, ButtonOne, ButtonTwo, ButtonThree } from '../../../../components';
-// import ButtonOne from '../../Buttons/ButtonOne/ButtonOne';
-// import ButtonTwo from '../../Buttons/ButtonTwo/ButtonTwo';
-// import ButtonThree from '../../Buttons/ButtonThree/ButtonThree';
 
 const FormSettingPotonganGaji = () => {
   return (
