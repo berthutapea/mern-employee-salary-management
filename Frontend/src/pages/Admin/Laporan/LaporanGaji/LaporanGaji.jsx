@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import BreadcrumbAdmin from '../../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
@@ -9,7 +9,7 @@ import { TfiPrinter } from 'react-icons/tfi'
 const LaporanGaji = () => {
     return (
         <DefaultLayoutAdmin>
-            <Breadcrumb pageName='Laporan Gaji Pegawai' />
+            <BreadcrumbAdmin pageName='Laporan Gaji Pegawai' />
             
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>

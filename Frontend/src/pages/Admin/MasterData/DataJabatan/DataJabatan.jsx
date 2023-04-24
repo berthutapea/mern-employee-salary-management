@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import DataJabatanPeople from '../../../../utils/DataJabatanPeople';
 import { Link } from "react-router-dom";
-import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import BreadcrumbAdmin from '../../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
@@ -41,7 +41,7 @@ const DataJabatan = () => {
 
     return (
         <DefaultLayoutAdmin>
-            <Breadcrumb pageName='Data Jabatan' />
+            <BreadcrumbAdmin pageName='Data Jabatan' />
             <Link to="/admin/master-data/data-jabatan/form-data-jabatan" >
                 <ButtonOne  >
                     <span>Tambah Jabatan</span>

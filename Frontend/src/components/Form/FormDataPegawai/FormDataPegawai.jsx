@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import Breadcrumb from '../../Breadcrumb/Breadcrumb';
+import BreadcrumbAdmin from '../../Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 import ButtonOne from '../../Buttons/ButtonOne/ButtonOne';
 import ButtonTwo from '../../Buttons/ButtonTwo/ButtonTwo';
 import ButtonThree from '../../Buttons/ButtonThree/ButtonThree';
@@ -10,7 +10,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 const FormDataPegawai = () => {
   return (
     <DefaultLayoutAdmin>
-      <Breadcrumb pageName='Form Pegawai' />
+      <BreadcrumbAdmin pageName='Form Pegawai' />
 
       <div className='sm:grid-cols-2'>
         <div className='flex flex-col gap-9'>

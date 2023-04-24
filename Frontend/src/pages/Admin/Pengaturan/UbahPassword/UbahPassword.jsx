@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import BreadcrumbAdmin from '../../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { TfiLock } from 'react-icons/tfi'
 
 const UbahPassword = () => {
     return (
         <DefaultLayoutAdmin>
-            <Breadcrumb pageName='Form Ganti Password' />
+            <BreadcrumbAdmin pageName='Form Ganti Password' />
 
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>

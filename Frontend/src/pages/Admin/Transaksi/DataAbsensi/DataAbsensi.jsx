@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
 import DataAbsensiPegawai from '../../../../utils/DataAbsensiPegawai';
 import { Link } from "react-router-dom";
-import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
+import BreadcrumbAdmin from '../../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
 import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
@@ -42,7 +42,7 @@ const DataAbsensi = () => {
 
     return (
         <DefaultLayoutAdmin>
-            <Breadcrumb pageName='Data Absensi Pegawai' />
+            <BreadcrumbAdmin pageName='Data Absensi Pegawai' />
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-2 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-10 mt-6'>
                 <div className='border-b border-stroke py-2 dark:border-strokedark'>
