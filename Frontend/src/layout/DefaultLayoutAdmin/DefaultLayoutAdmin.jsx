@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayoutAdmin = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -34,4 +34,4 @@ const DefaultLayout = ({ children }) => {
   )
 }
 
-export default DefaultLayout;
+export default DefaultLayoutAdmin;
