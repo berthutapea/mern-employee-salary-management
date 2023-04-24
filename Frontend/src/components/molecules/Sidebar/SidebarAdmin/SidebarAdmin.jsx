@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import SidebarLinkGroup from '../SidebarLinkGroup/SidebarLinkGroup'
-import Logo from '../../../assets/images/logo/logo.svg'
+import Logo from '../../../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
 import { FiDatabase, FiSettings } from 'react-icons/fi'

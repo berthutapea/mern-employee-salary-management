@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import SidebarPegawai from '../../components/Sidebar/SidebarPegawai/SidebarPegawai';
-import HeaderPegawai from '../../components/Header/HeaderPegawai/HeaderPegawai';
-import Footer from '../../components/Footer/Footer';
+import { SidebarPegawai, HeaderPegawai, Footer } from '../../components';
 
 const DefaultLayoutPegawai = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)

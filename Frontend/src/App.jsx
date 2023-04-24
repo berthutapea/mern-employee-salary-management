@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 // Import Not Found 404
-import NotFound from './components/NotFound/NotFound'
+import NotFound from './components/molecules/NotFound/NotFound'
 // Import Admin
 
 //  Import login Admin
@@ -10,13 +10,13 @@ import LoginAdmin from './pages/Admin/LoginAdmin/LoginAdmin'
 import DashboardAdmin from './pages/Admin/DashboardAdmin/DashboardAdmin'
 //  Import Master Data Admin
 import DataPegawai from './pages/Admin/MasterData/DataPegawai/DataPegawai'
-import FormDataPegawai from './components/Form/FormDataPegawai/FormDataPegawai'
+import FormDataPegawai from './components/molecules/Form/FormDataPegawai/FormDataPegawai'
 import DataJabatan from './pages/Admin/MasterData/DataJabatan/DataJabatan'
-import FormDataJabatan from './components/Form/FormDataJabatan/FormDataJabatan'
+import FormDataJabatan from './components/molecules/Form/FormDataJabatan/FormDataJabatan'
 //  Import Transaksi Admin
 import DataAbsensi from './pages/Admin/Transaksi/DataAbsensi/DataAbsensi'
 import SettingPotonganGaji from './pages/Admin/Transaksi/SettingPotonganGaji/SettingPotonganGaji'
-import FormSettingPotonganGaji from './components/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
+import FormSettingPotonganGaji from './components/molecules/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
 import DataGaji from './pages/Admin/Transaksi/DataGaji/DataGaji'
 //  Import laporan Admin
 import LaporanGaji from './pages/Admin/Laporan/LaporanGaji/LaporanGaji'

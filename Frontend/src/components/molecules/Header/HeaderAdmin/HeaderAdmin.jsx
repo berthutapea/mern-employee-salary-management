@@ -1,8 +1,6 @@
 import React from 'react'
-import LogoIcon from '../../../assets/images/logo/logo-icon.svg'
-import DropdownNotification from '../../Dropdown/DropdownNotification/DropdownNotification'
-import DropdownUser from '../../Dropdown/DropdownAdmin/DropdownAdmin'
-import DarkModeSwitcher from '../../DarkMode/DarkModeSwitcher'
+import LogoIcon from '../../../../assets/images/logo/logo-icon.svg'
+import { DropdownNotification, DropdownAdmin, DarkModeSwitcher } from '../../../../components'
 import { Link } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi'
 
@@ -86,7 +84,7 @@ const HeaderAdmin = (
           </ul>
 
           {/* <!-- User Area --> */}
-          <DropdownUser />
+          <DropdownAdmin />
           {/* <!-- User Area --> */}
         </div>
       </div>

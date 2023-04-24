@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import PegawaiPhoto from '../../../assets/images/user/gilbert.png'
+import PegawaiPhoto from '../../../../assets/images/user/gilbert.png'
 import { BiLogOut } from 'react-icons/bi'
 import { FiSettings } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'

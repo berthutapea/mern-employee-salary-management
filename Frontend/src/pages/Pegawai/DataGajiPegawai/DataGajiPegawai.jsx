@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import DefaultLayoutPegawai from '../../../layout/DefaultLayoutPegawai/DefaultLayoutPegawai';
 import DataGajiPegawaiPeople from '../../../utils/DataGajiPegawaiPeople';
-import BreadcrumbPegawai from '../../../components/Breadcrumb/BreadcrumbPegawai/BreadcrumbPegawai';
+import {BreadcrumbPegawai} from '../../../components';
 import { TfiPrinter } from 'react-icons/tfi'
 
 const ITEMS_PER_PAGE = 4;

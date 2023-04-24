@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import SidebarAdmin from '../../components/Sidebar/SidebarAdmin/SidebarAdmin';
-import Header from '../../components/Header/HeaderAdmin/HeaderAdmin';
-import Footer from '../../components/Footer/Footer';
+import { SidebarAdmin, HeaderAdmin, Footer } from '../../components';
 
 const DefaultLayoutAdmin = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -17,7 +15,7 @@ const DefaultLayoutAdmin = ({ children }) => {
         {/* <!-- ===== Content Area Start ===== --> */}
         <div className='relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden'>
           {/* <!-- ===== Header Start ===== --> */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <HeaderAdmin sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           {/* <!-- ===== Header End ===== --> */}
 
           {/* <!-- ===== Main Content Start ===== --> */}

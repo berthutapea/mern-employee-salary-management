@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import BreadcrumbAdmin from '../../../../components/Breadcrumb/BreadcrumbAdmin/BreadcrumbAdmin';
-import ButtonOne from '../../../../components/Buttons/ButtonOne/ButtonOne';
+import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
 
