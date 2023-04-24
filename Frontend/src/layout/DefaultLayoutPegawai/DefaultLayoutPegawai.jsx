@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SidebarPegawai from '../../components/Sidebar/SidebarPegawai/SidebarPegawai';
 import HeaderPegawai from '../../components/Header/HeaderPegawai/HeaderPegawai';
+import Footer from '../../components/Footer/Footer';
 
 const DefaultLayoutPegawai = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -26,6 +27,7 @@ const DefaultLayoutPegawai = ({ children }) => {
             </div>
           </main>
           {/* <!-- ===== Main Content End ===== --> */}
+          <Footer />
         </div>
         {/* <!-- ===== Content Area End ===== --> */}
       </div>

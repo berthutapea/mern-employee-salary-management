@@ -53,7 +53,7 @@ const HeaderAdmin = (
           </button>
           {/* <!-- Hamburger Toggle BTN --> */}
 
-          <Link className='block flex-shrink-0 lg:hidden' to='/'>
+          <Link className='block flex-shrink-0 lg:hidden' to='/admin/dashboard'>
             <img src={LogoIcon} alt='Logo PT. Humpus Karbometil Selulosa' />
           </Link>
         </div>

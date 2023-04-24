@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SidebarAdmin from '../../components/Sidebar/SidebarAdmin/SidebarAdmin';
 import Header from '../../components/Header/HeaderAdmin/HeaderAdmin';
+import Footer from '../../components/Footer/Footer';
 
 const DefaultLayoutAdmin = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -26,6 +27,7 @@ const DefaultLayoutAdmin = ({ children }) => {
             </div>
           </main>
           {/* <!-- ===== Main Content End ===== --> */}
+          <Footer />
         </div>
         {/* <!-- ===== Content Area End ===== --> */}
       </div>
