@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+// Import Not Found 404
+import NotFound from './components/NotFound/NotFound'
 // Import Admin
 
 //  Import login Admin
@@ -83,6 +85,8 @@ const App = () => {
           {/* Dashboard Data Gaji Pegawai */}
           <Route exact path='/pegawai/data-gaji' element={<DataGajiPegawai />} />
           <Route exact path='/pegawai/pengaturan/ubah-password' element={<UbahPasswordPegawai />} />
+          {/* Route Not Found/404 */}
+          <Route exact path="*" element={<NotFound />} />
         </Routes>
       </>
     )
