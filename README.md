@@ -48,14 +48,21 @@ $ npm start (to start the server)
 
 ##  Key Features
 
-- User registration and login
-- Authentication using JWT Tokens
-<!-- - Story searching  and pagination 
-- CRUD operations (Story create, read, update and delete)
-- Upload user ımages and story ımages  to the server
-- Liking  stories and adding stories  to the Reading list
-- Commenting  on the story
-- Skeleton loading effect -->
+- Login Admin
+- Add employee
+- Edit employee
+- Remove employee
+- Add position
+- Edit position
+- Remove position
+- Display data, input attendance, edit attendance and delete employee absences
+- Employee Salary Deduction Setting
+- Display data, input salary data, edit salary data and delete employee salary data
+- Print payroll reports, absences, and payslips
+- Change admin and employee passwords
+- Login Employees/Staff
+- Print employees/staff salary reports from personal accounts
+- 404 Page and many more
 - Responsive Design
 
 <br/>
