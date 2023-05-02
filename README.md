@@ -1,4 +1,4 @@
-<H1 align ="center" > MERN PENGGAJIAN KARYAWAN </h1>
+<H1 align ="center" > MERN EMPLOYEE SALARY MANAGEMENT </h1>
 <h5  align ="center"> 
 Fullstack open source login & register dashboard application made with MySql, Express, React & Nodejs (MERN) </h5>
 <br/>
@@ -21,14 +21,14 @@ In order to run this project locally, simply fork and clone the repository or do
 
 - Open the project in your prefered code editor.
 - Go to terminal -> New terminal (If you are using VS code)
-- Split your terminal into two (run the client on one terminal and the server on the other terminal)
+- Split your terminal into two (run the Frontend on one terminal and the server on the other terminal)
 
 In the first terminal
 
 ```
 $ cd Fronted
-$ npm install (to install client-side dependencies)
-$ npm run dev(to start the client)
+$ npm install (to install Frontend-side dependencies)
+$ npm run dev(to start the Frontend)
 ```
 
 In the second terminal
@@ -41,8 +41,8 @@ In the second terminal
 # --- Terminal ---
 
 $ cd Backend
-$ npm install (to install server-side dependencies)
-$ npm start (to start the server)
+$ npm install (to install Backend-side dependencies)
+$ npm start (to start the Backend)
 ```
 
 
