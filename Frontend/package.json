@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "fronted-mern-employee-salary-management",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,11 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
-  },
-  "author": {
-    "name": "TailAdmin",
-    "email": "hello@tailadmin.com",
-    "url": "https://tailadmin.com"
   },
   "dependencies": {
     "apexcharts": "^3.37.0",
