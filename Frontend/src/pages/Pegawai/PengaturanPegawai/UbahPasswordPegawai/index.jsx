@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
+import DefaultLayoutPegawai from '../../../../layout/DefaultLayoutPegawai';
+import { BreadcrumbPegawai, ButtonOne } from '../../../../components';
 import { TfiLock } from 'react-icons/tfi'
 
-const UbahPasswordAdmin = () => {
+const UbahPasswordPegawai = () => {
     return (
-        <DefaultLayoutAdmin>
-            <BreadcrumbAdmin pageName='Form Ganti Password' />
+        <DefaultLayoutPegawai>
+            <BreadcrumbPegawai pageName='Form Ganti Password' />
 
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>
@@ -56,8 +56,8 @@ const UbahPasswordAdmin = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutAdmin>
+        </DefaultLayoutPegawai>
     )
 }
 
-export default UbahPasswordAdmin;
+export default UbahPasswordPegawai;

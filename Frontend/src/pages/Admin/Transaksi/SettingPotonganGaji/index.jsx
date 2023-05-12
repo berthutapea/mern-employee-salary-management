@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
+import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin';
 import DataSettingPotonganGaji from '../../../../utils/DataSettingPotonganGaji';
 import { Link } from "react-router-dom";
 import { BreadcrumbAdmin, ButtonOne } from '../../../../components';

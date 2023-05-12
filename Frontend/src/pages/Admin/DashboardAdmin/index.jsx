@@ -1,6 +1,6 @@
 import React from 'react';
-import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin/DefaultLayoutAdmin';
-import { CardOne,CardTwo, CardThree,CardFour,ChartOne,ChartTwo, BreadcrumbAdmin } from '../../../components';
+import DefaultLayoutAdmin from '../../../layout/DefaultLayoutAdmin';
+import { CardOne, CardTwo, CardThree, CardFour, ChartOne, ChartTwo, BreadcrumbAdmin } from '../../../components';
 
 const DashboardAdmin = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import NotFound from '../../components/molecules/NotFound/NotFound'
-import FormDataPegawai from '../../components/molecules/Form/FormDataPegawai/FormDataPegawai'
-import FormDataJabatan from '../../components/molecules/Form/FormDataJabatan/FormDataJabatan'
-import FormSettingPotonganGaji from '../../components/molecules/Form/FormSettingPotonganGaji/FormSettingPotonganGaji'
+import NotFound from '../../components/molecules/NotFound'
+import FormDataPegawai from '../../components/molecules/Form/FormDataPegawai'
+import FormDataJabatan from '../../components/molecules/Form/FormDataJabatan'
+import FormSettingPotonganGaji from '../../components/molecules/Form/FormSettingPotonganGaji'
 import {
   LoginAdmin, DashboardAdmin, DataPegawai, DataJabatan, DataAbsensi, SettingPotonganGaji, DataGaji, LaporanGaji,
   LaporanAbsensi, SlipGaji, UbahPasswordAdmin, LoginPegawai, DashboardPegawai, DataGajiPegawai, UbahPasswordPegawai

@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultLayoutPegawai from '../../../layout/DefaultLayoutPegawai/DefaultLayoutPegawai';
+import DefaultLayoutPegawai from '../../../layout/DefaultLayoutPegawai';
 import { BreadcrumbPegawai } from '../../../components';
 import PegawaiPeople from '../../../assets/images/user/gilbert.png'
 

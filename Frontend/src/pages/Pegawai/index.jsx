@@ -1,6 +1,6 @@
-import DashboardPegawai from "./DashboardPegawai/DashboardPegawai";
-import DataGajiPegawai from "./DataGajiPegawai/DataGajiPegawai";
-import LoginPegawai from "./LoginPegawai/LoginPegawai";
-import UbahPasswordPegawai from "./PengaturanPegawai/UbahPasswordPegawai/UbahPasswordPegawai";
+import DashboardPegawai from "./DashboardPegawai";
+import DataGajiPegawai from "./DataGajiPegawai";
+import LoginPegawai from "./LoginPegawai";
+import UbahPasswordPegawai from "./PengaturanPegawai/UbahPasswordPegawai";
 
 export { DashboardPegawai, DataGajiPegawai, LoginPegawai, UbahPasswordPegawai };
