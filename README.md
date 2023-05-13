@@ -97,8 +97,7 @@ This project was created using the following technologies.
 
 ####  Database 
 
- - [MySQL ](https://www.mysql.com/) - It provides a free cloud service to store MongoDB collections.
- 
+ - [MySQL ](https://www.mysql.com/) - It provides a free cloud service to store MongoDB collections. 
  ##  Screenshots 
  
 ![img-1](https://user-images.githubusercontent.com/111676859/235832711-0f2a0109-16e3-489b-88d4-d5748d8a59fa.png)
