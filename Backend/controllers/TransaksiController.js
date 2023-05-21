@@ -102,7 +102,10 @@ export const deleteDataKehadiran = async (req, res) => {
                 id: req.params.id
             }
         });
+        res.status(200).json({message: "Delete data berhasil"});
     } catch (error) {
         console.log(error.message);
     }
 }
+
+// method untuk create data potongan gaji

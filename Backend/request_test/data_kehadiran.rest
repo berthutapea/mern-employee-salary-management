@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "bulan" : "April",
-    "nik": "3344556",
+    "nik": "334455",
     "nama_pegawai": "Budi",
     "nama_jabatan": "Operator Produksi",
     "jenis_kelamin": "Laki-Laki",
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### UPDATE data kehadiran
-PATCH  http://localhost:5000/data_kehadiran/update/1
+PATCH  http://localhost:5000/data_kehadiran/update/4
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### DELETE Data Kehadiran
-DELETE http://localhost:5000/data_kehadiran/2
+DELETE http://localhost:5000/data_kehadiran/8
