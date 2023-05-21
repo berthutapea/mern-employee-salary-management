@@ -1,0 +1,27 @@
+### Get All Data Jabatan
+GET  http://localhost:5000/data_jabatan
+
+### Create Data Jabatan
+POST  http://localhost:5000/data_jabatan
+Content-Type: application/json
+
+{
+    "nama_jabatan" : "Operator Produksi",
+    "gaji_pokok" : 3000,
+    "tj_transport" : 2000,
+    "uang_makan" : 1000
+}
+
+### UPDATE Data Jabatan
+PATCH   http://localhost:5000/data_jabatan/1
+Content-Type: application/json
+
+{
+    "nama_jabatan" : "Kepala Bagian",
+    "gaji_pokok" : 5000,
+    "tj_transport" : 2000,
+    "uang_makan" : 1000
+}
+
+### DELETE Data Jabatan
+DELETE    http://localhost:5000/data_jabatan/2

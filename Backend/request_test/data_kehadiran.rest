@@ -1,0 +1,30 @@
+### Get All Data Kehadiran
+GET  http://localhost:5000/data_kehadiran
+
+### Create Data Kehadiran
+POST  http://localhost:5000/data_kehadiran
+Content-Type: application/json
+
+{
+    "bulan" : "April",
+    "nik": "3344556",
+    "nama_pegawai": "Budi",
+    "nama_jabatan": "Operator Produksi",
+    "jenis_kelamin": "Laki-Laki",
+    "hadir": "2",
+    "sakit": "1",
+    "alpha": "1"
+}
+
+### UPDATE data kehadiran
+PATCH  http://localhost:5000/data_kehadiran/update/1
+Content-Type: application/json
+
+{
+    "hadir": "2",
+    "sakit": "0",
+    "alpha": "2"
+}
+
+### DELETE Data Kehadiran
+DELETE http://localhost:5000/data_kehadiran/2
