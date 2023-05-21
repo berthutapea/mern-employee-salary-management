@@ -59,7 +59,7 @@ $ npm start (to start the Backend)
 - Login Employees/Staff
 - Print employees/staff salary reports from personal accounts
 - 404 Page and many more
-- Responsive Design ALDI
+- Responsive Design
 
 <br/>
 
