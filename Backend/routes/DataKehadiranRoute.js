@@ -12,6 +12,6 @@ const router = express.Router();
 router.get('/data_kehadiran', verifyUser, adminOnly, viewDataKehadiran);
 router.post('/data_kehadiran', createDataKehadiran);
 router.patch('/data_kehadiran/update/:id', updateDataKehadiran);
-router.delete('/data_jabatan/:id', verifyUser, adminOnly, deleteDataKehadiran);
+router.delete('/data_kehadiran/:id', verifyUser, adminOnly, deleteDataKehadiran);
 
 export default router;
