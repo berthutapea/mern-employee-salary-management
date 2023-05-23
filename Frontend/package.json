@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "apexcharts": "^3.37.0",
+    "axios": "^1.4.0",
     "icons": "^1.0.0",
     "jsvectormap": "^1.5.1",
     "localforage": "^1.10.0",
