@@ -2,14 +2,20 @@ import DataKehadiran from "../models/DataKehadiranModel.js";
 import DataPegawai from "../models/DataPegawaiModel.js";
 import DataJabatan from "../models/DataJabatanModel.js";
 import PotonganGaji from "../models/PotonganGajiModel.js";
+import { Console } from "console";
 
 // method untuk menampilkan semua Data Kehadiran
 export const viewDataKehadiran = async(req, res) => {
     try {
         const dataKehadiran = await DataKehadiran.findAll({
-            attributes: ['id', 'bulan', 'nik', 'nama_pegawai', 'jenis_kelamin', 'nama_jabatan', 'hadir', 'sakit', 'alpha']
+            attributes: [
+                'id', 'bulan', 'nik',
+                'nama_pegawai', 'jenis_kelamin',
+                'nama_jabatan', 'hadir',
+                'sakit', 'alpha', 'createdAt'
+            ]
         });
-        res.json(dataKehadiran)
+        res.json(dataKehadiran);
     } catch (error) {
         console.log(error);
     }
@@ -17,7 +23,11 @@ export const viewDataKehadiran = async(req, res) => {
 
 // method untuk menambah data kehadiran
 export const createDataKehadiran = async (req, res) => {
-    const { bulan, nik, nama_pegawai, jenis_kelamin, nama_jabatan, hadir, sakit, alpha } = req.body;
+    const {
+        bulan, nik, nama_pegawai,
+        jenis_kelamin, nama_jabatan,
+        hadir, sakit, alpha
+    } = req.body;
 
     try {
         const data_nama_pegawai = await DataPegawai.findOne({
@@ -104,15 +114,6 @@ export const deleteDataKehadiran = async (req, res) => {
     }
 }
 
-
-/* TODO: POTONGAN_GAJI ()
-3. Action: Simpan, Reset, Kembali *//* TODO: POTONGAN_GAJI ()
-1. View : NO, Potongan Gaji, Jumlah Potongan
-2. Tambah Potongan : No, Potongan Gaji, Jumlah Potongan
-3. Action: Simpan, Reset, Kembali *//* TODO: POTONGAN_GAJI ()
-1. View : NO, Potongan Gaji, Jumlah Potongan
-3. Action: Simpan, Reset, Kembali */
-
 // method untuk create data potongan gaji
 export const createDataPotonganGaji = async(req, res) =>{
     const {id, potongan, jml_potongan} = req.body;
@@ -137,8 +138,8 @@ export const createDataPotonganGaji = async(req, res) =>{
     }
 }
 
-// method untuk menampilkan semua Data Potonga
-export const getDataPotongan = async(req, res) => {
+// method untuk menampilkan semua Data Potongan
+export const viewDataPotongan = async(req, res) => {
     try {
         const dataPotongan = await PotonganGaji.findAll({
             attributes: ['id', 'potongan', 'jml_potongan']
@@ -163,7 +164,7 @@ export const updateDataPotongan = async (req, res) => {
     }
 }
 
-// method untuk delete data kehadiran
+// method untuk delete data potongan
 export const deleteDataPotongan = async (req, res) => {
     try {
         await PotonganGaji.destroy({
@@ -176,3 +177,312 @@ export const deleteDataPotongan = async (req, res) => {
         console.log(error.message);
     }
 }
+
+// method untuk mengambil data gaji pegawai (data pegawai + data jabatan + data kehadiran + data potongan)
+
+// method untuk mengambil data pegawai :
+export const getDataPegawai = async() => {
+    try {
+        // get data pegawai :
+        const data_pegawai = await DataPegawai.findAll({
+            attributes: [
+                'id_pegawai',
+                'nik',
+                'nama_pegawai',
+                'jenis_kelamin',
+                'jabatan'
+            ],
+            distinct: true
+        });
+
+        const resultDataPegawai = [];
+
+        data_pegawai.forEach(({ nik, nama_pegawai, jenis_kelamin, jabatan }) => {
+            const objek_data_pegawai = {
+                nik,
+                nama_pegawai,
+                jenis_kelamin,
+                jabatan,
+            };
+
+            const index = resultDataPegawai.length;
+
+            resultDataPegawai[index] = objek_data_pegawai;
+        });
+
+        // dataPegawai :
+        const dataPegawai = resultDataPegawai.map((value)=>{
+            const nik = value.nik
+            const nama_pegawai = value.nama_pegawai
+            const jenis_kelamin = value.jenis_kelamin
+            const jabatan_pegawai = value.jabatan
+
+            return { nik, nama_pegawai, jenis_kelamin, jabatan_pegawai};
+        });
+
+        const dataTiapPegawai = [];
+        dataPegawai.forEach((pegawai) => {
+            const { nik, nama_pegawai, jenis_kelamin, jabatan_pegawai } = pegawai;
+
+            dataTiapPegawai.push({
+                nik, nama_pegawai, jenis_kelamin, jabatan_pegawai
+            });
+        });
+        return dataTiapPegawai;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// method untuk mengambil data jabatan :
+export const getDataJabatan = async() => {
+    try {
+        // get data jabatan :
+        const data_jabatan = await DataJabatan.findAll({
+            attributes: [
+                'nama_jabatan',
+                'gaji_pokok',
+                'tj_transport',
+                'uang_makan'
+            ],
+            distinct: true
+        });
+
+        const resultDataJabatan = [];
+
+        data_jabatan.forEach(({
+            nama_jabatan,
+            gaji_pokok,
+            tj_transport,
+            uang_makan
+        }) => {
+            const objek_data_jabatan = {
+                nama_jabatan,
+                gaji_pokok,
+                tj_transport,
+                uang_makan
+            };
+
+            const index = resultDataJabatan.length;
+            resultDataJabatan[index] = objek_data_jabatan;
+        });
+
+        // dataJabatan
+        const dataJabatan = resultDataJabatan.map((value)=>{
+            const nama_jabatan = value.nama_jabatan
+            const gaji_pokok = value.gaji_pokok
+            const tj_transport = value.tj_transport
+            const uang_makan = value.uang_makan
+
+            return {nama_jabatan, gaji_pokok, tj_transport, uang_makan}
+        });
+
+        const dataTiapJabatan = [];
+        dataJabatan.forEach((jabatan) => {
+            const {
+                nama_jabatan,
+                gaji_pokok,
+                tj_transport,
+                uang_makan
+            } = jabatan;
+
+            dataTiapJabatan.push({
+                nama_jabatan,
+                gaji_pokok,
+                tj_transport,
+                uang_makan
+            });
+        });
+        return dataTiapJabatan;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// method untuk mengambil data kehadiran :
+export const getDataKehadiran = async () => {
+    try {
+        // Get data kehadiran
+        const data_Kehadiran = await DataKehadiran.findAll({
+            attributes: [
+                'id','bulan', 'nik',
+                'nama_pegawai', 'jenis_kelamin',
+                'nama_jabatan', 'hadir',
+                'sakit', 'alpha', 'createdAt'
+            ],
+            distinct: true
+        });
+
+        const resultDataKehadiran = [];
+
+        data_Kehadiran.forEach(({
+            id, bulan, nik,
+            nama_pegawai, jenis_kelamin,
+            nama_jabatan, hadir,
+            sakit, alpha, createdAt
+        })=> {
+            const objek_data_kehadiran = {
+                id,
+                bulan,
+                nik,
+                nama_pegawai,
+                jenis_kelamin,
+                nama_jabatan,
+                hadir,
+                sakit,
+                alpha,
+                createdAt
+            };
+            const index = resultDataKehadiran.length;
+            resultDataKehadiran[index] = objek_data_kehadiran;
+        });
+
+        // dataKehadiran
+        const dataKehadiran = resultDataKehadiran.map((value)=>{
+            const bulan = value.bulan
+            const nik = value.nik
+            const nama_pegawai = value.nama_pegawai
+            const jenis_kelamin = value.jenis_kelamin
+            const nama_jabatan = value.nama_jabatan
+            const hadir = value.hadir
+            const sakit = value.sakit
+            const alpha = value.alpha
+            const tahun = value.createdAt
+
+            return {
+                bulan, nik, nama_pegawai,
+                jenis_kelamin, nama_jabatan,
+                hadir, sakit, alpha, tahun
+            }
+        });
+
+        const dataKehadiranPegawai = [];
+        dataKehadiran.forEach((kehadiran) => {
+            const {
+                    bulan, nik, nama_pegawai,
+                    jenis_kelamin, nama_jabatan,
+                    hadir, sakit, alpha, tahun
+                    } = kehadiran;
+
+            dataKehadiranPegawai.push({
+                bulan, nik, nama_pegawai,
+                jenis_kelamin, nama_jabatan,
+                hadir, sakit, alpha, tahun
+            });
+        });
+        return dataKehadiranPegawai;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getDataPotongan = async () => {
+    try {
+        // get data potongan :
+        const data_potongan = await PotonganGaji.findAll({
+            attributes: ['id','potongan', 'jml_potongan'],
+            distinct: true
+        });
+
+        const resultDataPotongan = [];
+
+        data_potongan.forEach(({id, potongan, jml_potongan})=> {
+            const objek_data_potongan = {
+                id,
+                potongan,
+                jml_potongan
+            };
+            const index = resultDataPotongan.length;
+            resultDataPotongan[index] = objek_data_potongan;
+        });
+
+        // dataPotongan
+        const dataPotongan = resultDataPotongan.map((value)=>{
+            const id = value.id
+            const potongan = value.potongan
+            const jml_potongan = value.jml_potongan
+
+            return {id, potongan, jml_potongan}
+        });
+
+        const dataPotonganPegawai = [];
+        dataPotongan.forEach((potonganPegawai) => {
+            const { id, potongan, jml_potongan } = potonganPegawai;
+
+            dataPotonganPegawai.push({ id, potongan, jml_potongan });
+        });
+        return dataPotonganPegawai;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+// Logika matematika
+export const getDataGajiPegawai = async () => {
+    try {
+        const dataPegawai = await getDataPegawai();
+        const data_pegawai = dataPegawai.map((pegawai) => ({
+            nik: pegawai.nik,
+            nama_pegawai : pegawai.nama_pegawai,
+            jenis_kelamin: pegawai.jenis_kelamin,
+            jabatan_pegawai : pegawai.jabatan_pegawai
+        }));
+
+        const dataJabatan = await getDataJabatan();
+        const data_jabatan = dataJabatan.map((jabatan) => ({
+            nama_jabatan : jabatan.nama_jabatan,
+            gaji_pokok: jabatan.gaji_pokok,
+            tj_transport: jabatan.tj_transport,
+            uang_makan: jabatan.uang_makan
+        }));
+
+        const dataKehadiran = await getDataKehadiran();
+        const data_kehadiran = dataKehadiran.map((kehadiran) => ({
+            bulan: kehadiran.bulan,
+            nama_pegawai : kehadiran.nama_pegawai,
+            hadir : kehadiran.hadir,
+            sakit : kehadiran.sakit,
+            alpha : kehadiran.alpha,
+            nama_jabatan : kehadiran.nama_jabatan,
+            tahun : kehadiran.tahun
+        }));
+
+        const dataPotongan = await getDataPotongan();
+        const data_potongan = dataPotongan.map((potongan) => ({
+            potongan: potongan.potongan,
+            jml_potongan : potongan.jml_potongan,
+        }));
+
+        const resultArray = data_pegawai.map((pegawai) => {
+            const matchedJabatan = data_jabatan.find(
+                (jabatan) => pegawai.jabatan_pegawai === jabatan.nama_jabatan
+            );
+            const matchedKehadiran = data_kehadiran.find(
+                (kehadiran) => pegawai.nama_pegawai === kehadiran.nama_pegawai
+            );
+
+            return {
+                nik: pegawai.nik,
+                nama_pegawai: pegawai.nama_pegawai,
+                jenis_kelamin: pegawai.jenis_kelamin,
+                jabatan_pegawai: pegawai.jabatan_pegawai,
+                gaji_pokok: matchedJabatan.gaji_pokok,
+                tj_transport: matchedJabatan.tj_transport,
+                uang_makan: matchedJabatan.uang_makan,
+                hadir: matchedKehadiran.hadir,
+                sakit: matchedKehadiran.sakit,
+                alpha: matchedKehadiran.alpha
+                };
+            });
+        console.log(resultArray);
+        console.log(data_potongan);
+
+        /* TODO: membuat pengechekkan kehadiran */
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+getDataGajiPegawai();
