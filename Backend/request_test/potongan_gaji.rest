@@ -1,0 +1,24 @@
+### Get All Data Potongan Gaji
+GET  http://localhost:5000/data_potongan
+
+### Create Data Potongan
+POST  http://localhost:5000/data_potongan
+Content-Type: application/json
+
+{
+    "id" : 3 ,
+    "potongan": "sakit",
+    "jml_potongan": 2000
+}
+
+### UPDATE data potongan
+PATCH  http://localhost:5000/data_potongan/update/3
+Content-Type: application/json
+
+{
+    "potongan" : "updated 1",
+    "jml_potongan" : 9999
+}
+
+### DELETE Data Potongan
+DELETE http://localhost:5000/data_potongan/3

@@ -3,3 +3,4 @@ public/images/
 
 .env
 yarn.lock
+package-lock.json
