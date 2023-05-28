@@ -1,11 +1,7 @@
 import DataKehadiran from "../models/DataKehadiranModel.js";
 import DataPegawai from "../models/DataPegawaiModel.js";
 import DataJabatan from "../models/DataJabatanModel.js";
-
-/* TODO: POTONGAN_GAJI ()
-1. View : NO, Potongan Gaji, Jumlah Potongan
-2. Tambah Potongan : No, Potongan Gaji, Jumlah Potongan
-3. Action: Simpan, Reset, Kembali */
+import PotonganGaji from "../models/PotonganGajiModel.js";
 
 // method untuk menampilkan semua Data Kehadiran
 export const viewDataKehadiran = async(req, res) => {
@@ -108,4 +104,75 @@ export const deleteDataKehadiran = async (req, res) => {
     }
 }
 
+
+/* TODO: POTONGAN_GAJI ()
+3. Action: Simpan, Reset, Kembali *//* TODO: POTONGAN_GAJI ()
+1. View : NO, Potongan Gaji, Jumlah Potongan
+2. Tambah Potongan : No, Potongan Gaji, Jumlah Potongan
+3. Action: Simpan, Reset, Kembali *//* TODO: POTONGAN_GAJI ()
+1. View : NO, Potongan Gaji, Jumlah Potongan
+3. Action: Simpan, Reset, Kembali */
+
 // method untuk create data potongan gaji
+export const createDataPotonganGaji = async(req, res) =>{
+    const {id, potongan, jml_potongan} = req.body;
+    try {
+        const nama_potongan = await PotonganGaji.findOne({
+            where: {
+                potongan : potongan
+            }
+        });
+        if (nama_potongan){
+            res.status(400).json({msg: "Data potongan sudah ada !"});
+        }else{
+            await PotonganGaji.create({
+                id: id,
+                potongan: potongan,
+                jml_potongan: jml_potongan
+            });
+            res.json({msg:"Tambah Data Potongan Gaji Berhasil"});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// method untuk menampilkan semua Data Potonga
+export const getDataPotongan = async(req, res) => {
+    try {
+        const dataPotongan = await PotonganGaji.findAll({
+            attributes: ['id', 'potongan', 'jml_potongan']
+        });
+        res.json(dataPotongan)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// method untuk update Data Potongan
+export const updateDataPotongan = async (req, res) => {
+    try {
+        await PotonganGaji.update(req.body,{
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json({message: "Data Potongan berhasil diupdate"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+// method untuk delete data kehadiran
+export const deleteDataPotongan = async (req, res) => {
+    try {
+        await PotonganGaji.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json({message: "Delete data berhasil"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
