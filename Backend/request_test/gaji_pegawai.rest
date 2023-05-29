@@ -1,0 +1,6 @@
+######################
+#### Gaji Pegawai ####
+######################
+
+### get All Data Gaji Pegawai
+GET http://localhost:5000/data_gaji

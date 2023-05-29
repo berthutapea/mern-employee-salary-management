@@ -12,6 +12,7 @@ import DataJabatanRoute from './routes/DataJabatanRoute.js';
 import AuthRoute from './routes/AuthRoute.js';
 import DataKehadiranRoute from './routes/DataKehadiranRoute.js';
 import PotonganGajiRoute from './routes/PotonganGajiRoute.js';
+import DataGajiRoute from './routes/DataGajiRoute.js';
 
 
 const app = express();
@@ -53,6 +54,7 @@ app.use(DataJabatanRoute);
 app.use(AuthRoute);
 app.use(DataKehadiranRoute);
 app.use(PotonganGajiRoute);
+app.use(DataGajiRoute);
 
 // store.sync();
 

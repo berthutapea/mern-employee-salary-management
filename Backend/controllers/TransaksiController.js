@@ -437,15 +437,17 @@ export const getDataGajiPegawai = async () => {
         }));
 
         const dataKehadiran = await getDataKehadiran();
-        const data_kehadiran = dataKehadiran.map((kehadiran) => ({
-            bulan: kehadiran.bulan,
-            nama_pegawai : kehadiran.nama_pegawai,
-            hadir : kehadiran.hadir,
-            sakit : kehadiran.sakit,
-            alpha : kehadiran.alpha,
-            nama_jabatan : kehadiran.nama_jabatan,
-            tahun : kehadiran.tahun
-        }));
+        const data_kehadiran = dataKehadiran.map((kehadiran) => {
+            return {
+                bulan: kehadiran.bulan,
+                nama_pegawai : kehadiran.nama_pegawai,
+                hadir : kehadiran.hadir,
+                sakit : kehadiran.sakit,
+                alpha : kehadiran.alpha,
+                nama_jabatan : kehadiran.nama_jabatan,
+                tahun : kehadiran.tahun
+            }
+        });
 
         const dataPotongan = await getDataPotongan();
         const data_potongan = dataPotongan.map((potongan) => ({
@@ -474,15 +476,60 @@ export const getDataGajiPegawai = async () => {
                 alpha: matchedKehadiran.alpha
                 };
             });
-        console.log(resultArray);
-        console.log(data_potongan);
 
-        /* TODO: membuat pengechekkan kehadiran */
+        /* checking kehadiran */
+        const resultArray2 = resultArray.map((data_pegawai) => {
+            const matchedHadir = data_kehadiran.find((hadir) => data_pegawai.hadir === hadir.hadir);
 
+            const matchedAlpha = data_kehadiran.find((alpha) => data_pegawai.alpha === alpha.alpha);
+
+            return {
+                nama_pegawai: data_pegawai.nama_pegawai,
+                hadir: matchedHadir.hadir,
+                alpha: matchedAlpha.alpha
+            }
+        });
+
+        /* Potongan */
+        resultArray2.forEach((pegawai) => {
+            const matchedPotongan = data_potongan.find((potongan) => potongan.potongan === 'alpha');
+            const potonganAlpha = matchedPotongan.jml_potongan * pegawai.alpha;
+
+            pegawai.potongan = potonganAlpha;
+        });
+
+    /* Result Akhir */
+        const resultArray3 = resultArray2.map((pegawai2) => {
+            const pegawai = resultArray.find((pegawai) => pegawai.nama_pegawai === pegawai2.nama_pegawai);
+            const totalGajiPegawai = (pegawai.gaji_pokok + pegawai.tj_transport + pegawai.uang_makan) - pegawai2.potongan;
+            const kehadiran = data_kehadiran.find((kehadiran) => kehadiran.nama_pegawai === pegawai2.nama_pegawai);
+            const periode = kehadiran ? new Date(kehadiran.tahun).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+            return {
+                nik: pegawai.nik,
+                nama_pegawai: pegawai.nama_pegawai,
+                jenis_kelamin: pegawai.jenis_kelamin,
+                jabatan_pegawai: pegawai.jabatan_pegawai,
+                gaji_pokok: pegawai.gaji_pokok,
+                tj_transport: pegawai.tj_transport,
+                uang_makan: pegawai.uang_makan,
+                potongan: pegawai2.potongan,
+                total_gaji: totalGajiPegawai,
+                periode: periode
+            };
+        });
+        return resultArray3;
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
-  };
+};
 
 
-getDataGajiPegawai();
+// method untuk melihat data gaji pegawai
+export const viewDataGajiPegawai = async (req, res) => {
+    try {
+        const dataGajiPegawai = await getDataGajiPegawai();
+        res.json(dataGajiPegawai);
+    } catch (error) {
+        console.error(error);
+    }
+};
