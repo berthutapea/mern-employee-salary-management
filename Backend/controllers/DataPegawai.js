@@ -66,7 +66,7 @@ export const getDataPegawaiByNik = async (req, res) => {
 }
 
 
-// method untuk mencarai data pegawai berdasarkan Nama
+// method untuk mencari data pegawai berdasarkan Nama
 export const getDataPegawaiByName = async (req, res) => {
     try {
         const response = await DataPegawai.findOne({

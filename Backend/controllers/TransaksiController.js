@@ -2,7 +2,6 @@ import DataKehadiran from "../models/DataKehadiranModel.js";
 import DataPegawai from "../models/DataPegawaiModel.js";
 import DataJabatan from "../models/DataJabatanModel.js";
 import PotonganGaji from "../models/PotonganGajiModel.js";
-import { Console } from "console";
 
 // method untuk menampilkan semua Data Kehadiran
 export const viewDataKehadiran = async(req, res) => {
@@ -16,15 +15,18 @@ export const viewDataKehadiran = async(req, res) => {
             ]
         });
         res.json(dataKehadiran);
+        // console.log(dataKehadiran)
     } catch (error) {
         console.log(error);
     }
 }
 
+// viewDataKehadiran();
+
 // method untuk menambah data kehadiran
 export const createDataKehadiran = async (req, res) => {
     const {
-        bulan, nik, nama_pegawai,
+        nik, nama_pegawai,
         jenis_kelamin, nama_jabatan,
         hadir, sakit, alpha
     } = req.body;
@@ -67,15 +69,16 @@ export const createDataKehadiran = async (req, res) => {
     }
 
     if (!nama_sudah_ada){
+        const month = new Date().toLocaleString('default', { month: 'long' });
         await DataKehadiran.create({
-            bulan: bulan,
+            bulan: month,
             nik: nik,
             nama_pegawai: data_nama_pegawai.nama_pegawai,
             jenis_kelamin: jenis_kelamin,
             nama_jabatan: data_nama_jabatan.nama_jabatan,
             hadir: hadir,
             sakit: sakit,
-            alpha: alpha
+            alpha: alpha,
         });
         res.json({ msg: "Tambah Data Kehadiran Berhasil" });
     } else {
@@ -448,6 +451,7 @@ export const getDataGajiPegawai = async () => {
                 tahun : kehadiran.tahun
             }
         });
+        console.log(data_kehadiran)
 
         const dataPotongan = await getDataPotongan();
         const data_potongan = dataPotongan.map((potongan) => ({
@@ -462,6 +466,7 @@ export const getDataGajiPegawai = async () => {
             const matchedKehadiran = data_kehadiran.find(
                 (kehadiran) => pegawai.nama_pegawai === kehadiran.nama_pegawai
             );
+            console.log(matchedKehadiran)
 
             return {
                 nik: pegawai.nik,
@@ -471,7 +476,7 @@ export const getDataGajiPegawai = async () => {
                 gaji_pokok: matchedJabatan.gaji_pokok,
                 tj_transport: matchedJabatan.tj_transport,
                 uang_makan: matchedJabatan.uang_makan,
-                hadir: matchedKehadiran.hadir,
+                hadir: matchedKehadiran.hadir, // <---- Perbaiki Error ini.
                 sakit: matchedKehadiran.sakit,
                 alpha: matchedKehadiran.alpha
                 };
@@ -528,8 +533,45 @@ export const getDataGajiPegawai = async () => {
 export const viewDataGajiPegawai = async (req, res) => {
     try {
         const dataGajiPegawai = await getDataGajiPegawai();
-        res.json(dataGajiPegawai);
+        console.log(dataGajiPegawai);
     } catch (error) {
-        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error'});
+    }
+};
+
+viewDataGajiPegawai()
+
+/* TODO: Belum selesai  */
+// method untuk mencari data gaji pegawai berdasarkan bulan
+export const viewDataGajiPegawaiByMonth = async (req, res) => {
+    try {
+    const dataGajiPegawai = await getDataGajiPegawai();
+    const response = await DataKehadiran.findOne({
+        attributes: [
+            'bulan'
+        ],
+        where: {
+            bulan: req.params.month
+        }
+    })
+    const dataGajiByMonth = dataGajiPegawai.map((data_gaji) => {
+        return {
+            bulan: response,
+            nik: data_gaji.nik,
+            nama_pegawai: data_gaji.nama_pegawai,
+            jenis_kelamin: data_gaji.jenis_kelamin,
+            jabatan_pegawai: data_gaji.jabatan_pegawai,
+            gaji_pokok: data_gaji.gaji_pokok,
+            tj_transport: data_gaji.tj_transport,
+            uang_makan: data_gaji.uang_makan,
+            potongan: data_gaji.potongan,
+            total_gaji: data_gaji.total_gaji,
+        };
+    });
+    res.json(dataGajiByMonth)
+    console.log()
+    } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
     }
 };

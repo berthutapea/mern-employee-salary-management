@@ -4,3 +4,6 @@
 
 ### get All Data Gaji Pegawai
 GET http://localhost:5000/data_gaji
+
+### get All Data Gaji Pegawai By Month
+GET http://localhost:5000/data_gaji/month/may

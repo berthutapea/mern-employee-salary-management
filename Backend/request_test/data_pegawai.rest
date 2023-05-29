@@ -20,9 +20,9 @@ POST http://localhost:5000/data_pegawai
 Content-Type: application/json
 
 {
-    "nik": 223344,
-    "nama_pegawai": "Budi",
-    "username": "budi",
+    "nik": 445566,
+    "nama_pegawai": "Cecep",
+    "username": "cecep",
     "password": "12345",
     "confPassword": "12345",
     "jenis_kelamin": "Laki-Laki",
