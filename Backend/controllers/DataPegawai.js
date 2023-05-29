@@ -42,9 +42,52 @@ export const getDataPegawaiByID = async (req, res) => {
     }
 }
 
-// TODO: method untuk mencari data pegawai berdasarkan NIK
+// method untuk mencari data pegawai berdasarkan NIK
+export const getDataPegawaiByNik = async (req, res) => {
+    try {
+        const response = await DataPegawai.findOne({
+            attributes: [
+                'id', 'nik', 'nama_pegawai',
+                'jenis_kelamin', 'jabatan', 'tanggal_masuk',
+                'status', 'photo', 'hak_akses'
+            ],
+            where: {
+                nik: req.params.nik
+            }
+        });
+        if(response){
+            res.status(200).json(response);
+        } else {
+            res.status(404).json({msg:'Data pegawai dengan NIK tersebut tidak ditemukan'})
+        }
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+}
 
-// TODO: method untuk mencarai data pegawai berdasarkan Nama
+
+// method untuk mencarai data pegawai berdasarkan Nama
+export const getDataPegawaiByName = async (req, res) => {
+    try {
+        const response = await DataPegawai.findOne({
+            attributes: [
+                'id', 'nik', 'nama_pegawai',
+                'jenis_kelamin', 'jabatan', 'tanggal_masuk',
+                'status', 'photo', 'hak_akses'
+            ],
+            where: {
+                nama_pegawai: req.params.name
+            }
+        });
+        if(response){
+            res.status(200).json(response);
+        } else {
+            res.status(404).json({msg:'Data pegawai dengan Nama tersebut tidak ditemukan'})
+        }
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+}
 
 //  method untuk tambah data Pegawai
 export const createDataPegawai = async (req, res) => {

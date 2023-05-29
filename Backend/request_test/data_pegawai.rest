@@ -6,11 +6,14 @@
 GET http://localhost:5000/data_pegawai
 
 
+### get Single Data Pegawai by ID
+GET http://localhost:5000/data_pegawai/id/2
 
-### get Single Data Pegawai
-GET http://localhost:5000/data_pegawai/1
+### get Single Data Pegawai by NIK
+GET http://localhost:5000/data_pegawai/nik/223344
 
-
+### get Single Data Pegawai by NAME
+GET http://localhost:5000/data_pegawai/name/budi
 
 ### Create Data Pegawai
 POST http://localhost:5000/data_pegawai
