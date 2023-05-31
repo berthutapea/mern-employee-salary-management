@@ -2,12 +2,6 @@ import DataPegawai from './DataPegawaiModel.js';
 import DataJabatan from './DataJabatanModel.js';
 import DataKehadiran from './DataKehadiranModel.js';
 
-/*  TODO: Setting Potongan Gaji (table : potongan_gaji)
-    Berisi semua operasi matematika terhadap POTONGAN_GAJI, DATA_KEHADIRAN,
-    DATA_GAJI_PEGAWAI ( Data Pegawai + Data Jabatan ).
-*/
-
-
 /* Method untuk mengambil Data Pegawai */
 
 async function getDataPegawai() {
