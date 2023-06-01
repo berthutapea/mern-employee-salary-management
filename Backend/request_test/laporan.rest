@@ -1,0 +1,15 @@
+######################
+###### Laporan #######
+######################
+
+### get All Data Laporan Gaji
+GET http://localhost:5000/laporan/gaji
+
+### get All Data Laporan Gaji By Name
+GET http://localhost:5000/laporan/gaji/name/budi
+
+### get All Data Laporan Gaji By Month
+GET http://localhost:5000/laporan/gaji/month/juni
+
+### get All Data Laporan Gaji By Year
+GET http://localhost:5000/laporan/gaji/year

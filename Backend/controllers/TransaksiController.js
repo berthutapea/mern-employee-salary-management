@@ -2,6 +2,8 @@ import DataKehadiran from "../models/DataKehadiranModel.js";
 import DataPegawai from "../models/DataPegawaiModel.js";
 import DataJabatan from "../models/DataJabatanModel.js";
 import PotonganGaji from "../models/PotonganGajiModel.js";
+import moment from 'moment';
+import 'moment/locale/id.js';
 
 // method untuk menampilkan semua Data Kehadiran
 export const viewDataKehadiran = async(req, res) => {
@@ -65,8 +67,8 @@ export const createDataKehadiran = async (req, res) => {
         return res.status(404).json({msg: "Data nik tidak ditemukan"});
     }
 
-    if (!nama_sudah_ada){
-        const month = new Date().toLocaleString('default', { month: 'long' });
+    if (!nama_sudah_ada) {
+        const month = moment().locale('id').format('MMMM');
         await DataKehadiran.create({
             bulan: month,
             nik: nik,
@@ -324,6 +326,7 @@ export const getDataGajiPegawai = async () => {
 
                 return {
                     tahun: kehadiran.year,
+                    bulan: kehadiran.bulan,
                     nama_pegawai: kehadiran.nama_pegawai,
                     hadir: kehadiran.hadir,
                     sakit: kehadiran.sakit,
@@ -332,27 +335,29 @@ export const getDataGajiPegawai = async () => {
                 }
             })
 
-    // Total Gaji Pegawai :
-    const total_gaji_pegawai = gaji_pegawai.map((pegawai) => {
-        const potongan = potongan_pegawai.find((potongan) => potongan.nama_pegawai === pegawai.nama_pegawai);
-        const total_gaji = (pegawai.gaji_pokok + pegawai.tj_transport + pegawai.uang_makan) - (potongan ? potongan.total_potongan : 0);
+        // Total Gaji Pegawai :
+        const total_gaji_pegawai = gaji_pegawai.map((pegawai) => {
+            const potongan = potongan_pegawai.find((potongan) => potongan.nama_pegawai === pegawai.nama_pegawai);
+            const total_gaji = (pegawai.gaji_pokok + pegawai.tj_transport + pegawai.uang_makan) - (potongan ? potongan.total_potongan : 0);
 
-        return {
-            tahun: potongan ? potongan.tahun : 0,
-            nama_pegawai: pegawai.nama_pegawai,
-            jabatan: pegawai.jabatan,
-            gaji_pokok: pegawai.gaji_pokok,
-            tj_transport: pegawai.tj_transport,
-            uang_makan: pegawai.uang_makan,
-            potongan: potongan ? potongan.total_potongan : 0,
-            total: total_gaji
-        };
-    });
+            return {
+                tahun: potongan ? potongan.tahun : 0,
+                bulan: potongan ? potongan.bulan : '',
+                nama_pegawai: pegawai.nama_pegawai,
+                jabatan: pegawai.jabatan,
+                gaji_pokok: pegawai.gaji_pokok,
+                tj_transport: pegawai.tj_transport,
+                uang_makan: pegawai.uang_makan,
+                potongan: potongan ? potongan.total_potongan : 0,
+                total: total_gaji
+            };
+        });
         return total_gaji_pegawai;
     } catch (error) {
         console.error(error);
     }
 };
+
 
 // method untuk melihat data gaji pegawai
 export const viewDataGajiPegawai = async (req, res) => {
@@ -361,6 +366,38 @@ export const viewDataGajiPegawai = async (req, res) => {
         res.status(200).json(dataGajiPegawai);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error'});
+    }
+};
+
+// method untuk melihat data gaji pegawai berdasarkan nama
+export const viewDataGajiPegawaiByName = async (req, res) => {
+    try {
+        const dataGajiPegawai = await getDataGajiPegawai();
+        const { name } = req.params;
+
+        const dataGajiByName = dataGajiPegawai.filter((data_gaji) => {
+            return data_gaji.nama_pegawai.toLowerCase().includes(name.toLowerCase());
+        }).map((data_gaji) => {
+            return {
+                tahun: data_gaji.tahun,
+                nik: data_gaji.nik,
+                nama_pegawai: data_gaji.nama_pegawai,
+                jenis_kelamin: data_gaji.jenis_kelamin,
+                jabatan_pegawai: data_gaji.jabatan_pegawai,
+                gaji_pokok: data_gaji.gaji_pokok,
+                tj_transport: data_gaji.tj_transport,
+                uang_makan: data_gaji.uang_makan,
+                potongan: data_gaji.potongan,
+                total_gaji: data_gaji.total,
+            };
+        });
+
+        if (dataGajiByName.length === 0) {
+            return res.status(404).json({ msg: 'Data tidak ditemukan' });
+        }
+        res.json(dataGajiByName);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
@@ -375,26 +412,39 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
             where: {
                 bulan: req.params.month
             }
-        })
-        const dataGajiByMonth = dataGajiPegawai.map((data_gaji) => {
-            return {
-                response,
-                nik: data_gaji.nik,
-                nama_pegawai: data_gaji.nama_pegawai,
-                jenis_kelamin: data_gaji.jenis_kelamin,
-                jabatan_pegawai: data_gaji.jabatan_pegawai,
-                gaji_pokok: data_gaji.gaji_pokok,
-                tj_transport: data_gaji.tj_transport,
-                uang_makan: data_gaji.uang_makan,
-                potongan: data_gaji.potongan,
-                total_gaji: data_gaji.total,
-            };
         });
-        res.json(dataGajiByMonth)
+
+        if (response) {
+            const dataGajiByMonth = dataGajiPegawai.filter((data_gaji) => {
+                return data_gaji.bulan === response.bulan;
+            }).map((data_gaji) => {
+                return {
+                    response,
+                    nik: data_gaji.nik,
+                    nama_pegawai: data_gaji.nama_pegawai,
+                    jenis_kelamin: data_gaji.jenis_kelamin,
+                    jabatan_pegawai: data_gaji.jabatan_pegawai,
+                    gaji_pokok: data_gaji.gaji_pokok,
+                    tj_transport: data_gaji.tj_transport,
+                    uang_makan: data_gaji.uang_makan,
+                    potongan: data_gaji.potongan,
+                    total_gaji: data_gaji.total,
+                };
+            });
+
+            if (dataGajiByMonth.length === 0) {
+                return res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
+            }
+
+            res.json(dataGajiByMonth);
+        } else {
+            res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
+        }
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: 'Kesalahan Server Internal' });
     }
 };
+
 
 // method untuk mencari data gaji pegawai berdasarkan tahun
 export const viewDataGajiPegawaiByYear = async (req, res) => {
@@ -407,16 +457,16 @@ export const viewDataGajiPegawaiByYear = async (req, res) => {
             return gajiYear === parseInt(year);
         }).map((data_gaji) => {
             return {
-            tahun: data_gaji.tahun,
-            nik: data_gaji.nik,
-            nama_pegawai: data_gaji.nama_pegawai,
-            jenis_kelamin: data_gaji.jenis_kelamin,
-            jabatan_pegawai: data_gaji.jabatan_pegawai,
-            gaji_pokok: data_gaji.gaji_pokok,
-            tj_transport: data_gaji.tj_transport,
-            uang_makan: data_gaji.uang_makan,
-            potongan: data_gaji.potongan,
-            total_gaji: data_gaji.total,
+                tahun: data_gaji.tahun,
+                nik: data_gaji.nik,
+                nama_pegawai: data_gaji.nama_pegawai,
+                jenis_kelamin: data_gaji.jenis_kelamin,
+                jabatan_pegawai: data_gaji.jabatan_pegawai,
+                gaji_pokok: data_gaji.gaji_pokok,
+                tj_transport: data_gaji.tj_transport,
+                uang_makan: data_gaji.uang_makan,
+                potongan: data_gaji.potongan,
+                total_gaji: data_gaji.total,
             };
         });
 
