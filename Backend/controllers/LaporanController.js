@@ -27,14 +27,14 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
 
 
 // method untuk melihat laporan gaji pegawai berdasarkan tahun
-export const viewLaporanGajiPegawaiByYear = async(req, res) => {
+export const viewLaporanGajiPegawaiByYear = async (req, res) => {
     try {
-        const laporanGajiPegawaiByYear = await viewDataGajiPegawaiByYear(req, res);
-        res.status(200).json(laporanGajiPegawaiByYear);
+        await viewDataGajiPegawaiByYear(req, res);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
+};
+
 
 // method untuk melihat laporan gaji pegawai berdasarkan nama
 export const viewLaporanGajiPegawaiByName = async(req, res) => {

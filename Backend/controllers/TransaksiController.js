@@ -471,7 +471,7 @@ export const viewDataGajiPegawaiByYear = async (req, res) => {
         });
 
         if (dataGajiByYear.length === 0) {
-            return res.status(404).json({ msg: 'Data tidak ditemukan' });
+            return res.status(404).json({ msg: `Data tahun ${year} tidak ditemukan` });
         }
         res.json(dataGajiByYear);
     } catch (error) {

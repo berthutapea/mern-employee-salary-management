@@ -6,7 +6,7 @@
 GET http://localhost:5000/data_gaji
 
 ### get All Data Gaji Pegawai By Month
-GET http://localhost:5000/data_gaji/month/juni
+GET http://localhost:5000/data_gaji/month/januari
 
 ### get All Data Gaji Pegawai By Year
 GET http://localhost:5000/data_gaji/year/2023

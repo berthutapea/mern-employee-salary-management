@@ -12,4 +12,4 @@ GET http://localhost:5000/laporan/gaji/name/budi
 GET http://localhost:5000/laporan/gaji/month/juni
 
 ### get All Data Laporan Gaji By Year
-GET http://localhost:5000/laporan/gaji/year
+GET http://localhost:5000/laporan/gaji/year/2021
