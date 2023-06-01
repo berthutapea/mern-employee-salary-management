@@ -1,5 +1,23 @@
-Assalamulaikum bang, mohon maaf bang bagian di folder Backend aja push bang, semangat terus ya bang 😊😊😊
+TODO :
+1. Laporan Controller :
+    a - Laporan Absensi :
+    ** Buat 'View' Laporan Absensi. Select ( Bulan & Tahun ) === ()
+    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, Hadir, Sakit, Alpha) === ()
 
-Hormat Saya,
+    b - Slip Gaji :
+    ** Buat 'View' Slip Gaji Pegawai. Select ( Bulan, Tahun, Nama Pegawai ) === ()
+    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, bulan, tahun, gaji pokok, tunjangan transport, uang makan, potongan, total) === ()
 
-Gilbert Hutapea "Fullstack Developer *MSN PRODUCTION*"👌👌👌👌
+2. Change password (Admin) hak akses (Admin self, all users) === ()
+
+3. Change password (Pegawai) hak akses (user self) === ()
+
+4. Config route (Pegawai) === ().
+    a - Buat 'Dashboard'. Menampilkan ( Photo, Nama Pegawai, Jabatan, Tanggal Masuk, Status ) === ().
+
+    b - Buat 'View' Data Gaji. Select ( Bulan & Tahun ) hak akses (user self) === ().
+    ** Data yang ditampilkan. ( Bulan / Tahun, Gaji Pokok, tj_transport, Uang Makan, Potongan, Total Gaji  ) === ()
+
+    c - Buat 'ubah password'. hak akses (user self) === ().
+
+    d - Penerapan 'Logout'.

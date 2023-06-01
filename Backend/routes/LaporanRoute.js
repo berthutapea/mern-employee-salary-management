@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.get('/laporan/gaji', viewLaporanGajiPegawai);
-router.get('/laporan/gaji/name', viewLaporanGajiPegawaiByName);
+router.get('/laporan/gaji/name/:name', viewLaporanGajiPegawaiByName);
 router.get('/laporan/gaji/month/:month', viewLaporanGajiPegawaiByMonth);
 router.get('/laporan/gaji/year/:year', viewLaporanGajiPegawaiByYear);
 
