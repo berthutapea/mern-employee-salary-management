@@ -6,6 +6,7 @@ import {
     viewLaporanGajiPegawaiByMonth,
     viewLaporanGajiPegawaiByName,
     viewLaporanGajiPegawaiByYear,
+    viewSlipGajiByName,
 } from "../controllers/LaporanController.js";
 
 const router = express.Router();
@@ -20,6 +21,9 @@ router.get('/laporan/gaji/year/:year', viewLaporanGajiPegawaiByYear);
 router.get('/laporan/absensi/month/:month', viewLaporanAbsensiPegawaiByMonth);
 router.get('/laporan/absensi/year/:year', viewLaporanAbsensiPegawaiByYear);
 
-
+// Slip Gaji Pegawai
+router.get('/laporan/slip_gaji/name/:name', viewSlipGajiByName);
+router.get('/laporan/gaji/month/:month', viewLaporanGajiPegawaiByMonth);
+router.get('/laporan/gaji/year/:year', viewLaporanGajiPegawaiByYear);
 
 export default router;

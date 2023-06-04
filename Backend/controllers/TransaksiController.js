@@ -394,13 +394,16 @@ export const viewDataGajiPegawaiByName = async (req, res) => {
         });
 
         if (dataGajiByName.length === 0) {
-            return res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: 'Data tidak ditemukan' });
+        } else {
+            res.json(dataGajiByName);
         }
-        res.json(dataGajiByName);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+
 
 // method untuk mencari data gaji pegawai berdasarkan bulan
 export const viewDataGajiPegawaiByMonth = async (req, res) => {
