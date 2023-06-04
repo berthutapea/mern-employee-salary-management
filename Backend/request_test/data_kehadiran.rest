@@ -6,22 +6,22 @@ POST  http://localhost:5000/data_kehadiran
 Content-Type: application/json
 
 {
-    "nik": "667788",
-    "nama_pegawai": "Caca",
+    "nik": "889922",
+    "nama_pegawai": "Dadang",
     "nama_jabatan": "Operator Produksi",
-    "jenis_kelamin": "Perempuan",
-    "hadir": "2",
-    "sakit": "1",
+    "jenis_kelamin": "Laki - Laki",
+    "hadir": "9",
+    "sakit": "2",
     "alpha": "1"
 }
 
 ### UPDATE data kehadiran
-PATCH  http://localhost:5000/data_kehadiran/update/4
+PATCH  http://localhost:5000/data_kehadiran/update/11
 Content-Type: application/json
 
 {
     "hadir": "2",
-    "sakit": "0",
+    "sakit": "2",
     "alpha": "2"
 }
 

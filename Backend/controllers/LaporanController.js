@@ -1,5 +1,6 @@
 import {
     getDataGajiPegawai,
+    getDataKehadiran,
     viewDataGajiPegawaiByMonth,
     viewDataGajiPegawaiByName,
     viewDataGajiPegawaiByYear
@@ -46,7 +47,50 @@ export const viewLaporanGajiPegawaiByName = async(req, res) => {
     }
 }
 
-// method untuk melihat laporan gaji pegawai berdasarkan jabatan
-export const viewLaporanGajiPegawaiByJabatan = async() => {
+// method untuk melihat laporan absensi pegawai berdasarkan bulan (menggunakan DROP DOWN)
+export const viewLaporanAbsensiPegawaiByMonth = async (req, res) => {
+    try {
+        const dataAbsensiByMonth = await getDataKehadiran();
+        const { month } = req.params;
 
-}
+        const dataAbsensi = dataAbsensiByMonth.filter((absensi) => absensi.bulan.toLowerCase() === month.toLowerCase()).map((absensi) => {
+            return {
+                    tahun : absensi.year,
+                    bulan : absensi.bulan,
+                    nik : absensi.nik,
+                    nama_pegawai : absensi.nama_pegawai,
+                    jabatan_pegawai : absensi.jabatan_pegawai,
+                    hadir : absensi.hadir,
+                    sakit : absensi.sakit,
+                    alpha : absensi.alpha
+            }
+        })
+        res.json(dataAbsensi)
+    } catch (error) {
+        res.status(500).json({msg: 'Internal Server Error'});
+    }
+};
+
+// method untuk melihat laporan absensi pegawai berdasarkan tahun
+export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
+    try {
+        const dataAbsensiByYear = await getDataKehadiran();
+        const { year } = req.params;
+
+        const dataAbsensi = dataAbsensiByYear.filter((absensi) => absensi.year.toString() === year.toString()).map((absensi) => {
+            return {
+                    tahun : absensi.year,
+                    bulan : absensi.bulan,
+                    nik : absensi.nik,
+                    nama_pegawai : absensi.nama_pegawai,
+                    jabatan_pegawai : absensi.jabatan_pegawai,
+                    hadir : absensi.hadir,
+                    sakit : absensi.sakit,
+                    alpha : absensi.alpha
+            }
+        })
+        res.json(dataAbsensi)
+    } catch (error) {
+        res.status(500).json({msg: 'Internal Server Error'});
+    }
+};

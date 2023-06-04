@@ -1,8 +1,8 @@
 TODO :
 1. Laporan Controller :
     a - Laporan Absensi :
-    ** Buat 'View' Laporan Absensi. Select ( Bulan & Tahun ) === ()
-    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, Hadir, Sakit, Alpha) === ()
+    ** Buat 'View' Laporan Absensi. Select ( Bulan & Tahun ) === ( DONE )
+    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, Hadir, Sakit, Alpha) === ( DONE )
 
     b - Slip Gaji :
     ** Buat 'View' Slip Gaji Pegawai. Select ( Bulan, Tahun, Nama Pegawai ) === ()

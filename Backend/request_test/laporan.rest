@@ -2,14 +2,29 @@
 ###### Laporan #######
 ######################
 
+
+########### Laporan Gaji ###########
+
 ### get All Data Laporan Gaji
 GET http://localhost:5000/laporan/gaji
 
 ### get All Data Laporan Gaji By Name
-GET http://localhost:5000/laporan/gaji/name/Caca
+GET http://localhost:5000/laporan/gaji/name/dodi
 
 ### get All Data Laporan Gaji By Month
-GET http://localhost:5000/laporan/gaji/month/juni
+GET http://localhost:5000/laporan/gaji/month/Juni
 
 ### get All Data Laporan Gaji By Year
 GET http://localhost:5000/laporan/gaji/year/2023
+
+
+
+########### Laporan Absensi ###########
+### get All Data Laporan Absensi By Month
+GET http://localhost:5000/laporan/absensi/month/Juni
+
+### get All Data Laporan Absensi By Year
+GET http://localhost:5000/laporan/absensi/year/2023
+
+
+###########    Slip Gaji    ###########

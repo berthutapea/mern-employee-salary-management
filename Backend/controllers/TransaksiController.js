@@ -70,7 +70,7 @@ export const createDataKehadiran = async (req, res) => {
     if (!nama_sudah_ada) {
         const month = moment().locale('id').format('MMMM');
         await DataKehadiran.create({
-            bulan: month,
+            bulan: month.toLowerCase(),
             nik: nik,
             nama_pegawai: data_nama_pegawai.nama_pegawai,
             jenis_kelamin: jenis_kelamin,
@@ -261,13 +261,14 @@ export const getDataKehadiran = async () => {
             const createdAt = new Date(kehadiran.createdAt);
             const year = createdAt.getFullYear();
             const bulan = kehadiran.bulan;
+            const nik = kehadiran.nik;
             const nama_pegawai = kehadiran.nama_pegawai;
             const jabatan_pegawai = kehadiran.nama_jabatan;
             const hadir = kehadiran.hadir;
             const sakit = kehadiran.sakit;
             const alpha = kehadiran.alpha;
 
-            return {bulan, year, nama_pegawai, jabatan_pegawai, hadir, sakit, alpha}
+            return {bulan, year, nik, nama_pegawai, jabatan_pegawai, hadir, sakit, alpha}
         });
     } catch (error) {
         console.error(error);
@@ -435,13 +436,10 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
             if (dataGajiByMonth.length === 0) {
                 return res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
             }
-
             res.json(dataGajiByMonth);
-        } else {
-            res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
         }
     } catch (error) {
-        res.status(500).json({ error: 'Kesalahan Server Internal' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
