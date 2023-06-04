@@ -5,8 +5,8 @@ TODO :
     ** Data yang ditampilkan (nik, nama_pegawai, jabatan, Hadir, Sakit, Alpha) === ( DONE )
 
     b - Slip Gaji :
-    ** Buat 'View' Slip Gaji Pegawai. Select ( Bulan, Tahun, Nama Pegawai ) === ()
-    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, bulan, tahun, gaji pokok, tunjangan transport, uang makan, potongan, total) === ()
+    ** Buat 'View' Slip Gaji Pegawai. Select ( Bulan, Tahun, Nama Pegawai ) === ( DONE )
+    ** Data yang ditampilkan (nik, nama_pegawai, jabatan, bulan, tahun, gaji pokok, tunjangan transport, uang makan, potongan, total) === ( DONE )
 
 2. Change password (Admin) hak akses (Admin self, all users) === ()
 

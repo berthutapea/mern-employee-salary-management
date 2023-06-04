@@ -1,7 +1,6 @@
 import {
     getDataGajiPegawai,
     getDataKehadiran,
-    viewDataGajiPegawaiByMonth,
     viewDataGajiPegawaiByName,
     viewDataGajiPegawaiByYear
 } from "./TransaksiController.js"
@@ -17,19 +16,37 @@ export const viewLaporanGajiPegawai = async(req, res) => {
 }
 
 // method untuk melihat laporan gaji pegawai berdasarkan bulan
-// NOTE: Bug
 export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
     try {
-        const laporanGajiPegawaiByMonth = await viewDataGajiPegawaiByMonth(req, res);
-        if (laporanGajiPegawaiByMonth.length === 0) {
+        const { month } = req.params;
+        const dataLaporanGajiByMonth = await getDataGajiPegawai(req, res);
+
+        const filteredData = dataLaporanGajiByMonth.filter((data) => {
+            return data.bulan.toLowerCase() === month.toLowerCase();
+        });
+
+        if (filteredData.length === 0) {
             res.status(404).json({ msg: 'Data tidak ditemukan' });
         } else {
-            res.status(200).json(laporanGajiPegawaiByMonth);
+            const formattedData = filteredData.map((data) => {
+                return {
+                    bulan: data.bulan,
+                    nama_pegawai: data.nama_pegawai,
+                    jabatan: data.jabatan_pegawai,
+                    gaji_pokok: data.gaji_pokok,
+                    tj_transport: data.tj_transport,
+                    uang_makan: data.uang_makan,
+                    potongan: data.potongan,
+                    total_gaji: data.total
+                };
+            });
+            res.json(formattedData);
         }
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
 
 
 
@@ -128,10 +145,41 @@ export const viewSlipGajiByName = async (req, res) => {
 
 // method untuk melihat Slip Gaji Pegawai By Month
 export const viewSlipGajiByMonth = async (req, res) => {
+    try {
+        const { month } = req.params;
+        const dataLaporanGajiByMonth = await getDataGajiPegawai(req, res);
 
+        const filteredData = dataLaporanGajiByMonth.filter((data) => {
+            return data.bulan.toLowerCase() === month.toLowerCase();
+        });
+
+        if (filteredData.length === 0) {
+            res.status(404).json({ msg: 'Data tidak ditemukan' });
+        } else {
+            const formattedData = filteredData.map((data) => {
+                return {
+                    bulan: data.bulan,
+                    nama_pegawai: data.nama_pegawai,
+                    jabatan: data.jabatan_pegawai,
+                    gaji_pokok: data.gaji_pokok,
+                    tj_transport: data.tj_transport,
+                    uang_makan: data.uang_makan,
+                    potongan: data.potongan,
+                    total_gaji: data.total
+                };
+            });
+            res.json(formattedData);
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 // method untuk melihat Slip Gaji Pegawai By Year
 export const viewSlipGajiByYear = async (req, res) => {
-
+    try {
+        await viewDataGajiPegawaiByYear(req, res);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }

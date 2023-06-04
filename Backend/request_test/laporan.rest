@@ -12,10 +12,10 @@ GET http://localhost:5000/laporan/gaji
 GET http://localhost:5000/laporan/gaji/name/nana
 
 ### get All Data Laporan Gaji By Month
-GET http://localhost:5000/laporan/gaji/month/maret
+GET http://localhost:5000/laporan/gaji/month/januari
 
 ### get All Data Laporan Gaji By Year
-GET http://localhost:5000/laporan/gaji/year/2022
+GET http://localhost:5000/laporan/gaji/year/2023
 
 
 
@@ -30,3 +30,6 @@ GET http://localhost:5000/laporan/absensi/year/2021
 ###########    Slip Gaji    ###########
 ### get Slip Gaji By Name
 GET http://localhost:5000/laporan/slip_gaji/name/caca
+
+### get Slip Gaji By Month
+GET http://localhost:5000/laporan/slip_gaji/year/2022
