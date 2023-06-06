@@ -6,8 +6,8 @@ POST  http://localhost:5000/data_potongan
 Content-Type: application/json
 
 {
-    "id" : 3 ,
-    "potongan": "sakit",
+    "id" : 1 ,
+    "potongan": "alpha",
     "jml_potongan": 2000
 }
 

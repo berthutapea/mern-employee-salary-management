@@ -423,7 +423,7 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
                 return data_gaji.bulan === response.bulan;
             }).map((data_gaji) => {
                 return {
-                    response,
+                    bulan: response.bulan,
                     nik: data_gaji.nik,
                     nama_pegawai: data_gaji.nama_pegawai,
                     jenis_kelamin: data_gaji.jenis_kelamin,
@@ -435,16 +435,15 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
                     total_gaji: data_gaji.total,
                 };
             });
-
-            if (dataGajiByMonth.length === 0) {
-                return res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
-            }
-            res.json(dataGajiByMonth);
+            return res.json(dataGajiByMonth);
         }
+
+        res.status(404).json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
 
 
 // method untuk mencari data gaji pegawai berdasarkan tahun

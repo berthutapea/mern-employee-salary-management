@@ -6,8 +6,8 @@ POST  http://localhost:5000/data_kehadiran
 Content-Type: application/json
 
 {
-    "nik": "889922",
-    "nama_pegawai": "Dadang",
+    "nik": "223344",
+    "nama_pegawai": "Budi",
     "nama_jabatan": "Operator Produksi",
     "jenis_kelamin": "Laki - Laki",
     "hadir": "9",

@@ -7,9 +7,9 @@ Content-Type: application/json
 
 {
     "nama_jabatan" : "Operator Produksi",
-    "gaji_pokok" : 3000,
-    "tj_transport" : 2000,
-    "uang_makan" : 1000
+    "gaji_pokok" : 2000,
+    "tj_transport" : 1000,
+    "uang_makan" : 500
 }
 
 ### UPDATE Data Jabatan
