@@ -154,13 +154,14 @@ export const viewSlipGajiByMonth = async (req, res) => {
         });
 
         if (filteredData.length === 0) {
-            res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: `Data dengan bulan ${month} tidak ditemukan ` });
         } else {
             const formattedData = filteredData.map((data) => {
                 return {
                     bulan: data.bulan,
+                    tahun: data.tahun,
                     nama_pegawai: data.nama_pegawai,
-                    jabatan: data.jabatan_pegawai,
+                    jabatan: data.jabatan,
                     gaji_pokok: data.gaji_pokok,
                     tj_transport: data.tj_transport,
                     uang_makan: data.uang_makan,

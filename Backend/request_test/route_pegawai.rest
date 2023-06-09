@@ -1,0 +1,34 @@
+######################
+### Route Pegawai ####
+######################
+
+### Login Pegawai
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "username": "budi",
+    "password": "update"
+}
+
+### Testing Dashboard Pegawai
+GET http://localhost:5000/dashboard
+
+
+### View Data Gaji By Month
+GET http://localhost:5000/data_gaji/month/juni
+
+### View Data Gaji By Year
+GET http://localhost:5000/data_gaji/year/2023
+
+### Change Password Pegawai (Self)
+PATCH  http://localhost:5000/change_password
+Content-Type: application/json
+
+{
+    "password" : "update",
+    "confPassword" : "update"
+}
+
+### Logout User
+DELETE   http://localhost:5000/logout

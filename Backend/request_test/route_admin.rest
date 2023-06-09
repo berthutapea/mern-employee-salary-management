@@ -1,0 +1,270 @@
+######################
+#### Route Admin #####
+######################
+
+### Login Admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "username": "aldi",
+    "password": "update"
+}
+
+### Logout User
+DELETE   http://localhost:5000/logout
+
+
+
+### === Change Password === ###
+
+### Change Password Pegawai (Self)
+PATCH  http://localhost:5000/change_password
+Content-Type: application/json
+
+{
+    "password" : "update",
+    "confPassword" : "update"
+}
+
+### Change Password Admin (All data pegawai)
+PATCH  http://localhost:5000/data_pegawai/2/change_password
+Content-Type: application/json
+
+{
+    "password":"budi",
+    "confPassword":"budi"
+}
+
+
+
+
+#############################
+####  Master Data Admin  ####
+#############################
+
+/////// Data Pegawai //////
+
+### get All Data Pegawai
+GET http://localhost:5000/data_pegawai
+
+
+### get Single Data Pegawai by ID
+GET http://localhost:5000/data_pegawai/id/2
+
+### get Single Data Pegawai by NIK
+GET http://localhost:5000/data_pegawai/nik/223344
+
+### get Single Data Pegawai by NAME
+GET http://localhost:5000/data_pegawai/name/budi
+
+### Create Data Pegawai
+POST http://localhost:5000/data_pegawai
+Content-Type: application/json
+
+{
+    "nik": 223344,
+    "nama_pegawai": "Cecep",
+    "username": "cecep",
+    "password": "12345",
+    "confPassword": "12345",
+    "jenis_kelamin": "Laki-Laki",
+    "jabatan": "Operator Produksi",
+    "tanggal_masuk": "11-02-2023",
+    "status": "Karyawan Tetap",
+    "photo": ,
+    "hak_akses": "pegawai"
+}
+
+
+
+### Update Data Pegawai
+PATCH  http://localhost:5000/data_pegawai/2
+Content-Type: application/json
+
+{
+    "nik": 223344,
+    "nama_pegawai": "Budi",
+    "username": "budi",
+    "jenis_kelamin": "Laki-Laki",
+    "jabatan": "Operator Produksi",
+    "tanggal_masuk": "11-02-2023",
+    "status": "Karyawan Tetap",
+    "photo": ,
+    "hak_akses": "pegawai"
+}
+
+### Change Password Admin (All data pegawai)
+PATCH  http://localhost:5000/data_pegawai/2/change_password
+Content-Type: application/json
+
+{
+    "password":"budi",
+    "confPassword":"budi"
+}
+
+### Change Password Pegawai (Self)
+PATCH  http://localhost:5000/change_password
+Content-Type: application/json
+
+{
+    "password" : "update",
+    "confPassword" : "update"
+}
+
+### Delete Data Pegawai
+DELETE   http://localhost:5000/data_pegawai/1
+
+
+/////// Data Jabatan //////
+
+### Get All Data Jabatan
+GET  http://localhost:5000/data_jabatan
+
+### Create Data Jabatan
+POST  http://localhost:5000/data_jabatan
+Content-Type: application/json
+
+{
+    "nama_jabatan" : "Operator Produksi",
+    "gaji_pokok" : 2000,
+    "tj_transport" : 1000,
+    "uang_makan" : 500
+}
+
+### UPDATE Data Jabatan
+PATCH   http://localhost:5000/data_jabatan/1
+Content-Type: application/json
+
+{
+    "nama_jabatan" : "Kepala Bagian",
+    "gaji_pokok" : 5000,
+    "tj_transport" : 2000,
+    "uang_makan" : 1000
+}
+
+### DELETE Data Jabatan
+DELETE    http://localhost:5000/data_jabatan/2
+
+
+
+#############################
+###### Transaksi Admin ######
+#############################
+
+/////// Data Kehadiran //////
+
+### Get All Data Kehadiran
+GET  http://localhost:5000/data_kehadiran
+
+### Create Data Kehadiran
+POST  http://localhost:5000/data_kehadiran
+Content-Type: application/json
+
+{
+    "nik": "223344",
+    "nama_pegawai": "Budi",
+    "nama_jabatan": "Operator Produksi",
+    "jenis_kelamin": "Laki - Laki",
+    "hadir": "9",
+    "sakit": "2",
+    "alpha": "1"
+}
+
+### UPDATE data kehadiran
+PATCH  http://localhost:5000/data_kehadiran/update/11
+Content-Type: application/json
+
+{
+    "hadir": "2",
+    "sakit": "2",
+    "alpha": "2"
+}
+
+### DELETE Data Kehadiran
+DELETE http://localhost:5000/data_kehadiran/8
+
+
+/////// Data Potongan //////
+
+### Get All Data Potongan Gaji
+GET  http://localhost:5000/data_potongan
+
+### Create Data Potongan
+POST  http://localhost:5000/data_potongan
+Content-Type: application/json
+
+{
+    "id" : 1 ,
+    "potongan": "alpha",
+    "jml_potongan": 2000
+}
+
+### UPDATE data potongan
+PATCH  http://localhost:5000/data_potongan/update/3
+Content-Type: application/json
+
+{
+    "potongan" : "updated 1",
+    "jml_potongan" : 9999
+}
+
+### DELETE Data Potongan
+DELETE http://localhost:5000/data_potongan/3
+
+
+
+/////// Data Gaji //////
+
+### get All Data Gaji Pegawai
+GET http://localhost:5000/data_gaji_pegawai
+
+### get All Data Gaji Pegawai By Month
+GET http://localhost:5000/data_gaji_pegawai/month/Juni
+
+### get All Data Gaji Pegawai By Year
+GET http://localhost:5000/data_gaji_pegawai/year/2023
+
+// NOTE: Data bulan & tahun (month & year) ditetapkan berdasarkan input data kehadiran pegawai.
+
+
+
+#############################
+####### Laporan Admin #######
+#############################
+
+/////// Laporan Gaji //////
+
+### get All Data Laporan Gaji
+GET http://localhost:5000/laporan/gaji
+
+### get All Data Laporan Gaji By Name
+GET http://localhost:5000/laporan/gaji/name/nana
+
+### get All Data Laporan Gaji By Month
+GET http://localhost:5000/laporan/gaji/month/januari
+
+### get All Data Laporan Gaji By Year
+GET http://localhost:5000/laporan/gaji/year/2023
+
+
+
+/////// Laporan Absensi //////
+
+GET http://localhost:5000/laporan/absensi/month/maret
+
+### get All Data Laporan Absensi By Year
+GET http://localhost:5000/laporan/absensi/year/2021
+
+
+
+/////// Slip Gaji //////
+
+### get Slip Gaji By Name
+GET http://localhost:5000/laporan/slip_gaji/name/caca
+
+### get Slip Gaji By Month
+GET http://localhost:5000/laporan/slip_gaji/month/maret
+
+### get Slip Gaji By Year
+GET http://localhost:5000/laporan/slip_gaji/year/2022

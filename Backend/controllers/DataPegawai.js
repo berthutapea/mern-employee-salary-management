@@ -149,7 +149,7 @@ export const updateDataPegawai = async (req, res) => {
     if (!pegawai) return res.staus(404).json({msg: "Data pegawai tidak ditemukan"});
     const {
             nik, nama_pegawai,
-            username, password, confPassword, jenis_kelamin,
+            username, jenis_kelamin,
             jabatan, tanggal_masuk,
             status, hak_akses
         } = req.body;
@@ -178,19 +178,11 @@ export const updateDataPegawai = async (req, res) => {
 
     const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
 
-    let hashPassword;
-    if(password === "" || password === null){
-        hashPassword = pegawai.password
-    }else{
-        hashPassword = await argon2.hash(password);
-    }
-    if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
     try {
         await DataPegawai.update({
             nik: nik,
             nama_pegawai: nama_pegawai,
             username: username,
-            password: hashPassword,
             jenis_kelamin: jenis_kelamin,
             jabatan: jabatan,
             tanggal_masuk: tanggal_masuk,
@@ -208,6 +200,46 @@ export const updateDataPegawai = async (req, res) => {
         res.status(400).json({msg: error.message});
     }
 }
+
+// Method untuk update password Pegawai
+export const changePasswordAdmin = async (req, res) => {
+    const pegawai = await DataPegawai.findOne({
+        where: {
+        id: req.params.id
+        }
+    });
+
+    if (!pegawai) return res.status(404).json({ msg: "Data pegawai tidak ditemukan" });
+
+
+    const { password, confPassword } = req.body;
+
+    if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+
+    try {
+        if (pegawai.hak_akses === "pegawai"){
+            const hashPassword = await argon2.hash(password);
+
+            await DataPegawai.update(
+            {
+                password: hashPassword
+            },
+            {
+                where: {
+                    id: pegawai.id
+                }
+            }
+            );
+
+            res.status(200).json({ msg: "Password Pegawai Updated" });
+        } else {
+            res.status(403).json({ msg: "Forbidden"});
+        }
+    } catch (error) {
+        res.status(500).json({ msg: "Internal Server Error" });
+    }
+};
+
 
 // method untuk delete data Pegawai
 export const deleteDataPegawai = async (req, res) => {

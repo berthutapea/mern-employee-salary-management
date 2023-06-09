@@ -36,23 +36,38 @@ Content-Type: application/json
 
 
 ### Update Data Pegawai
-PATCH  http://localhost:5000/data_pegawai/1
+PATCH  http://localhost:5000/data_pegawai/2
 Content-Type: application/json
 
 {
-    "nik": 112233,
-    "nama_pegawai": "Aldi",
-    "username": "aldi",
-    "password": "12345",
-    "confPassword": "12345",
+    "nik": 223344,
+    "nama_pegawai": "Budi",
+    "username": "budi",
     "jenis_kelamin": "Laki-Laki",
-    "jabatan": "HRD",
+    "jabatan": "Operator Produksi",
     "tanggal_masuk": "11-02-2023",
     "status": "Karyawan Tetap",
     "photo": ,
-    "hak_akses": "admin"
+    "hak_akses": "pegawai"
 }
 
+### Change Password Admin (All data pegawai)
+PATCH  http://localhost:5000/data_pegawai/2/change_password
+Content-Type: application/json
+
+{
+    "password":"budi",
+    "confPassword":"budi"
+}
+
+### Change Password Pegawai (Self)
+PATCH  http://localhost:5000/change_password
+Content-Type: application/json
+
+{
+    "password" : "update",
+    "confPassword" : "update"
+}
 
 
 ### Delete Data Pegawai
@@ -64,26 +79,23 @@ DELETE   http://localhost:5000/data_pegawai/1
 ### Authentication ###
 ######################
 
-### Login karyawan
+### Login Pegawai
 POST http://localhost:5000/login
 Content-Type: application/json
 
 {
     "username": "budi",
-    "password": "12345"
+    "password": "budi"
 }
 
-### Login admin
+### Login Admin
 POST http://localhost:5000/login
 Content-Type: application/json
 
 {
     "username": "aldi",
-    "password": "12345"
+    "password": "update"
 }
 
 ### Me
 GET  http://localhost:5000/me
-
-### Logout User
-DELETE   http://localhost:5000/logout

@@ -9,6 +9,6 @@ GET http://localhost:5000/data_gaji
 GET http://localhost:5000/data_gaji/month/Juni
 
 ### get All Data Gaji Pegawai By Year
-GET http://localhost:5000/data_gaji/year/2022
+GET http://localhost:5000/data_gaji/year/2023
 
 // NOTE: Data bulan & tahun (month & year) ditetapkan berdasarkan input data kehadiran pegawai.

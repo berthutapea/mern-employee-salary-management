@@ -7,8 +7,8 @@ import {
 
 const router = express.Router();
 
-router.get('/data_gaji', viewDataGajiPegawai);
-router.get('/data_gaji/month/:month', viewDataGajiPegawaiByMonth);
-router.get('/data_gaji/year/:year', viewDataGajiPegawaiByYear);
+router.get('/data_gaji_pegawai', viewDataGajiPegawai);
+router.get('/data_gaji_pegawai/month/:month', viewDataGajiPegawaiByMonth);
+router.get('/data_gaji_pegawai/year/:year', viewDataGajiPegawaiByYear);
 
 export default router;

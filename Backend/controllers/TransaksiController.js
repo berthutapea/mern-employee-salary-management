@@ -63,12 +63,12 @@ export const createDataKehadiran = async (req, res) => {
         return res.status(404).json({msg: "Data nama jabatan tidak ditemukan"});
     }
 
-    if (!data_nik_pegawai){
+    if (!data_nik_pegawai) {
         return res.status(404).json({msg: "Data nik tidak ditemukan"});
     }
 
     if (!nama_sudah_ada) {
-        const month = moment().locale('id').format('MMMM');
+    const month = moment().locale('id').format('MMMM');
         await DataKehadiran.create({
             bulan: month.toLowerCase(),
             nik: nik,
@@ -190,6 +190,7 @@ export const getDataPegawai = async () => {
         // Get data pegawai:
         const data_pegawai = await DataPegawai.findAll({
             attributes: [
+                'id',
                 'nik',
                 'nama_pegawai',
                 'jenis_kelamin',
@@ -199,12 +200,13 @@ export const getDataPegawai = async () => {
         });
 
         resultDataPegawai = data_pegawai.map((pegawai) => {
+            const id = pegawai.id;
             const nik = pegawai.nik;
             const nama_pegawai = pegawai.nama_pegawai;
             const jenis_kelamin = pegawai.jenis_kelamin;
             const jabatan_pegawai = pegawai.jabatan;
 
-            return { nik, nama_pegawai, jenis_kelamin, jabatan_pegawai };
+            return { id, nik, nama_pegawai, jenis_kelamin, jabatan_pegawai };
         });
     } catch (error) {
         console.error(error);
@@ -212,6 +214,7 @@ export const getDataPegawai = async () => {
 
     return resultDataPegawai;
 };
+
 
 // method untuk mengambil data jabatan :
 export const getDataJabatan = async() => {
@@ -308,6 +311,7 @@ export const getDataGajiPegawai = async () => {
         ).map((pegawai) => {
             const jabatan = resultDataJabatan.find((jabatan) => jabatan.nama_jabatan === pegawai.jabatan_pegawai);
             return {
+                id: pegawai.id,
                 nama_pegawai: pegawai.nama_pegawai,
                 jabatan: pegawai.jabatan_pegawai,
                 gaji_pokok: jabatan.gaji_pokok,
@@ -338,12 +342,14 @@ export const getDataGajiPegawai = async () => {
 
         // Total Gaji Pegawai :
         const total_gaji_pegawai = gaji_pegawai.map((pegawai) => {
+            const id = pegawai.id
             const potongan = potongan_pegawai.find((potongan) => potongan.nama_pegawai === pegawai.nama_pegawai);
             const total_gaji = (pegawai.gaji_pokok + pegawai.tj_transport + pegawai.uang_makan) - (potongan ? potongan.total_potongan : 0);
 
             return {
                 tahun: potongan ? potongan.tahun : 0,
                 bulan: potongan ? potongan.bulan : '',
+                id: id,
                 nama_pegawai: pegawai.nama_pegawai,
                 jabatan: pegawai.jabatan,
                 gaji_pokok: pegawai.gaji_pokok,
@@ -381,8 +387,10 @@ export const viewDataGajiPegawaiByName = async (req, res) => {
         }).map((data_gaji) => {
             return {
                 tahun: data_gaji.tahun,
+                bulan: data_gaji.bulan,
                 nik: data_gaji.nik,
                 nama_pegawai: data_gaji.nama_pegawai,
+                jabatan: data_gaji.jabatan,
                 jenis_kelamin: data_gaji.jenis_kelamin,
                 jabatan_pegawai: data_gaji.jabatan_pegawai,
                 gaji_pokok: data_gaji.gaji_pokok,
@@ -394,7 +402,7 @@ export const viewDataGajiPegawaiByName = async (req, res) => {
         });
 
         if (dataGajiByName.length === 0) {
-            res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: `Data dengan nama ${name} tidak ditemukan ` });
         } else {
             res.json(dataGajiByName);
         }
@@ -424,6 +432,7 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
             }).map((data_gaji) => {
                 return {
                     bulan: response.bulan,
+                    id: data_gaji.id,
                     nik: data_gaji.nik,
                     nama_pegawai: data_gaji.nama_pegawai,
                     jenis_kelamin: data_gaji.jenis_kelamin,
@@ -458,6 +467,7 @@ export const viewDataGajiPegawaiByYear = async (req, res) => {
         }).map((data_gaji) => {
             return {
                 tahun: data_gaji.tahun,
+                id: data_gaji.id,
                 nik: data_gaji.nik,
                 nama_pegawai: data_gaji.nama_pegawai,
                 jenis_kelamin: data_gaji.jenis_kelamin,
