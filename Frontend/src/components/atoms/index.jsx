@@ -14,8 +14,24 @@ import DropdownAdmin from './Dropdown/DropdownAdmin';
 import DropdownDefault from './Dropdown/DropdownDefault';
 import DropdownNotification from './Dropdown/DropdownNotification';
 import DropdownPegawai from './Dropdown/DropdownPegawai';
+import LoginInput from "./Input/LoginInput";
 
 export {
-    BreadcrumbAdmin, BreadcrumbPegawai, ButtonOne, ButtonTwo, ButtonThree, CardOne, CardTwo, CardThree, CardFour,
-    ChartOne, ChartTwo, DarkModeSwitcher, DropdownAdmin, DropdownDefault, DropdownPegawai, DropdownNotification
+    BreadcrumbAdmin,
+    BreadcrumbPegawai,
+    ButtonOne,
+    ButtonTwo,
+    ButtonThree,
+    CardOne,
+    CardTwo,
+    CardThree,
+    CardFour,
+    ChartOne,
+    ChartTwo,
+    DarkModeSwitcher,
+    DropdownAdmin,
+    DropdownDefault,
+    DropdownPegawai,
+    DropdownNotification,
+    LoginInput
 };

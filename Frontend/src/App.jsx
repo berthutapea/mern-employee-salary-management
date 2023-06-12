@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Routes } from './config';
+import { Routes, store } from './config';
+import { Provider } from 'react-redux';
 
 function App() {
   const [loading, setLoading] = useState(true)
-
   const preloader = document.getElementById('preloader')
 
   if (preloader) {
@@ -18,9 +18,9 @@ function App() {
   }, [])
   return (
     !loading && (
-      // <Provider store={store}>
-      <Routes />
-      // </Provider>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     )
   )
 }

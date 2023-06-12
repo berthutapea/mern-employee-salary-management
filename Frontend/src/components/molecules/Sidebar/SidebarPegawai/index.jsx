@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import SidebarLinkGroup from '../SidebarLinkGroup'
 import Logo from '../../../../assets/images/logo/logo.svg'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
@@ -7,11 +7,15 @@ import { RxDashboard } from 'react-icons/rx'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
 import { FiSettings } from 'react-icons/fi'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import { logoutUser } from '../../../../config/redux/action'
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation()
   const { pathname } = location
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const trigger = useRef(null)
   const sidebar = useRef(null)
 
@@ -19,6 +23,41 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
   )
+
+  const onLogout = () => {
+    Swal.fire({
+      title: 'Logout',
+      text: 'Apakah Anda yakin ingin logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Logout',
+      cancelButtonText: 'Batal',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(logoutUser())
+          .then(() => {
+            Swal.fire({
+              title: 'Logout Succes',
+              icon: 'success',
+              text: 'Logout Berhasil',
+              timer: 1000,
+              showConfirmButton: false,
+            }).then(() => {
+              navigate('/login');
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: 'Logout Gagal',
+              text: 'Terjadi kesalahan saat logout.',
+              icon: 'error',
+            });
+            console.log(error);
+          });
+      }
+    });
+  };
 
   // close on click outside
   useEffect(() => {
@@ -156,7 +195,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/pegawai/login'
+                              onClick={onLogout}
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')

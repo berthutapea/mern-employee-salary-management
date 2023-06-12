@@ -13,6 +13,7 @@
     "apexcharts": "^3.37.0",
     "axios": "^1.4.0",
     "icons": "^1.0.0",
+    "js-cookie": "^3.0.5",
     "jsvectormap": "^1.5.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -23,7 +24,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-table": "^7.8.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.7.12"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

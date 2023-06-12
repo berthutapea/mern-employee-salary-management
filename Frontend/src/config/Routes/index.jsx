@@ -1,12 +1,25 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import NotFound from '../../components/molecules/NotFound'
 import FormDataPegawai from '../../components/molecules/Form/FormDataPegawai'
 import FormDataJabatan from '../../components/molecules/Form/FormDataJabatan'
 import FormSettingPotonganGaji from '../../components/molecules/Form/FormSettingPotonganGaji'
+import { PrivateRouteAdmin, PrivateRoutePegawai } from '../../components';
+import Login from '../../pages/Login';
 import {
-  LoginAdmin, DashboardAdmin, DataPegawai, DataJabatan, DataAbsensi, SettingPotonganGaji, DataGaji, LaporanGaji,
-  LaporanAbsensi, SlipGaji, UbahPasswordAdmin, LoginPegawai, DashboardPegawai, DataGajiPegawai, UbahPasswordPegawai
+  DashboardAdmin,
+  DataPegawai,
+  DataJabatan,
+  DataAbsensi,
+  SettingPotonganGaji,
+  DataGaji,
+  LaporanGaji,
+  LaporanAbsensi,
+  SlipGaji,
+  UbahPasswordAdmin,
+  DashboardPegawai,
+  DataGajiPegawai,
+  UbahPasswordPegawai
 } from '../../pages'
 
 const AppRoutes = () => {
@@ -14,11 +27,14 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Route Admin */}
-      {/* Login Admin */}
-      <Route exact path='/admin/login' element={<LoginAdmin />} />
-      <Route exact path='/' element={<LoginAdmin />} />
-      {/* Dashboard Admin */}
-      <Route exact path='/admin/dashboard' element={<DashboardAdmin />} />
+      <Route path='/login' element={<Login />} />
+      {/* <Route path='/admin/dashboard' element={<DashboardAdmin />} /> */}
+      <Route
+        path="/admin/dashboard"
+        element={
+          <PrivateRouteAdmin>
+            <DashboardAdmin />
+          </PrivateRouteAdmin>} />
       {/* Master Data Admin */}
       <Route path='/admin/master-data/data-pegawai' element={<DataPegawai />} />
       <Route path='/admin/master-data/data-pegawai/form-data-pegawai' element={<FormDataPegawai />} />
@@ -38,9 +54,12 @@ const AppRoutes = () => {
 
       {/* Route Pegawai */}
       {/* Login Pegawai */}
-      <Route exact path='/pegawai/login' element={<LoginPegawai />} />
-      {/* Dashboard Pegawai */}
-      <Route exact path='/pegawai/dashboard' element={<DashboardPegawai />} />
+      <Route
+        path='/pegawai/dashboard'
+        element={
+          <PrivateRoutePegawai>
+            <DashboardPegawai />
+          </PrivateRoutePegawai>} />
       {/* Dashboard Data Gaji Pegawai */}
       <Route exact path='/pegawai/data-gaji' element={<DataGajiPegawai />} />
       <Route exact path='/pegawai/pengaturan/ubah-password' element={<UbahPasswordPegawai />} />

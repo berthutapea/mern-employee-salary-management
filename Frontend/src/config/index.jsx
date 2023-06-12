@@ -1,4 +1,4 @@
 import Routes from './Routes'
-import Redux from './redux'
+import store from './redux/store'
 
-export { Routes, Redux };
+export { Routes, store };
