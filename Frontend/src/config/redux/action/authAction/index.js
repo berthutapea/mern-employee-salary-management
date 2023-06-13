@@ -87,7 +87,6 @@ export const logoutUser = () => {
   };
 };
 
-
 export const changeUserPassword = (password, confPassword) => {
   return async (dispatch) => {
     try {
