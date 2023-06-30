@@ -12,7 +12,7 @@ const FormEditDataJabatan = () => {
     const [gajiPokok, setGajiPokok] = useState('');
     const [tjTransport, setTjTransport] = useState('');
     const [uangMakan, setUangMakan] = useState('');
-    const [setMsg] = useState('');
+    const [msg,setMsg] = useState('');
     const { id } = useParams();
 
     const dispatch = useDispatch();
