@@ -2,6 +2,9 @@ import DataPegawai from "../models/DataPegawaiModel.js";
 import argon2 from "argon2";
 import path from "path";
 import fs from "fs";
+import DataJabatan from "../models/DataJabatanModel.js";
+import { match } from "assert";
+import { error } from "console";
 
 // menampilkan semua data Pegawai
 export const getDataPegawai = async (req, res) => {
@@ -128,6 +131,7 @@ export const createDataPegawai = async (req, res) => {
 
         const hashPassword = await argon2.hash(password);
 
+<<<<<<< HEAD
         try {
             await DataPegawai.create({
                 nik: nik,
@@ -142,6 +146,23 @@ export const createDataPegawai = async (req, res) => {
                 url: url,
                 hak_akses: hak_akses
             });
+=======
+      try {
+        await DataPegawai.create({
+          nik: nik,
+          nama_pegawai: nama_pegawai,
+          username: username,
+          password: hashPassword,
+          jenis_kelamin: jenis_kelamin,
+          jabatan: jabatan,
+          confPassword: password,
+          tanggal_masuk: tanggal_masuk,
+          status: status,
+          photo: fileName,
+          url: url,
+          hak_akses: hak_akses
+        });
+>>>>>>> d994b5d52781d9d1f831794e426b41ab753499a4
 
             res.status(201).json({ success: true, message: "Registrasi Berhasil" });
         } catch (error) {
@@ -150,7 +171,6 @@ export const createDataPegawai = async (req, res) => {
         }
     });
 };
-
 
 // method untuk update data Pegawai
 export const updateDataPegawai = async (req, res) => {
@@ -168,7 +188,10 @@ export const updateDataPegawai = async (req, res) => {
         status, hak_akses
     } = req.body;
 
-    try {
+    const dataJabatan = await DataJabatan.findAll();
+    const getJabatan = dataJabatan.map((jabatan) => jabatan.nama_jabatan);
+
+    if (getJabatan.includes(jabatan)) {
         await DataPegawai.update({
             nik: nik,
             nama_pegawai: nama_pegawai,
@@ -183,11 +206,18 @@ export const updateDataPegawai = async (req, res) => {
                 id: pegawai.id
             }
         });
+<<<<<<< HEAD
         res.status(200).json({ msg: "Data Pegawai Berhasil di Update" });
     } catch (error) {
         res.status(400).json({ msg: error.message });
+=======
+        res.status(200).json({msg: "Data Pegawai Updated"});
+    } else {
+        res.status(400).json({msg:"Data Jabatan tidak ada"});
+>>>>>>> d994b5d52781d9d1f831794e426b41ab753499a4
     }
 }
+
 
 // Method untuk update password Pegawai
 export const changePasswordAdmin = async (req, res) => {
