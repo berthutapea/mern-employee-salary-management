@@ -2,6 +2,9 @@ import DataPegawai from "../models/DataPegawaiModel.js";
 import argon2 from "argon2";
 import path from "path";
 import fs from "fs";
+import DataJabatan from "../models/DataJabatanModel.js";
+import { match } from "assert";
+import { error } from "console";
 
 // menampilkan semua data Pegawai
 export const getDataPegawai = async (req, res) => {
@@ -136,6 +139,7 @@ export const createDataPegawai = async (req, res) => {
           password: hashPassword,
           jenis_kelamin: jenis_kelamin,
           jabatan: jabatan,
+          confPassword: password,
           tanggal_masuk: tanggal_masuk,
           status: status,
           photo: fileName,
@@ -150,7 +154,6 @@ export const createDataPegawai = async (req, res) => {
       }
     });
   };
-
 
 // method untuk update data Pegawai
 export const updateDataPegawai = async (req, res) => {
@@ -168,7 +171,10 @@ export const updateDataPegawai = async (req, res) => {
             status, hak_akses
         } = req.body;
 
-    try {
+    const dataJabatan = await DataJabatan.findAll();
+    const getJabatan = dataJabatan.map((jabatan) => jabatan.nama_jabatan);
+
+    if (getJabatan.includes(jabatan)) {
         await DataPegawai.update({
             nik: nik,
             nama_pegawai: nama_pegawai,
@@ -184,10 +190,11 @@ export const updateDataPegawai = async (req, res) => {
             }
         });
         res.status(200).json({msg: "Data Pegawai Updated"});
-    } catch (error) {
-        res.status(400).json({msg: error.message});
+    } else {
+        res.status(400).json({msg:"Data Jabatan tidak ada"});
     }
 }
+
 
 // Method untuk update password Pegawai
 export const changePasswordAdmin = async (req, res) => {

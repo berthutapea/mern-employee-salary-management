@@ -30,6 +30,28 @@ export const getDataJabatan = async (req, res) => {
     }
 }
 
+// menampilkan semua data jabatan
+// method untuk menampilkan data jabatan by ID
+export const getDataJabatanByID = async (req, res) => {
+    try {
+        const response = await DataJabatan.findOne({
+            attributes: [
+                'id','nama_jabatan', 'gaji_pokok', 'tj_transport', 'uang_makan'
+            ],
+            where: {
+                id: req.params.id
+            }
+        });
+        if(response){
+            res.status(200).json(response);
+        }else{
+            res.status(404).json({msg: 'Data jabatan dengan ID tersebut tidak ditemukan'});
+        }
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+}
+
 // method untuk tambah data jabatan
 export const createDataJabatan = async (req, res) => {
     const {
