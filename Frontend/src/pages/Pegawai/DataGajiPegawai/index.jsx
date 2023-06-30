@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-import DefaultLayoutPegawai from '../../../layout/DefaultLayoutPegawai';
+import Layout from '../../../layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import DataGajiPegawaiPeople from '../../../utils/DataGajiPegawaiPeople';
-import { BreadcrumbPegawai } from '../../../components';
+import { Breadcrumb } from '../../../components';
+import { getMe } from '../../../config/redux/action';
 import { TfiPrinter } from 'react-icons/tfi'
 
 const ITEMS_PER_PAGE = 4;
@@ -11,6 +14,9 @@ const DataGajiPegawai = () => {
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
     const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { isError, user } = useSelector((state) => state.auth);
 
     const totalPages = Math.ceil(DataGajiPegawaiPeople.length / ITEMS_PER_PAGE);
 
@@ -34,9 +40,23 @@ const DataGajiPegawai = () => {
         }
     };
 
+    useEffect(() => {
+        dispatch(getMe());
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (isError) {
+            navigate("/");
+        }
+        if (user && user.hak_akses !== 'pegawai') {
+            navigate("/login");
+        }
+    }, [isError, user, navigate]);
+
+
     return (
-        <DefaultLayoutPegawai>
-            <BreadcrumbPegawai pageName='Data Gaji' />
+        <Layout>
+            <Breadcrumb pageName='Data Gaji' />
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
                 <div className='max-w-full overflow-x-auto py-4'>
@@ -173,7 +193,7 @@ const DataGajiPegawai = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutPegawai>
+        </Layout>
     )
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin';
-import { BreadcrumbAdmin, ButtonOne, ButtonTwo, ButtonThree } from '../../..';
+import Layout from '../../../../layout';
+import { Breadcrumb, ButtonOne, ButtonTwo, ButtonThree } from '../../../../components';
 
 const FormSettingPotonganGaji = () => {
   return (
-    <DefaultLayoutAdmin>
-      <BreadcrumbAdmin pageName='Form Setting Potongan Gaji' />
+    <Layout>
+      <Breadcrumb pageName='Form Setting Potongan Gaji' />
 
       <div className='sm:grid-cols-2'>
         <div className='flex flex-col gap-9'>
@@ -50,12 +50,12 @@ const FormSettingPotonganGaji = () => {
                       <span>Simpan</span>
                     </ButtonOne>
                   </Link>
-                  <Link to="/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
+                  <Link to="/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
                     <ButtonTwo>
                       <span>Reset</span>
                     </ButtonTwo>
                   </Link>
-                  <Link to="/admin/transaksi/setting-potongan-gaji" >
+                  <Link to="/transaksi/setting-potongan-gaji" >
                     <ButtonThree  >
                       <span>Kembali</span>
                     </ButtonThree>
@@ -66,7 +66,7 @@ const FormSettingPotonganGaji = () => {
           </div>
         </div>
       </div>
-    </DefaultLayoutAdmin>
+    </Layout>
   )
 }
 

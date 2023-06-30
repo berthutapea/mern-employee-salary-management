@@ -1,27 +1,31 @@
+import Banner from './Banner';
+import DefaultDashboard from './DefaultDashboard';
 import Footer from './Footer';
-import FormDataJabatan from "./Form/FormDataJabatan";
-import FormDataPegawai from "./Form/FormDataPegawai";
+import FormAddDataJabatan from "./Form/FormDataJabatan/FormAddDataJabatan";
+import FormEditDataJabatan from "./Form/FormDataJabatan/FormEditDataJabatan";
+import FormAddDataPegawai from "./Form/FormDataPegawai/FormAddDataPegawai";
+import FormEditDataPegawai from "./Form/FormDataPegawai/FormEditDataPegawai";
 import FormDataSettingPotonganGaji from "./Form/FormSettingPotonganGaji";
-import HeaderAdmin from './Header/HeaderAdmin';
-import HeaderPegawai from './Header/HeaderPegawai';
+import Header from './Header';
+import Navbar from './Navbar';
 import NotFound from './NotFound';
-import PrivateRouteAdmin from './PrivateRoute/PrivateRouteAdmin';
-import PrivateRoutePegawai from './PrivateRoute/PrivateRoutePegawai';
 import SidebarAdmin from './Sidebar/SidebarAdmin';
 import SidebarPegawai from './Sidebar/SidebarPegawai';
 import SidebarLinkGroup from './Sidebar/SidebarLinkGroup';
 
 export {
-    Footer, 
-    FormDataJabatan, 
-    FormDataPegawai, 
-    FormDataSettingPotonganGaji, 
-    HeaderAdmin, 
-    HeaderPegawai,
-    NotFound, 
-    PrivateRouteAdmin, 
-    PrivateRoutePegawai, 
-    SidebarAdmin, 
-    SidebarPegawai, 
+    Banner,
+    DefaultDashboard,
+    Footer,
+    FormAddDataJabatan,
+    FormEditDataJabatan,
+    FormAddDataPegawai,
+    FormEditDataPegawai,
+    FormDataSettingPotonganGaji,
+    Header,
+    Navbar,
+    NotFound,
+    SidebarAdmin,
+    SidebarPegawai,
     SidebarLinkGroup
 };

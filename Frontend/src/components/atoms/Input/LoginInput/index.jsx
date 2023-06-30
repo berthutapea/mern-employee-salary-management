@@ -1,81 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { FiUser, FiLock } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../../../config/redux/action/authAction';
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import { loginUser } from '../../../../config/redux/action';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function LoginInput() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
-  const successMsg = useSelector((state) => state.auth.successMsg);
-  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+  const { user, isError, isSuccess, isLoading, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigate("/dashboard");
+    }
+  }, [user, isSuccess, dispatch, navigate]);
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch(login(username, password))
-      .then(() => {
-        Cookies.set('isLoggedIn', 'true', { expires: 7 });
-        navigateAfterLogin();
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Failed',
-          text: error.message,
-        });
-      });
-  };
-
-  const navigateAfterLogin = () => {
-    if (user) {
-      const role = user.hak_akses;
-      if (role === 'admin') {
-        navigate('/admin/dashboard');
-      } else if (role === 'pegawai') {
-        navigate('/pegawai/dashboard');
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Role',
-          text: 'Role is not valid',
-        });
-      }
-    }
-  };
+    dispatch(loginUser({ username, password }));
+  }
 
   useEffect(() => {
-    const isLoggedIn = Cookies.get('isLoggedIn');
-    if (isLoggedIn === 'true') {
-      navigateAfterLogin();
-    } else {
-      navigate('/login');
-    }
-  }, [user, navigate]);
-
-  useEffect(() => {
-    if (error) {
+    if (isError) {
       Swal.fire({
         icon: 'error',
         title: 'Login Failed',
-        text: error,
+        text: message,
+      }).then(() => {
       });
-    }
-  }, [error]);
-
-  useEffect(() => {
-    if (successMsg) {
+    } else if (isSuccess && user) {
       Swal.fire({
         icon: 'success',
         title: 'Login Success',
-        text: successMsg,
+        text: message,
+      }).then(() => {
       });
     }
-  }, [successMsg]);
+  }, [isError, isSuccess, user, message, dispatch]);
 
   return (
     <form onSubmit={handleLogin}>
@@ -90,7 +58,7 @@ function LoginInput() {
             onChange={(e) => setUsername(e.target.value)}
             autoComplete='off'
             required
-            placeholder='Enter your username'
+            placeholder='Masukkan username'
             className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
           />
           <FiUser className='absolute right-4 top-4 text-xl' />
@@ -107,7 +75,7 @@ function LoginInput() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder='Enter your password'
+            placeholder='Masukkan password'
             className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
           />
           <FiLock className='absolute right-4 top-4 text-xl' />
@@ -117,7 +85,7 @@ function LoginInput() {
       <div className='mb-5'>
         <input
           type='submit'
-          value='Login'
+          value={isLoading ? "Loading..." : "Login"}
           className='w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90'
         />
       </div>

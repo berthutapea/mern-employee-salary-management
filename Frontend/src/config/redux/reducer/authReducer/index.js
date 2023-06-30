@@ -1,61 +1,56 @@
-import {
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    LOGOUT,
-    SET_USER,
-    CHANGE_PASSWORD_SUCCESS,
-    CHANGE_PASSWORD_FAILURE
-} from '../../action/authAction/authActionTypes';
+import { createSlice } from "@reduxjs/toolkit";
+import { loginUser, getMe } from "../../action/authAction";
 
 const initialState = {
     user: null,
-    error: null,
-    successMsg: null
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: "",
 };
 
-const authReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN_SUCCESS:
-            return {
-                ...state,
-                user: action.payload,
-                error: null,
-                successMsg: 'Login Berhasil'
-            };
-        case LOGIN_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                successMsg: null
-            };
-        case LOGOUT:
-            return {
-                ...state,
-                user: null,
-                error: null,
-                successMsg: null
-            };
-        case SET_USER:
-            return {
-                ...state,
-                user: action.payload,
-                error: null
-            };
-        case CHANGE_PASSWORD_SUCCESS:
-            return {
-                ...state,
-                successMsg: action.payload,
-                error: null
-            };
-        case CHANGE_PASSWORD_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                successMsg: null
-            };
-        default:
-            return state;
-    }
-};
+const authSlice = createSlice({
+    name: "auth",
+    initialState,
+    reducers: {
+        reset: () => initialState,
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loginUser.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
+            })
+            .addCase(loginUser.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(loginUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+            .addCase(getMe.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
+            })
+            .addCase(getMe.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(getMe.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+    },
+});
 
-export default authReducer;
+export const { reset } = authSlice.actions;
+export default authSlice.reducer;

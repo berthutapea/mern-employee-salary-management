@@ -1,0 +1,16 @@
+.skillbar {
+    border-radius: 15px !important;
+    margin: 25px 0;
+}
+
+.skillbar-title {
+    border-radius: 15px 0 0 15px !important;
+}
+
+.skillbar-bar {
+    border-radius: 0 15px 15px 0 !important;
+}
+
+.skillbar-percent {
+    color: #1c6bff !important;
+}

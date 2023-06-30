@@ -1,0 +1,41 @@
+.side-line {
+    height: 8px;
+    width: 8px;
+    margin: 0 10px;
+    background-color: #5345f5;
+    transform: rotate(45deg);
+}
+
+.middle-line {
+    width: 180px;
+    height: 4px;
+    background-color: #5345f5;
+    border-radius: 4px;
+    position: relative;
+}
+
+.inner-circle {
+    height: 10px;
+    width: 10px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    border: 1px solid #5345f5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    animation: left-right-moving 6s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes left-right-moving {
+
+    0%,
+    100% {
+        left: 0%;
+    }
+
+    50% {
+        left: 97%;
+    }
+}

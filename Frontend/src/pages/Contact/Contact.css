@@ -1,0 +1,30 @@
+.input-field {
+    display: inline-block;
+    padding: 9px;
+    border-radius: 7px;
+    box-shadow: 0 0 9px 2px #5345f5;
+    margin: 12px 0;
+    width: 100%;
+    background-color: #5345f5;
+    color: rgb(255, 255, 255);
+}
+
+.input-field::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px #5345f5;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition:
+        background-color 600000s 0s,
+        color 600000s 0s;
+}
+
+input[data-autocompleted] {
+    background-color: transparent !important;
+}

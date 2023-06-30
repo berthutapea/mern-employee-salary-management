@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayoutPegawai from '../../../../layout/DefaultLayoutPegawai';
-import { BreadcrumbPegawai, ButtonOne } from '../../../../components';
+import Layout from '../../../../layout';
+import { Breadcrumb, ButtonOne } from '../../../../components';
 import { TfiLock } from 'react-icons/tfi'
 
 const UbahPasswordPegawai = () => {
     return (
-        <DefaultLayoutPegawai>
-            <BreadcrumbPegawai pageName='Form Ganti Password' />
+        <Layout>
+            <Breadcrumb pageName='Form Ganti Password' />
 
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>
@@ -56,7 +56,7 @@ const UbahPasswordPegawai = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutPegawai>
+        </Layout>
     )
 }
 

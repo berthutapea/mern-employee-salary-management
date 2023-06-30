@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin';
-import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
+import Layout from '../../../../layout';
+import { Breadcrumb, ButtonOne } from '../../../../components';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
 
 const LaporanAbsensi = () => {
     return (
-        <DefaultLayoutAdmin>
-            <BreadcrumbAdmin pageName='Laporan Absensi Pegawai' />
+        <Layout>
+            <Breadcrumb pageName='Laporan Absensi Pegawai' />
 
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>
@@ -85,7 +85,7 @@ const LaporanAbsensi = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutAdmin>
+        </Layout>
     )
 }
 

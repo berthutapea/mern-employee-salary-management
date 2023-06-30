@@ -8,14 +8,14 @@ export const getDataPegawai = async (req, res) => {
     try {
         const response = await DataPegawai.findAll({
             attributes: [
-                'id','nik', 'nama_pegawai',
+                'id', 'nik', 'nama_pegawai',
                 'jenis_kelamin', 'jabatan', 'tanggal_masuk',
                 'status', 'photo', 'hak_akses'
             ]
         });
         res.status(200).json(response);
     } catch (error) {
-        res.status(500).json({msg: error.message});
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -32,13 +32,13 @@ export const getDataPegawaiByID = async (req, res) => {
                 id: req.params.id
             }
         });
-        if(response){
+        if (response) {
             res.status(200).json(response);
         } else {
-            res.status(404).json({msg:'Data pegawai dengan ID tersebut tidak ditemukan'})
+            res.status(404).json({ msg: 'Data pegawai dengan ID tersebut tidak ditemukan' })
         }
     } catch (error) {
-        res.status(500).json({msg: error.message});
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -55,13 +55,13 @@ export const getDataPegawaiByNik = async (req, res) => {
                 nik: req.params.nik
             }
         });
-        if(response){
+        if (response) {
             res.status(200).json(response);
         } else {
-            res.status(404).json({msg:'Data pegawai dengan NIK tersebut tidak ditemukan'})
+            res.status(404).json({ msg: 'Data pegawai dengan NIK tersebut tidak ditemukan' })
         }
     } catch (error) {
-        res.status(500).json({msg: error.message});
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -79,31 +79,31 @@ export const getDataPegawaiByName = async (req, res) => {
                 nama_pegawai: req.params.name
             }
         });
-        if(response){
+        if (response) {
             res.status(200).json(response);
         } else {
-            res.status(404).json({msg:'Data pegawai dengan Nama tersebut tidak ditemukan'})
+            res.status(404).json({ msg: 'Data pegawai dengan Nama tersebut tidak ditemukan' })
         }
     } catch (error) {
-        res.status(500).json({msg: error.message});
+        res.status(500).json({ msg: error.message });
     }
 }
 
 //  method untuk tambah data Pegawai
 export const createDataPegawai = async (req, res) => {
     const {
-      nik, nama_pegawai,
-      username, password, confPassword, jenis_kelamin,
-      jabatan, tanggal_masuk,
-      status, hak_akses
+        nik, nama_pegawai,
+        username, password, confPassword, jenis_kelamin,
+        jabatan, tanggal_masuk,
+        status, hak_akses
     } = req.body;
 
     if (password !== confPassword) {
-      return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+        return res.status(400).json({ msg: "Password dan Konfirmasi Password Tidak Cocok" });
     }
 
     if (!req.files || !req.files.photo) {
-      return res.status(400).json({ msg: "No File Uploaded" });
+        return res.status(400).json({ msg: "Upload Foto Gagal Silahkan Upload Foto Ulang" });
     }
 
     const file = req.files.photo;
@@ -114,42 +114,42 @@ export const createDataPegawai = async (req, res) => {
     const allowedTypes = ['.png', '.jpg', '.jpeg'];
 
     if (!allowedTypes.includes(ext.toLowerCase())) {
-      return res.status(422).json({ msg: "Invalid Images" });
+        return res.status(422).json({ msg: "File Foto Tidak Sesuai Dengan Format" });
     }
 
     if (fileSize > 2000000) {
-      return res.status(422).json({ msg: "Image must be less than 2 MB" });
+        return res.status(422).json({ msg: "Ukuran Gambar Harus Kurang Dari 2 MB" });
     }
 
     file.mv(`./public/images/${fileName}`, async (err) => {
-      if (err) {
-        return res.status(500).json({ msg: err.message });
-      }
+        if (err) {
+            return res.status(500).json({ msg: err.message });
+        }
 
-      const hashPassword = await argon2.hash(password);
+        const hashPassword = await argon2.hash(password);
 
-      try {
-        await DataPegawai.create({
-          nik: nik,
-          nama_pegawai: nama_pegawai,
-          username: username,
-          password: hashPassword,
-          jenis_kelamin: jenis_kelamin,
-          jabatan: jabatan,
-          tanggal_masuk: tanggal_masuk,
-          status: status,
-          photo: fileName,
-          url: url,
-          hak_akses: hak_akses
-        });
+        try {
+            await DataPegawai.create({
+                nik: nik,
+                nama_pegawai: nama_pegawai,
+                username: username,
+                password: hashPassword,
+                jenis_kelamin: jenis_kelamin,
+                jabatan: jabatan,
+                tanggal_masuk: tanggal_masuk,
+                status: status,
+                photo: fileName,
+                url: url,
+                hak_akses: hak_akses
+            });
 
-        res.status(201).json({ msg: "Registrasi Berhasil" });
-      } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ msg: "Terjadi kesalahan saat membuat entitas DataPegawai" });
-      }
+            res.status(201).json({ success: true, message: "Registrasi Berhasil" });
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({ success: false, message: error.message });
+        }
     });
-  };
+};
 
 
 // method untuk update data Pegawai
@@ -160,13 +160,13 @@ export const updateDataPegawai = async (req, res) => {
         }
     });
 
-    if (!pegawai) return res.staus(404).json({msg: "Data pegawai tidak ditemukan"});
+    if (!pegawai) return res.staus(404).json({ msg: "Data pegawai tidak ditemukan" });
     const {
-            nik, nama_pegawai,
-            username, jenis_kelamin,
-            jabatan, tanggal_masuk,
-            status, hak_akses
-        } = req.body;
+        nik, nama_pegawai,
+        username, jenis_kelamin,
+        jabatan, tanggal_masuk,
+        status, hak_akses
+    } = req.body;
 
     try {
         await DataPegawai.update({
@@ -183,9 +183,9 @@ export const updateDataPegawai = async (req, res) => {
                 id: pegawai.id
             }
         });
-        res.status(200).json({msg: "Data Pegawai Updated"});
+        res.status(200).json({ msg: "Data Pegawai Berhasil di Update" });
     } catch (error) {
-        res.status(400).json({msg: error.message});
+        res.status(400).json({ msg: error.message });
     }
 }
 
@@ -193,7 +193,7 @@ export const updateDataPegawai = async (req, res) => {
 export const changePasswordAdmin = async (req, res) => {
     const pegawai = await DataPegawai.findOne({
         where: {
-        id: req.params.id
+            id: req.params.id
         }
     });
 
@@ -205,23 +205,23 @@ export const changePasswordAdmin = async (req, res) => {
     if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
 
     try {
-        if (pegawai.hak_akses === "pegawai"){
+        if (pegawai.hak_akses === "pegawai") {
             const hashPassword = await argon2.hash(password);
 
             await DataPegawai.update(
-            {
-                password: hashPassword
-            },
-            {
-                where: {
-                    id: pegawai.id
+                {
+                    password: hashPassword
+                },
+                {
+                    where: {
+                        id: pegawai.id
+                    }
                 }
-            }
             );
 
             res.status(200).json({ msg: "Password Pegawai Updated" });
         } else {
-            res.status(403).json({ msg: "Forbidden"});
+            res.status(403).json({ msg: "Forbidden" });
         }
     } catch (error) {
         res.status(500).json({ msg: "Internal Server Error" });
@@ -236,15 +236,15 @@ export const deleteDataPegawai = async (req, res) => {
             id: req.params.id
         }
     });
-    if(!pegawai) return res.status(404).json({msg:"Data Pegawai tidak ditemukan"});
+    if (!pegawai) return res.status(404).json({ msg: "Data Pegawai tidak ditemukan" });
     try {
         await DataPegawai.destroy({
-            where:{
+            where: {
                 id: pegawai.id
             }
         });
-        res.status(200).json({msg: "Data Pegawai Deleted"});
+        res.status(200).json({ msg: "Data Pegawai Deleted" });
     } catch (error) {
-        res.status(400).json({msg: error.message});
+        res.status(400).json({ msg: error.message });
     }
 }

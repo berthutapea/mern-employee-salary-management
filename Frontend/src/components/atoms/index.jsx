@@ -1,5 +1,5 @@
-import BreadcrumbAdmin from "./Breadcrumb/BreadcrumbAdmin";
-import BreadcrumbPegawai from "./Breadcrumb/BreadcrumbPegawai";
+import BottomLine from "./BottomLine";
+import Breadcrumb from "./Breadcrumb";
 import ButtonOne from "./Buttons/ButtonOne";
 import ButtonTwo from "./Buttons/ButtonTwo";
 import ButtonThree from "./Buttons/ButtonThree";
@@ -10,15 +10,14 @@ import CardFour from './Card/CardFour';
 import ChartOne from './Chart/ChartOne';
 import ChartTwo from './Chart/ChartTwo';
 import DarkModeSwitcher from './DarkModeSwitcher';
-import DropdownAdmin from './Dropdown/DropdownAdmin';
 import DropdownDefault from './Dropdown/DropdownDefault';
 import DropdownNotification from './Dropdown/DropdownNotification';
-import DropdownPegawai from './Dropdown/DropdownPegawai';
+import DropdownProfil from './Dropdown/DropdownProfil';
 import LoginInput from "./Input/LoginInput";
 
 export {
-    BreadcrumbAdmin,
-    BreadcrumbPegawai,
+    BottomLine,
+    Breadcrumb,
     ButtonOne,
     ButtonTwo,
     ButtonThree,
@@ -29,9 +28,8 @@ export {
     ChartOne,
     ChartTwo,
     DarkModeSwitcher,
-    DropdownAdmin,
     DropdownDefault,
-    DropdownPegawai,
     DropdownNotification,
+    DropdownProfil,
     LoginInput
 };

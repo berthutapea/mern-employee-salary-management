@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin';
+import Layout from '../../../../layout';
 import DataSettingPotonganGaji from '../../../../utils/DataSettingPotonganGaji';
 import { Link } from "react-router-dom";
-import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
+import { Breadcrumb, ButtonOne } from '../../../../components';
 import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
@@ -39,9 +39,9 @@ const SettingPotonganGaji = () => {
 
 
     return (
-        <DefaultLayoutAdmin>
-            <BreadcrumbAdmin pageName='Setting Potongan Gaji' />
-            <Link to="/admin/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
+        <Layout>
+            <Breadcrumb pageName='Setting Potongan Gaji' />
+            <Link to="/transaksi/setting-potongan-gaji/form-setting-potongan-gaji" >
                 <ButtonOne  >
                     <span>Tambah Potongan</span>
                     <span>
@@ -176,7 +176,7 @@ const SettingPotonganGaji = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutAdmin>
+        </Layout>
     )
 }
 

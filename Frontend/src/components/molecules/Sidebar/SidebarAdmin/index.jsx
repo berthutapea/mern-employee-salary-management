@@ -9,8 +9,9 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
 import { TfiPrinter } from 'react-icons/tfi'
 import { logoutUser } from '../../../../config/redux/action'
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2';
+import { reset } from '../../../../config/redux/reducer/authReducer'
 
 const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation()
@@ -27,35 +28,27 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
 
   const onLogout = () => {
     Swal.fire({
-      title: 'Logout',
-      text: 'Apakah Anda yakin ingin logout?',
+      title: 'Konfirmasi',
+      text: 'Apakah Anda yakin ingin keluar?',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Logout',
-      cancelButtonText: 'Batal',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak',
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(logoutUser())
-          .then(() => {
-            Swal.fire({
-              title: 'Logout Succes',
-              icon: 'success',
-              text: 'Logout Berhasil',
-              timer: 1000,
-              showConfirmButton: false,
-            }).then(() => {
-              navigate('/login');
-            });
-          })
-          .catch((error) => {
-            Swal.fire({
-              title: 'Logout Gagal',
-              text: 'Terjadi kesalahan saat logout.',
-              icon: 'error',
-            });
-            console.log(error);
-          });
+        dispatch(logoutUser());
+        dispatch(reset())
+        Swal.fire({
+          title: 'Logout Sukses',
+          text: 'Anda telah berhasil keluar.',
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true,
+          showConfirmButton: false
+        }).then(() => {
+          navigate('/login');
+        });
       }
     });
   };
@@ -103,7 +96,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className='flex items-center justify-center px-6 py-5.5 lg:py-6.5 object-cover'>
-        <NavLink to='/admin/dashboard'>
+        <NavLink to='/dashboard'>
           <img src={Logo} alt='Logo' />
         </NavLink>
 
@@ -127,7 +120,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!--Dashboard Admin--> */}
 
               <NavLink
-                to='/admin/dashboard'
+                to='/dashboard'
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('dashboard') &&
                   'bg-graydark dark:bg-meta-4'
                   }`}
@@ -172,7 +165,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
                           <li>
                             <NavLink
-                              to='/admin/master-data/data-pegawai'
+                              to='/data-pegawai'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -183,7 +176,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/master-data/data-jabatan'
+                              to='/data-jabatan'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -236,7 +229,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
                           <li>
                             <NavLink
-                              to='/admin/transaksi/data-absensi'
+                              to='/transaksi/data-absensi'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -247,7 +240,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/transaksi/setting-potongan-gaji'
+                              to='/transaksi/setting-potongan-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -258,7 +251,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/transaksi/data-gaji'
+                              to='/transaksi/data-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -311,7 +304,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
                           <li>
                             <NavLink
-                              to='/admin/laporan/laporan-gaji'
+                              to='/laporan/laporan-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -322,7 +315,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/laporan/laporan-absensi'
+                              to='/laporan/laporan-absensi'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -333,7 +326,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/admin/laporan/slip-gaji'
+                              to='/laporan/slip-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
@@ -386,7 +379,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className='mt-4 mb-5.5 flex flex-col gap-2.5 pl-6'>
                           <li>
                             <NavLink
-                              to='/admin/pengaturan/ubah-password'
+                              to='/pengaturan/ubah-password'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')

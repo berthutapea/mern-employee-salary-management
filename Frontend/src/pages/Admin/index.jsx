@@ -1,4 +1,3 @@
-import DashboardAdmin from './DashboardAdmin';
 import LaporanAbsensi from './Laporan/LaporanAbsensi';
 import LaporanGaji from './Laporan/LaporanGaji';
 import SlipGaji from './Laporan/SlipGaji';
@@ -10,7 +9,6 @@ import DataGaji from './Transaksi/DataGaji';
 import SettingPotonganGaji from './Transaksi/SettingPotonganGaji';
 
 export {
-    DashboardAdmin,
     LaporanAbsensi,
     LaporanGaji,
     SlipGaji,

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import DefaultLayoutAdmin from '../../../../layout/DefaultLayoutAdmin';
+import Layout from '../../../../layout';
 import DataGajiPegawai from '../../../../utils/DataGajiPegawai';
 import { Link } from "react-router-dom";
-import { BreadcrumbAdmin, ButtonOne } from '../../../../components';
+import { Breadcrumb, ButtonOne } from '../../../../components';
 import { FaRegEdit } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
@@ -40,8 +40,8 @@ const DataGaji = () => {
     };
 
     return (
-        <DefaultLayoutAdmin>
-            <BreadcrumbAdmin pageName='Data Gaji Pegawai' />
+        <Layout>
+            <Breadcrumb pageName='Data Gaji Pegawai' />
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-2 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-10 mt-6'>
                 <div className='border-b border-stroke py-2 dark:border-strokedark'>
@@ -93,7 +93,7 @@ const DataGaji = () => {
                     </div>
                     <div className='flex flex-col md:flex-row w-full md:w-1/2 justify-between text-center'>
                         <div className="relative w-full md:w-1/2 mb-4 md:mb-0 ">
-                            <Link to="/admin/transaksi/data-gaji">
+                            <Link to="/transaksi/data-gaji">
                                 <ButtonOne className="bg-primary">
                                     <span>Tampilkan Data</span>
                                     <span>
@@ -103,7 +103,7 @@ const DataGaji = () => {
                             </Link>
                         </div>
                         <div className="relative w-full md:w-1/2  mb-4 md:mb-0">
-                            <Link to="/admin/transaksi/data-gaji">
+                            <Link to="/transaksi/data-gaji">
                                 <ButtonOne>
                                     <span>Cetak Daftar Gaji</span>
                                     <span>
@@ -290,7 +290,7 @@ const DataGaji = () => {
                     </div>
                 </div>
             </div>
-        </DefaultLayoutAdmin>
+        </Layout>
     )
 }
 
