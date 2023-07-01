@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../../../layout';
 import Swal from 'sweetalert2';
-import { Breadcrumb, ButtonOne, ButtonTwo, ButtonThree } from '../../../../../components';
+import { Breadcrumb, ButtonOne, ButtonTwo } from '../../../../../components';
 import { createDataJabatan, getMe } from '../../../../../config/redux/action';
 
 const FormAddDataJabatan = () => {
