@@ -102,7 +102,6 @@ const FormAddDataJabatan = () => {
                             </h3>
                         </div>
                         <form onSubmit={submitDataJabatan}>
-                            <p className='text-meta-1'>{msg}</p>
                             <div className='p-6.5'>
                                 <div className='mb-4.5 flex flex-col gap-6 xl:flex-row'>
                                     <div className='w-full xl:w-1/2'>
