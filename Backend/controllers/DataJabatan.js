@@ -113,7 +113,7 @@ export const updateDataJabatan = async (req, res) => {
                 },
             });
         }
-        res.status(200).json({ msg: "Data Jabatan updated successfully" });
+        res.status(200).json({ msg: "Data Jabatan Berhasil di Update" });
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
