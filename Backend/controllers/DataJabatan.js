@@ -30,7 +30,6 @@ export const getDataJabatan = async (req, res) => {
     }
 }
 
-// menampilkan semua data jabatan
 // method untuk menampilkan data jabatan by ID
 export const getDataJabatanByID = async (req, res) => {
     try {
