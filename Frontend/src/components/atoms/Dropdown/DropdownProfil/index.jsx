@@ -6,8 +6,9 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-import { logoutUser, getDataPegawaiByName, } from '../../../../config/redux/action';
+import { logoutUser } from '../../../../config/redux/action';
 import { reset } from '../../../../config/redux/reducer/authReducer';
+import axios from "axios";
 
 const DropdownProfil = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -15,12 +16,26 @@ const DropdownProfil = () => {
   const trigger = useRef(null);
   const dropdown = useRef(null);
   const navigate = useNavigate();
-  // const { dataPegawai } = useSelector((state) => state.dataPegawai);
   const { user } = useSelector((state) => state.auth);
+  const [dataPegawai, setDataPegawai] = useState(null);
 
   useEffect(() => {
-    dispatch(getDataPegawaiByName());
-  }, [dispatch]);
+    const getDataPegawai = async () => {
+      try {
+        if (user && user.nama_pegawai) {
+          const response = await axios.get(
+            `http://localhost:5000/data_pegawai/name/${user.nama_pegawai}`
+          );
+          const data = response.data;
+          setDataPegawai(data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getDataPegawai();
+  }, [user]);
 
   const onLogout = () => {
     Swal.fire({
@@ -80,7 +95,7 @@ const DropdownProfil = () => {
 
   return (
     <div className='relative'>
-      {user && (
+      {dataPegawai && (
         <Link
           ref={trigger}
           onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -89,15 +104,20 @@ const DropdownProfil = () => {
         >
           <span className='hidden lg:block'>
             <span className='block text-sm font-medium text-black dark:text-white'>
-              {user.hak_akses}
+              {dataPegawai.nama_pegawai}
             </span>
-            <span className='block text-xs'>{user.nama_pegawai}</span>
+            <span className='block text-xs'>{dataPegawai.hak_akses}</span>
           </span>
 
 
-          <span className='h-12 w-12 rounded-full'>
-            <img src={''} alt='Profil' />
-          </span>
+          <div className='h-12 w-12 rounded-full overflow-hidden'>
+            <img
+              className='h-full w-full object-cover'
+              src={`http://localhost:5000/images/${dataPegawai.photo}`}
+              alt='Profil'
+            />
+          </div>
+
 
           <MdKeyboardArrowDown className='text-xl' />
         </Link>
