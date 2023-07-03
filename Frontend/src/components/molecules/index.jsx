@@ -3,6 +3,8 @@ import DefaultDashboard from './DefaultDashboard';
 import Footer from './Footer';
 import FormAddDataJabatan from "./Form/FormDataJabatan/FormAddDataJabatan";
 import FormEditDataJabatan from "./Form/FormDataJabatan/FormEditDataJabatan";
+import FormAddDataKehadiran from "./Form/FormDataKehadiran/FormAddDataKehadiran";
+import FormEditDataKehadiran from "./Form/FormDataKehadiran/FormEditDataKehadiran";
 import FormAddDataPegawai from "./Form/FormDataPegawai/FormAddDataPegawai";
 import FormEditDataPegawai from "./Form/FormDataPegawai/FormEditDataPegawai";
 import FormDataSettingPotonganGaji from "./Form/FormSettingPotonganGaji";
@@ -18,6 +20,8 @@ export {
     DefaultDashboard,
     Footer,
     FormAddDataJabatan,
+    FormAddDataKehadiran,
+    FormEditDataKehadiran,
     FormEditDataJabatan,
     FormAddDataPegawai,
     FormEditDataPegawai,

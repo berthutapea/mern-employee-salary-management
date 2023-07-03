@@ -83,19 +83,19 @@ const DataPegawai = () => {
     };
 
     useEffect(() => {
-        dispatch(getMe());
-    }, [dispatch]);
-
-    useEffect(() => {
         dispatch(getDataPegawai(startIndex, endIndex));
     }, [dispatch, startIndex, endIndex]);
 
     useEffect(() => {
+        dispatch(getMe());
+    }, [dispatch]);
+
+    useEffect(() => {
         if (isError) {
-            navigate('/');
+            navigate('/login');
         }
         if (user && user.hak_akses !== 'admin') {
-            navigate('/login');
+            navigate('/dashboard');
         }
     }, [isError, user, navigate]);
 
@@ -191,6 +191,7 @@ const DataPegawai = () => {
                     <table className="w-full table-auto">
                         <thead>
                             <tr className="bg-gray-2 text-left dark:bg-meta-4">
+                                <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-11">No</th>
                                 <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-11">Photo</th>
                                 <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-11">NIK</th>
                                 <th className="py-4 px-4 font-medium text-black dark:text-white">Nama Pegawai</th>
@@ -202,9 +203,12 @@ const DataPegawai = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredDataPegawai.slice(startIndex, endIndex).map((data) => {
+                            {filteredDataPegawai.slice(startIndex, endIndex).map((data, index) => {
                                 return (
                                     <tr key={data.id}>
+                                        <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                                            <p className="text-black dark:text-white text-center">{startIndex + index + 1}</p>
+                                        </td>
                                         <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark">
                                             <div className="h-12.5 w-15">
                                                 <div className="rounded-full overflow-hidden">
@@ -213,7 +217,7 @@ const DataPegawai = () => {
                                             </div>
                                         </td>
                                         <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                                            <p className="text-black dark:text-white">{data.nik}</p>
+                                            <p className="text-black dark:text-white text-center">{data.nik}</p>
                                         </td>
                                         <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                                             <p className="text-black dark:text-white">{data.nama_pegawai}</p>

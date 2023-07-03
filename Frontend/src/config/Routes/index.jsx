@@ -4,8 +4,10 @@ import NotFound from '../../components/molecules/NotFound'
 import FormSettingPotonganGaji from '../../components/molecules/Form/FormSettingPotonganGaji'
 import {
   FormAddDataJabatan,
-  FormAddDataPegawai,
   FormEditDataJabatan,
+  FormAddDataKehadiran,
+  FormEditDataKehadiran,
+  FormAddDataPegawai,
   FormEditDataPegawai
 } from '../../components';
 import Home from '../../pages/Home';
@@ -14,7 +16,7 @@ import Dashboard from '../../pages/Dashboard';
 import {
   DataPegawai,
   DataJabatan,
-  DataAbsensi,
+  DataKehadiran,
   SettingPotonganGaji,
   DataGaji,
   LaporanGaji,
@@ -47,7 +49,9 @@ const AppRoutes = () => {
       <Route path='/data-jabatan/form-data-jabatan/edit/:id' element={<FormEditDataJabatan />} />
 
       {/* Transaksi Admin */}
-      <Route path='/transaksi/data-absensi' element={<DataAbsensi />} />
+      <Route path='/data-kehadiran' element={<DataKehadiran />} />
+      <Route path='/data-kehadiran/form-data-kehadiran/add' element={<FormAddDataKehadiran />} />
+      <Route path='/data-kehadiran/form-data-kehadiranedit/:id' element={<FormEditDataKehadiran />} />
       <Route path='/transaksi/setting-potongan-gaji' element={<SettingPotonganGaji />} />
       <Route path='/transaksi/setting-potongan-gaji/form-setting-potongan-gaji' element={<FormSettingPotonganGaji />} />
       <Route path='/transaksi/data-gaji' element={<DataGaji />} />

@@ -4,7 +4,7 @@ import SlipGaji from './Laporan/SlipGaji';
 import DataJabatan from './MasterData/DataJabatan';
 import DataPegawai from './MasterData/DataPegawai';
 import UbahPasswordAdmin from './PengaturanAdmin/UbahPasswordAdmin';
-import DataAbsensi from './Transaksi/DataAbsensi';
+import DataKehadiran from './Transaksi/DataKehadiran';
 import DataGaji from './Transaksi/DataGaji';
 import SettingPotonganGaji from './Transaksi/SettingPotonganGaji';
 
@@ -15,7 +15,7 @@ export {
     DataJabatan,
     DataPegawai,
     UbahPasswordAdmin,
-    DataAbsensi,
+    DataKehadiran,
     DataGaji,
     SettingPotonganGaji
 };
