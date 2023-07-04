@@ -6,13 +6,9 @@ POST  http://localhost:5000/data_kehadiran
 Content-Type: application/json
 
 {
-    "nik": "223344",
-    "nama_pegawai": "Budi",
-    "nama_jabatan": "Operator Produksi",
-    "jenis_kelamin": "Laki - Laki",
-    "hadir": "9",
-    "sakit": "2",
-    "alpha": "1"
+    "hadir": 9,
+    "sakit": 2,
+    "alpha": 1
 }
 
 ### UPDATE data kehadiran
@@ -26,4 +22,4 @@ Content-Type: application/json
 }
 
 ### DELETE Data Kehadiran
-DELETE http://localhost:5000/data_kehadiran/8
+DELETE http://localhost:5000/data_kehadiran/10
