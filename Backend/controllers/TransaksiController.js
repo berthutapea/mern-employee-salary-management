@@ -5,32 +5,6 @@ import PotonganGaji from "../models/PotonganGajiModel.js";
 import moment from "moment";
 import "moment/locale/id.js";
 
-// method untuk mengambil data pegawai :
-export const getDataPegawai = async () => {
-  let resultDataPegawai = [];
-
-  try {
-    // Get data pegawai:
-    const data_pegawai = await DataPegawai.findAll({
-      attributes: ["id", "nik", "nama_pegawai", "jenis_kelamin", "jabatan"],
-      distinct: true,
-    });
-
-    resultDataPegawai = data_pegawai.map((pegawai) => {
-      const id = pegawai.id;
-      const nik = pegawai.nik;
-      const nama_pegawai = pegawai.nama_pegawai;
-      const jenis_kelamin = pegawai.jenis_kelamin;
-      const jabatan_pegawai = pegawai.jabatan;
-
-      return { id, nik, nama_pegawai, jenis_kelamin, jabatan_pegawai };
-    });
-  } catch (error) {
-    console.error(error);
-  }
-  return resultDataPegawai;
-};
-
 // method untuk menampilkan semua Data Kehadiran
 export const viewDataKehadiran = async (req, res) => {
   let resultDataKehadiran = [];
@@ -60,6 +34,7 @@ export const viewDataKehadiran = async (req, res) => {
       const nik = kehadiran.nik;
       const nama_pegawai = kehadiran.nama_pegawai;
       const jabatan_pegawai = kehadiran.nama_jabatan;
+      const jenis_kelamin = kehadiran.jenis_kelamin;
       const hadir = kehadiran.hadir;
       const sakit = kehadiran.sakit;
       const alpha = kehadiran.alpha;
@@ -71,6 +46,7 @@ export const viewDataKehadiran = async (req, res) => {
         nik,
         nama_pegawai,
         jabatan_pegawai,
+        jenis_kelamin,
         hadir,
         sakit,
         alpha,
@@ -100,7 +76,7 @@ export const viewDataKehadiranByID = async (req, res) => {
       ],
       where: {
         id: req.params.id,
-      },
+      }
     });
     res.json(dataKehadiran);
   } catch (error) {
@@ -110,39 +86,73 @@ export const viewDataKehadiranByID = async (req, res) => {
 
 // method untuk menambah data kehadiran
 export const createDataKehadiran = async (req, res) => {
-  const data_pegawai = await getDataPegawai();
-  const { hadir, sakit, alpha } = req.body;
+  const {
+    nik,
+    nama_pegawai,
+    nama_jabatan,
+    jenis_kelamin,
+    hadir,
+    sakit,
+    alpha,
+  } = req.body;
 
   try {
-    const dataPegawai = await DataPegawai.findOne({
-      attributes: ["nik", "nama_pegawai", "jenis_kelamin", "nama_jabatan"],
+    const data_nama_pegawai = await DataPegawai.findOne({
       where: {
-        nama_pegawai: data_pegawai.nama_pegawai,
+        nama_pegawai: nama_pegawai,
       },
     });
 
-    if (dataPegawai) {
+    const data_nama_jabatan = await DataJabatan.findOne({
+      where: {
+        nama_jabatan: nama_jabatan,
+      },
+    });
+
+    const data_nik_pegawai = await DataPegawai.findOne({
+      where: {
+        nik: nik,
+      },
+    });
+
+    const nama_sudah_ada = await DataKehadiran.findOne({
+      where: {
+        nama_pegawai: nama_pegawai,
+      },
+    });
+
+    if (!data_nama_pegawai) {
+      return res.status(404).json({ msg: "Data nama pegawai tidak ditemukan" });
+    }
+
+    if (!data_nama_jabatan) {
+      return res.status(404).json({ msg: "Data nama jabatan tidak ditemukan" });
+    }
+
+    if (!data_nik_pegawai) {
+      return res.status(404).json({ msg: "Data nik tidak ditemukan" });
+    }
+
+    if (!nama_sudah_ada) {
       const month = moment().locale("id").format("MMMM");
       await DataKehadiran.create({
         bulan: month.toLowerCase(),
-        nik: dataPegawai.nik,
-        nama_pegawai: dataPegawai.nama_pegawai,
-        jenis_kelamin: dataPegawai.jenis_kelamin,
-        nama_jabatan: dataPegawai.nama_jabatan,
+        nik: nik,
+        nama_pegawai: data_nama_pegawai.nama_pegawai,
+        jenis_kelamin: jenis_kelamin,
+        nama_jabatan: data_nama_jabatan.nama_jabatan,
         hadir: hadir,
         sakit: sakit,
         alpha: alpha,
       });
       res.json({ msg: "Tambah Data Kehadiran Berhasil" });
     } else {
-      res.status(400).json({ msg: "Data nama tidak ditemukan" });
+      res.status(400).json({ msg: "Data nama sudah ada" });
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ msg: "Terjadi kesalahan server" });
   }
 };
-
 
 // method untuk update data kehadiran
 export const updateDataKehadiran = async (req, res) => {
@@ -217,11 +227,7 @@ export const viewDataPotonganById = async (req, res) => {
         id: req.params.id,
       },
     });
-    if ( dataPotongan === null ){
-      res.status(404).json({msg: 'Data tidak ada'});
-    } else {
-      res.status(200).json(dataPotongan);
-    }
+    res.json(dataPotongan);
   } catch (error) {
     console.log(error);
   }
@@ -257,6 +263,32 @@ export const deleteDataPotongan = async (req, res) => {
 
 // method untuk mengambil data gaji pegawai (data pegawai + data jabatan + data kehadiran + data potongan)
 
+// method untuk mengambil data pegawai :
+export const getDataPegawai = async () => {
+  let resultDataPegawai = [];
+
+  try {
+    // Get data pegawai:
+    const data_pegawai = await DataPegawai.findAll({
+      attributes: ["id", "nik", "nama_pegawai", "jenis_kelamin", "jabatan"],
+      distinct: true,
+    });
+
+    resultDataPegawai = data_pegawai.map((pegawai) => {
+      const id = pegawai.id;
+      const nik = pegawai.nik;
+      const nama_pegawai = pegawai.nama_pegawai;
+      const jenis_kelamin = pegawai.jenis_kelamin;
+      const jabatan_pegawai = pegawai.jabatan;
+
+      return { id, nik, nama_pegawai, jenis_kelamin, jabatan_pegawai };
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  return resultDataPegawai;
+};
 
 // method untuk mengambil data jabatan :
 export const getDataJabatan = async () => {
@@ -350,28 +382,6 @@ export const getDataPotongan = async () => {
   return resultDataPotongan;
 };
 
-// const getData = async() => {
-//     const resultDataKehadiran = await getDataKehadiran();
-//     // const resultDataPotongan = await getDataPotongan();
-
-//     const dataPotongan = resultDataKehadiran.map((data) => {
-
-//         const tahun = data.tahun;
-//         const bulan = data.bulan;
-//         const nik = data.nik;
-//         const nama_pegawai = data.nama_pegawai;
-//         const jabatan = data.jabatan_pegawai;
-//         const hadir = data.hadir;
-//         const sakit = data.sakit;
-//         const alpha = data.alpha;
-
-//         return {tahun, bulan, nik, nama_pegawai, jabatan, hadir, sakit, alpha}
-//     })
-//     console.log(dataPotongan)
-// }
-
-// getData();
-
 // Logika matematika
 export const getDataGajiPegawai = async () => {
   try {
@@ -454,6 +464,9 @@ export const getDataGajiPegawai = async () => {
         gaji_pokok: pegawai.gaji_pokok,
         tj_transport: pegawai.tj_transport,
         uang_makan: pegawai.uang_makan,
+        hadir: kehadiran.hadir,
+        sakit: kehadiran.sakit,
+        alpha: kehadiran.alpha,
         potongan: potongan ? potongan.total_potongan : 0,
         total: total_gaji,
       };
@@ -557,6 +570,7 @@ export const viewDataGajiByName = async (req, res) => {
     res.status(500).json({ msg: "Internal server error" });
   }
 };
+
 
 // method untuk mencari data gaji pegawai berdasarkan bulan
 export const viewDataGajiPegawaiByMonth = async (req, res) => {

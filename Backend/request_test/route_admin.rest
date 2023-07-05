@@ -245,7 +245,7 @@ GET http://localhost:5000/laporan/gaji
 GET http://localhost:5000/laporan/gaji/name/nana
 
 ### get All Data Laporan Gaji By Month
-GET http://localhost:5000/laporan/gaji/month/januari
+GET http://localhost:5000/laporan/gaji/month/juli
 
 ### get All Data Laporan Gaji By Year
 GET http://localhost:5000/laporan/gaji/year/2023
