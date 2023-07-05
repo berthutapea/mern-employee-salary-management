@@ -8,13 +8,7 @@ import SequelizeStore from 'connect-session-sequelize';
 import FileUpload from 'express-fileupload';
 
 import UserRoute from './routes/UserRoute.js';
-import DataJabatanRoute from './routes/DataJabatanRoute.js';
 import AuthRoute from './routes/AuthRoute.js';
-import DataKehadiranRoute from './routes/DataKehadiranRoute.js';
-import PotonganGajiRoute from './routes/PotonganGajiRoute.js';
-import DataGajiRoute from './routes/DataGajiRoute.js';
-import LaporanRoute from './routes/LaporanRoute.js';
-
 
 const app = express();
 
@@ -52,12 +46,7 @@ app.use(FileUpload());
 app.use(express.static("public"));
 
 app.use(UserRoute);
-app.use(DataJabatanRoute);
 app.use(AuthRoute);
-app.use(DataKehadiranRoute);
-app.use(PotonganGajiRoute);
-app.use(DataGajiRoute);
-app.use(LaporanRoute);
 
 // store.sync();
 
