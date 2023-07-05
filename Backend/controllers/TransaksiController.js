@@ -199,7 +199,7 @@ export const createDataPotonganGaji = async (req, res) => {
         potongan: potongan,
         jml_potongan: jml_potongan,
       });
-      res.json({ msg: "Tambah Data Potongan Gaji Berhasil" });
+      res.json({ success: true, message: "Tambah Data Potongan Gaji Berhasil" });
     }
   } catch (error) {
     console.log(error);
@@ -241,7 +241,7 @@ export const updateDataPotongan = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ message: "Data Potongan berhasil diupdate" });
+    res.status(200).json({ msg: "Data Potongan Berhasil di Update" });
   } catch (error) {
     console.log(error.message);
   }
@@ -255,7 +255,7 @@ export const deleteDataPotongan = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ message: "Delete data berhasil" });
+    res.status(200).json({ message: "Delete Data Berhasil" });
   } catch (error) {
     console.log(error.message);
   }
