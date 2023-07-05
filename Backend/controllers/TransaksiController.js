@@ -209,7 +209,7 @@ export const viewDataPotongan = async (req, res) => {
 };
 
 // method untuk menampilkan Data Potongan By ID
-export const viewDataPotonganByID = async (req, res) => {
+export const viewDataPotonganById = async (req, res) => {
   try {
     const dataPotongan = await PotonganGaji.findOne({
       attributes: ["id", "potongan", "jml_potongan"],
@@ -217,7 +217,11 @@ export const viewDataPotonganByID = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.json(dataPotongan);
+    if ( dataPotongan === null ){
+      res.status(404).json({msg: 'Data tidak ada'});
+    } else {
+      res.status(200).json(dataPotongan);
+    }
   } catch (error) {
     console.log(error);
   }
