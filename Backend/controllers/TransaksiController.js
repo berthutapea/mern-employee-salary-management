@@ -197,7 +197,7 @@ export const createDataPotonganGaji = async (req, res) => {
         potongan: potongan,
         jml_potongan: jml_potongan,
       });
-      res.json({ msg: "Tambah Data Potongan Gaji Berhasil" });
+      res.json({ success: true, message: "Tambah Data Potongan Gaji Berhasil" });
     }
   } catch (error) {
     console.log(error);
