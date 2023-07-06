@@ -1,33 +1,35 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NotFound from '../../components/molecules/NotFound'
-import FormSettingPotonganGaji from '../../components/molecules/Form/FormSettingPotonganGaji'
+import Home from '../../pages/Home';
+import About from '../../pages/About';
+import Contact from '../../pages/Contact';
+import Login from '../../pages/Login';
+import Dashboard from '../../pages/Dashboard';
 import {
   FormAddDataJabatan,
   FormEditDataJabatan,
   FormAddDataKehadiran,
   FormEditDataKehadiran,
   FormAddDataPegawai,
-  FormEditDataPegawai
+  FormEditDataPegawai,
+  FormAddDataPotongan,
+  FormEditDataPotongan,
+  PrintPdfDataGaji
 } from '../../components';
-import Home from '../../pages/Home';
-import Login from '../../pages/Login';
-import Dashboard from '../../pages/Dashboard';
 import {
   DataPegawai,
   DataJabatan,
   DataKehadiran,
-  SettingPotonganGaji,
   DataGaji,
   LaporanGaji,
   LaporanAbsensi,
   SlipGaji,
   UbahPasswordAdmin,
   DataGajiPegawai,
-  UbahPasswordPegawai
+  UbahPasswordPegawai,
+  DataPotongan
 } from '../../pages'
-import About from '../../pages/About';
-import Contact from '../../pages/Contact';
 
 const AppRoutes = () => {
 
@@ -51,10 +53,12 @@ const AppRoutes = () => {
       {/* Transaksi Admin */}
       <Route path='/data-kehadiran' element={<DataKehadiran />} />
       <Route path='/data-kehadiran/form-data-kehadiran/add' element={<FormAddDataKehadiran />} />
-      <Route path='/data-kehadiran/form-data-kehadiranedit/:id' element={<FormEditDataKehadiran />} />
-      <Route path='/transaksi/setting-potongan-gaji' element={<SettingPotonganGaji />} />
-      <Route path='/transaksi/setting-potongan-gaji/form-setting-potongan-gaji' element={<FormSettingPotonganGaji />} />
-      <Route path='/transaksi/data-gaji' element={<DataGaji />} />
+      <Route path='/data-kehadiran/form-data-kehadiran/edit/:id' element={<FormEditDataKehadiran />} />
+      <Route path='/data-potongan' element={<DataPotongan />} />
+      <Route path='/data-potongan/form-data-potongan/add' element={<FormAddDataPotongan />} />
+      <Route path='/data-potongan/form-data-potongan/edit/:id' element={<FormEditDataPotongan />} />
+      <Route path='/data-gaji' element={<DataGaji />} />
+      <Route path='/data-gaji/cetak-gaji' element={<PrintPdfDataGaji />} />
 
       {/* Laporan Admin */}
       <Route path='/laporan/laporan-gaji' element={<LaporanGaji />} />
@@ -66,7 +70,7 @@ const AppRoutes = () => {
 
       {/* Route Pegawai */}
       {/* Dashboard Data Gaji Pegawai */}
-      <Route exact path='/data-gaji' element={<DataGajiPegawai />} />
+      <Route exact path='/data-gaji-pegawai' element={<DataGajiPegawai />} />
       <Route exact path='/pengaturan/ubah-password' element={<UbahPasswordPegawai />} />
 
       {/* Route Not Found/404 */}

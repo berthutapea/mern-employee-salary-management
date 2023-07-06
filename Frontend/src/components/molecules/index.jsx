@@ -7,10 +7,12 @@ import FormAddDataKehadiran from "./Form/FormDataKehadiran/FormAddDataKehadiran"
 import FormEditDataKehadiran from "./Form/FormDataKehadiran/FormEditDataKehadiran";
 import FormAddDataPegawai from "./Form/FormDataPegawai/FormAddDataPegawai";
 import FormEditDataPegawai from "./Form/FormDataPegawai/FormEditDataPegawai";
-import FormDataSettingPotonganGaji from "./Form/FormSettingPotonganGaji";
+import FormAddDataPotongan from "./Form/FormDataPotongan/FormAddDataPotongan";
+import FormEditDataPotongan from "./Form/FormDataPotongan/FormEditDataPotongan";
 import Header from './Header';
 import Navbar from './Navbar';
 import NotFound from './NotFound';
+import PrintPdfDataGaji from './PrintPdf/PrintPdfDataGaji';
 import SidebarAdmin from './Sidebar/SidebarAdmin';
 import SidebarPegawai from './Sidebar/SidebarPegawai';
 import SidebarLinkGroup from './Sidebar/SidebarLinkGroup';
@@ -25,10 +27,12 @@ export {
     FormEditDataJabatan,
     FormAddDataPegawai,
     FormEditDataPegawai,
-    FormDataSettingPotonganGaji,
+    FormAddDataPotongan,
+    FormEditDataPotongan,
     Header,
     Navbar,
     NotFound,
+    PrintPdfDataGaji,
     SidebarAdmin,
     SidebarPegawai,
     SidebarLinkGroup

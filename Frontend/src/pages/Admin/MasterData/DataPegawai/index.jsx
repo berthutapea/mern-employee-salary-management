@@ -199,7 +199,7 @@ const DataPegawai = () => {
                                 <th className="py-4 px-4 font-medium text-black dark:text-white">Tanggal Masuk</th>
                                 <th className="py-4 px-4 font-medium text-black dark:text-white">Status</th>
                                 <th className="py-4 px-4 font-medium text-black dark:text-white">Hak Akses</th>
-                                <th className="py-4 px-4 font-medium text-black dark:text-white">Actions</th>
+                                <th className="py-4 px-4 font-medium text-black dark:text-white">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

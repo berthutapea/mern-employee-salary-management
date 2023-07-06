@@ -40,7 +40,7 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
         dispatch(logoutUser());
         dispatch(reset())
         Swal.fire({
-          title: 'Logout Sukses',
+          title: 'Logout Berhasil',
           text: 'Anda telah berhasil keluar.',
           icon: 'success',
           timer: 1500,
@@ -240,18 +240,18 @@ const SidebarAdmin = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li>
                             <NavLink
-                              to='/transaksi/setting-potongan-gaji'
+                              to='/data-potongan'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
                               }
                             >
-                              Setting Potongan Gaji
+                              Data Potongan
                             </NavLink>
                           </li>
                           <li>
                             <NavLink
-                              to='/transaksi/data-gaji'
+                              to='/data-gaji'
                               className={({ isActive }) =>
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')

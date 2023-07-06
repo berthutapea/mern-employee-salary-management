@@ -29,20 +29,17 @@ const DataKehadiran = () => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
 
-    const filteredDataKehadiran = dataKehadiran.filter((data) => {
+    const filteredDataKehadiran = dataKehadiran.filter((kehadiranData) => {
         const isMatchBulan =
             filterBulan === "" ||
-            (filterBulan && data.bulan.toLowerCase().includes(filterBulan.toLowerCase()));
+            kehadiranData.bulan.toLowerCase().includes(filterBulan.toLowerCase());
         const isMatchTahun =
-            filterTahun === "" ||
-            (filterTahun && data.tahun.toLowerCase().includes(filterTahun.toLowerCase()));
+            filterTahun === "" || kehadiranData.tahun.toString() === filterTahun;
         const isMatchNama =
             filterNama === "" ||
-            (filterNama && data.nama_pegawai.toLowerCase().includes(filterNama.toLowerCase()));
+            kehadiranData.nama_pegawai.toLowerCase().includes(filterNama.toLowerCase());
         return isMatchBulan && isMatchTahun && isMatchNama;
     });
-
-
 
     const goToPrevPage = () => {
         if (currentPage > 1) {
@@ -224,6 +221,23 @@ const DataKehadiran = () => {
                         </div>
                     </div>
                 </div>
+                <div className="bg-gray-2 text-left dark:bg-meta-4 mt-6">
+                    {filteredDataKehadiran.slice(startIndex, endIndex).reduce((uniqueEntries, data) => {
+                        const isEntryExist = uniqueEntries.find(entry => entry.bulan === data.bulan && entry.tahun === data.tahun);
+                        if (!isEntryExist) {
+                            uniqueEntries.push(data);
+                        }
+                        return uniqueEntries;
+                    }, []).map(data => (
+                        <h2 className="px-4 py-2 text-black dark:text-white" key={`${data.bulan}-${data.tahun}`}>
+                            Menampilkan Data Kehadiran Pegawai Bulan :
+                            <span className="font-medium"> {data.bulan} </span>
+                            Tahun :
+                            <span className="font-medium"> {data.tahun}</span>
+                        </h2>
+                    ))}
+                </div>
+
             </div>
 
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
@@ -249,35 +263,29 @@ const DataKehadiran = () => {
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     No
                                 </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Tahun
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Bulan
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                <th className='py-4 px-4 font-medium text-center text-black dark:text-white'>
                                     NIK
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     Nama Pegawai
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Jenis Kelamin
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
                                     Jabatan
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                    Jenis Kelamin
+                                </th>
+                                <th className='py-4 text-center px-4 font-medium text-black dark:text-white'>
                                     Hadir
                                 </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                <th className='py-4 text-center px-4 font-medium text-black dark:text-white'>
                                     Sakit
                                 </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
+                                <th className='py-4 text-center px-4 font-medium text-black dark:text-white'>
                                     Alpha
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Actions
+                                    Aksi
                                 </th>
                             </tr>
                         </thead>
@@ -289,31 +297,25 @@ const DataKehadiran = () => {
                                             <p className='text-black dark:text-white'>{startIndex + index + 1}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.tahun}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.bulan}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.nik}</p>
+                                            <p className='text-black text-center dark:text-white'>{data.nik}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <p className='text-black dark:text-white'>{data.nama_pegawai}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                            <p className='text-black dark:text-white'>{data.jabatan_pegawai}</p>
+                                        </td>
+                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <p className='text-black dark:text-white'>{data.jenis_kelamin}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.nama_jabatan}</p>
+                                            <p className='text-center text-black dark:text-white'>{data.hadir}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.hadir}</p>
+                                            <p className='text-center text-black dark:text-white'>{data.sakit}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.sakit}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.alpha}</p>
+                                            <p className='text-center text-black dark:text-white'>{data.alpha}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
@@ -339,7 +341,7 @@ const DataKehadiran = () => {
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="flex items-center space-x-2">
                         <span className="text-gray-5 dark:text-gray-4 text-sm py-4">
-                            Showing {startIndex + 1}-{Math.min(endIndex, filteredDataKehadiran.length)} of {filteredDataKehadiran.length} Data Pegawai
+                            Showing {startIndex + 1}-{Math.min(endIndex, filteredDataKehadiran.length)} of {filteredDataKehadiran.length} Data Kehadiran Pegawai
                         </span>
                     </div>
                     <div className="flex space-x-2 py-4">
