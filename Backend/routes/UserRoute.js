@@ -26,7 +26,8 @@ import {
     viewDataKehadiran,
     createDataKehadiran,
     updateDataKehadiran,
-    deleteDataKehadiran
+    deleteDataKehadiran,
+    viewDataKehadiranByID,
 } from "../controllers/TransaksiController.js";
 
 import {
@@ -84,6 +85,7 @@ router.delete('/data_jabatan/:id', verifyUser, adminOnly, deleteDataJabatan);
 /* ==== Transaksi  ==== */
 // Data Kehadiran
 router.get('/data_kehadiran', verifyUser, adminOnly, viewDataKehadiran);
+router.get('/data_kehadiran/:id', verifyUser, adminOnly, viewDataKehadiranByID);
 router.post('/data_kehadiran', createDataKehadiran);
 router.patch('/data_kehadiran/update/:id', updateDataKehadiran);
 router.delete('/data_kehadiran/:id', verifyUser, adminOnly, deleteDataKehadiran);

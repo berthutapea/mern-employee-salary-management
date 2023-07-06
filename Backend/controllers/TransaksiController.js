@@ -162,7 +162,7 @@ export const updateDataKehadiran = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ msg: "Data kehadiran berhasil diupdate" });
+    res.status(200).json({ msg: "Data kehadiran Berhasil di Update" });
   } catch (error) {
     console.log(error.msg);
   }
