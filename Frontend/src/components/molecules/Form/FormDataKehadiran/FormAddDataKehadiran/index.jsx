@@ -14,6 +14,7 @@ const FormAddDataKehadiran = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dataPegawai, setDataPegawai] = useState([]);
     const [dataKehadiran, setDataKehadiran] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState("");
     const { isError, user } = useSelector((state) => state.auth);
 
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -22,6 +23,11 @@ const FormAddDataKehadiran = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const filteredDataPegawai = dataPegawai.filter((pegawai) =>
+        pegawai.nama_pegawai.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+
 
     const getDataPegawai = async () => {
         const response = await axios.get("http://localhost:5000/data_pegawai");
@@ -70,6 +76,10 @@ const FormAddDataKehadiran = () => {
         const updateAlpha = [...alpha];
         updateAlpha[index] = value;
         setAlpha(updateAlpha);
+    };
+
+    const handleSearch = (e) => {
+        setSearchKeyword(e.target.value);
     };
 
     const saveDataKehadiran = async (e) => {
@@ -185,8 +195,8 @@ const FormAddDataKehadiran = () => {
                             <input
                                 type="text"
                                 placeholder="Cari Nama Pegawai..."
-                                // value={searchKeyword}
-                                // onChange={handleSearch}
+                                value={searchKeyword}
+                                onChange={handleSearch}
                                 className="rounded-lg border-[1.5px] border-stroke bg-transparent py-2 pl-10 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary left-0"
                             />
                             <span className="absolute left-2 py-3 text-xl">
@@ -225,13 +235,16 @@ const FormAddDataKehadiran = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dataPegawai.slice(startIndex, endIndex).map((data, index) => {
+                                {filteredDataPegawai.slice(startIndex, endIndex).map((data, index) => {
                                     const isNamaAda = dataKehadiran.some(
                                         (kehadiran) => kehadiran.nama_pegawai === data.nama_pegawai
                                     );
 
                                     if (isNamaAda) {
-                                        return <tr>
+                                        return <tr
+                                            key={data.id}
+                                            className="border-b border-[#eee] dark:border-strokedark"
+                                        >
                                             <td className="py-5 px-4">
                                                 <p className="text-center text-black dark:text-white">{startIndex + index + 1}</p>
                                             </td>
@@ -239,7 +252,7 @@ const FormAddDataKehadiran = () => {
                                                 colSpan="8">
                                                 <p className="text-center text-black dark:text-white">Data Kehadiran Pegawai Sudah di Simpan. Input Kembali Ketika Sudah Ganti Periode !</p>
                                             </td>
-                                        </tr>; 
+                                        </tr>;
                                     }
 
                                     return (
@@ -307,8 +320,9 @@ const FormAddDataKehadiran = () => {
                     <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                         <div className="flex items-center space-x-2">
                             <span className="text-gray-5 dark:text-gray-4 text-sm py-4">
-                                Showing {startIndex + 1}-{Math.min(endIndex, dataKehadiran.length)} of {dataKehadiran.length} Data Kehadiran Pegawai
+                                Showing {startIndex + 1}-{Math.min(endIndex, filteredDataPegawai.length)} of {filteredDataPegawai.length} Data Kehadiran Pegawai
                             </span>
+
                         </div>
                         <div className="flex space-x-2 py-4">
                             <button

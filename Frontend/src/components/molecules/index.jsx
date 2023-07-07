@@ -1,5 +1,6 @@
 import Banner from './Banner';
 import DefaultDashboard from './DefaultDashboard';
+import DetailDataGaji from './DetailDataGaji';
 import Footer from './Footer';
 import FormAddDataJabatan from "./Form/FormDataJabatan/FormAddDataJabatan";
 import FormEditDataJabatan from "./Form/FormDataJabatan/FormEditDataJabatan";
@@ -20,6 +21,7 @@ import SidebarLinkGroup from './Sidebar/SidebarLinkGroup';
 export {
     Banner,
     DefaultDashboard,
+    DetailDataGaji,
     Footer,
     FormAddDataJabatan,
     FormAddDataKehadiran,

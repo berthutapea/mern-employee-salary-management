@@ -292,7 +292,10 @@ const DataKehadiran = () => {
                         <tbody>
                             {filteredDataKehadiran.slice(startIndex, endIndex).map((data, index) => {
                                 return (
-                                    <tr key={data.id}>
+                                    <tr
+                                        key={data.id}
+                                        className="border-b border-[#eee] dark:border-strokedark"
+                                    >
                                         <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                             <p className='text-black dark:text-white'>{startIndex + index + 1}</p>
                                         </td>

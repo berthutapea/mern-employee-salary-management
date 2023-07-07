@@ -5,8 +5,7 @@ import { useReactToPrint } from 'react-to-print'
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { Breadcrumb, ButtonOne } from '../../../../components';
-import { FaRegEdit } from 'react-icons/fa'
-import { BsTrash3 } from 'react-icons/bs'
+import { FaRegEye } from 'react-icons/fa'
 import { BiSearch } from 'react-icons/bi'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
@@ -222,14 +221,14 @@ const DataGaji = () => {
                     <div className='w-full md:w-1/2 flex justify-center md:justify-end'>
                         <div className='w-full md:w-auto'>
                             <Link to='/data-gaji/cetak-gaji'>
-                            <ButtonOne
-                                onClick={handlePrint}
-                            >
-                                <span>Cetak Daftar Gaji</span>
-                                <span>
-                                    <TfiPrinter />
-                                </span>
-                            </ButtonOne>
+                                <ButtonOne
+                                    onClick={handlePrint}
+                                >
+                                    <span>Cetak Daftar Gaji</span>
+                                    <span>
+                                        <TfiPrinter />
+                                    </span>
+                                </ButtonOne>
                             </Link>
                         </div>
                     </div>
@@ -339,14 +338,12 @@ const DataGaji = () => {
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
-                                                <button className='hover:text-black'>
-                                                    <FaRegEdit className="text-primary text-xl hover:text-black dark:hover:text-white" />
-                                                </button>
-                                                <button
-                                                    onClick={() => onDeleteDataGaji(data.id)}
-                                                    className='hover:text-black'>
-                                                    <BsTrash3 className="text-danger text-xl hover:text-black dark:hover:text-white" />
-                                                </button>
+                                                <Link
+                                                    className='hover:text-black'
+                                                    to={`/data-gaji/detail-data-gaji/name/${data.nama_pegawai}`}
+                                                >
+                                                    <FaRegEye className="text-primary text-xl hover:text-black dark:hover:text-white" />
+                                                </Link>
                                             </div>
                                         </td>
                                     </tr>

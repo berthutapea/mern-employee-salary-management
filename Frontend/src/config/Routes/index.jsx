@@ -15,7 +15,8 @@ import {
   FormEditDataPegawai,
   FormAddDataPotongan,
   FormEditDataPotongan,
-  PrintPdfDataGaji
+  PrintPdfDataGaji,
+  DetailDataGaji
 } from '../../components';
 import {
   DataPegawai,
@@ -58,6 +59,7 @@ const AppRoutes = () => {
       <Route path='/data-potongan/form-data-potongan/add' element={<FormAddDataPotongan />} />
       <Route path='/data-potongan/form-data-potongan/edit/:id' element={<FormEditDataPotongan />} />
       <Route path='/data-gaji' element={<DataGaji />} />
+      <Route path='/data-gaji/detail-data-gaji/name/:name' element={<DetailDataGaji />} />
       <Route path='/data-gaji/cetak-gaji' element={<PrintPdfDataGaji />} />
 
       {/* Laporan Admin */}
