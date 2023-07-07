@@ -112,7 +112,7 @@ export const updateDataJabatan = async (req, res) => {
                 },
             });
         }
-        res.status(200).json({ msg: "Data Jabatan Berhasil di Update" });
+        res.status(200).json({ msg: "Data Jabatan Berhasil di Pebarui" });
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
@@ -141,7 +141,7 @@ export const deleteDataJabatan = async (req, res) => {
                 },
             });
         }
-        res.status(200).json({ msg: "Data Jabatan deleted successfully" });
+        res.status(200).json({ msg: "Data Jabatan Berhasil di Hapus" });
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }

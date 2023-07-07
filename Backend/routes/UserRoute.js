@@ -19,7 +19,8 @@ import {
     getDataJabatan,
     createDataJabatan,
     updateDataJabatan,
-    deleteDataJabatan
+    deleteDataJabatan,
+    getDataJabatanByID
 } from "../controllers/DataJabatan.js";
 
 import {
@@ -58,12 +59,13 @@ import {
 } from "../controllers/LaporanController.js";
 
 import { LogOut, changePassword } from '../controllers/Auth.js';
-import { dashboardPegawai, viewDataGajiSinglePegawaiByMonth, viewDataGajiSinglePegawaiByYear } from '../controllers/Pegawai.js';
-
-
+import {
+    dashboardPegawai,
+    viewDataGajiSinglePegawaiByMonth,
+    viewDataGajiSinglePegawaiByYear
+} from '../controllers/Pegawai.js';
 
 const router = express.Router();
-
 
 // Admin Route :
 
@@ -76,11 +78,12 @@ router.get('/data_pegawai/name/:name', verifyUser, getDataPegawaiByName);
 router.post('/data_pegawai', createDataPegawai);
 router.patch('/data_pegawai/:id', verifyUser, adminOnly, updateDataPegawai);
 router.delete('/data_pegawai/:id', verifyUser, adminOnly, deleteDataPegawai);
-router.patch('/data_pegawai/:id/change_password',  verifyUser, adminOnly, changePasswordAdmin);
+router.patch('/data_pegawai/:id/change_password', verifyUser, adminOnly, changePasswordAdmin);
 // Data Jabatan
 router.get('/data_jabatan', verifyUser, adminOnly, getDataJabatan);
+router.get('/data_jabatan/:id', verifyUser, adminOnly, getDataJabatanByID);
 router.post('/data_jabatan', verifyUser, adminOnly, createDataJabatan);
-router.patch('/data_jabatan/:id', verifyUser,  adminOnly, updateDataJabatan);
+router.patch('/data_jabatan/:id', verifyUser, adminOnly, updateDataJabatan);
 router.delete('/data_jabatan/:id', verifyUser, adminOnly, deleteDataJabatan);
 
 /* ==== Transaksi  ==== */
@@ -121,8 +124,6 @@ router.patch('/change_password', verifyUser, changePassword);
 
 /* ==== Logout ==== */
 router.delete('/logout', LogOut);
-
-
 
 // Pegawai Route :
 /* ==== Dashboard ==== */

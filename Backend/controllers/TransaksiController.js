@@ -122,15 +122,15 @@ export const createDataKehadiran = async (req, res) => {
     });
 
     if (!data_nama_pegawai) {
-      return res.status(404).json({ msg: "Data nama pegawai tidak ditemukan" });
+      return res.status(404).json({ msg: "Data Nama Pegawai tidak di Temukan" });
     }
 
     if (!data_nama_jabatan) {
-      return res.status(404).json({ msg: "Data nama jabatan tidak ditemukan" });
+      return res.status(404).json({ msg: "Data Nama Jabatan Tidak di Temukan" });
     }
 
     if (!data_nik_pegawai) {
-      return res.status(404).json({ msg: "Data nik tidak ditemukan" });
+      return res.status(404).json({ msg: "Data NIK Tidak di Temukan" });
     }
 
     if (!nama_sudah_ada) {
@@ -147,7 +147,7 @@ export const createDataKehadiran = async (req, res) => {
       });
       res.json({ msg: "Tambah Data Kehadiran Berhasil" });
     } else {
-      res.status(400).json({ msg: "Data nama sudah ada" });
+      res.status(400).json({ msg: "Data Nama Sudah Ada" });
     }
   } catch (error) {
     console.log(error);
@@ -162,7 +162,7 @@ export const updateDataKehadiran = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ msg: "Data kehadiran Berhasil di Update" });
+    res.status(200).json({ msg: "Data Kehadiran Berhasil di Perbarui" });
   } catch (error) {
     console.log(error.msg);
   }
@@ -176,7 +176,7 @@ export const deleteDataKehadiran = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ msg: "Delete data berhasil" });
+    res.status(200).json({ msg: "Data Kehadiran Berhasil di Hapus" });
   } catch (error) {
     console.log(error.msg);
   }
@@ -192,7 +192,7 @@ export const createDataPotonganGaji = async (req, res) => {
       },
     });
     if (nama_potongan) {
-      res.status(400).json({ msg: "Data potongan sudah ada !" });
+      res.status(400).json({ msg: "Data Potongan Sudah Ada !" });
     } else {
       await PotonganGaji.create({
         id: id,
@@ -241,7 +241,7 @@ export const updateDataPotongan = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ msg: "Data Potongan Berhasil di Update" });
+    res.status(200).json({ msg: "Data Potongan Berhasil di Perbarui" });
   } catch (error) {
     console.log(error.message);
   }
@@ -255,7 +255,7 @@ export const deleteDataPotongan = async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json({ message: "Delete Data Berhasil" });
+    res.status(200).json({ message: "Data Potongan Berhasil di Hapus" });
   } catch (error) {
     console.log(error.message);
   }
@@ -519,7 +519,7 @@ export const viewDataGajiPegawaiByName = async (req, res) => {
     if (dataGajiByName.length === 0) {
       res
         .status(404)
-        .json({ msg: `Data dengan nama ${name} tidak ditemukan ` });
+        .json({ msg: `Data Dengan Nama ${name} Tidak di Temukan ` });
     } else {
       res.json(dataGajiByName);
     }
@@ -608,7 +608,7 @@ export const viewDataGajiPegawaiByMonth = async (req, res) => {
 
     res
       .status(404)
-      .json({ msg: `Data untuk bulan ${req.params.month} tidak ditemukan` });
+      .json({ msg: `Data Untuk Bulan ${req.params.month} Tidak di Temukan` });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -644,7 +644,7 @@ export const viewDataGajiPegawaiByYear = async (req, res) => {
     if (dataGajiByYear.length === 0) {
       return res
         .status(404)
-        .json({ msg: `Data tahun ${year} tidak ditemukan` });
+        .json({ msg: `Data Tahun ${year} Tidak di Temukan` });
     }
     res.json(dataGajiByYear);
   } catch (error) {

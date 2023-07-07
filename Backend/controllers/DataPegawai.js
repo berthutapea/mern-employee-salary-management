@@ -183,7 +183,7 @@ export const updateDataPegawai = async (req, res) => {
                 id: pegawai.id
             }
         });
-        res.status(200).json({ msg: "Data Pegawai Updated" });
+        res.status(200).json({ msg: "Data Pegawai Berhasil di Perbarui" });
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
@@ -202,7 +202,7 @@ export const changePasswordAdmin = async (req, res) => {
 
     const { password, confPassword } = req.body;
 
-    if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+    if (password !== confPassword) return res.status(400).json({ msg: "Password dan Konfirmasi Password Tidak Cocok" });
 
     try {
         if (pegawai.hak_akses === "pegawai") {
@@ -219,7 +219,7 @@ export const changePasswordAdmin = async (req, res) => {
                 }
             );
 
-            res.status(200).json({ msg: "Password Pegawai Updated" });
+            res.status(200).json({ msg: "Password Pegawai Berhasil di Perbarui" });
         } else {
             res.status(403).json({ msg: "Forbidden" });
         }
@@ -243,7 +243,7 @@ export const deleteDataPegawai = async (req, res) => {
                 id: pegawai.id
             }
         });
-        res.status(200).json({ msg: "Data Pegawai Deleted" });
+        res.status(200).json({ msg: "Data Pegawai Berhasil di Hapus" });
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }

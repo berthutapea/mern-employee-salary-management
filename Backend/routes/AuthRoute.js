@@ -7,5 +7,4 @@ router.get('/me', Me);
 router.post('/login', Login);
 router.delete('/logout', LogOut);
 
-
 export default router;

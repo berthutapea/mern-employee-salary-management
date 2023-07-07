@@ -38,10 +38,9 @@ export const Login = async (req, res) => {
   });
 };
 
-
 export const Me = async (req, res) => {
   if (!req.session.userId) {
-    return res.status(401).json({ msg: "Mohon login ke akun Anda!" });
+    return res.status(401).json({ msg: "Mohon Login ke Akun Anda!" });
   }
   const pegawai = await DataPegawai.findOne({
     attributes: ['id', 'nik', 'nama_pegawai', 'username', 'hak_akses'],
@@ -49,15 +48,14 @@ export const Me = async (req, res) => {
       id_pegawai: req.session.userId
     }
   });
-  if (!pegawai) return res.status(404).json({ msg: "User tidak ditemukan" });
+  if (!pegawai) return res.status(404).json({ msg: "User Tidak di Temukan" });
   res.status(200).json(pegawai);
 }
-
 
 export const LogOut = (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(400).json({ msg: "Tidak dapat logout" });
-    res.status(200).json({ msg: "Anda telah logout" });
+    res.status(200).json({ msg: "Anda Telah Logout" });
   });
 }
 
@@ -74,7 +72,7 @@ export const changePassword = async (req, res) => {
 
   const { password, confPassword } = req.body;
 
-  if (password !== confPassword) return res.status(400).json({ msg: "Password dan Confirm Password tidak cocok" });
+  if (password !== confPassword) return res.status(400).json({ msg: "Password dan Konfirmasi Password Tidak Cocok" });
 
   try {
     const hashPassword = await argon2.hash(password);
@@ -89,7 +87,7 @@ export const changePassword = async (req, res) => {
         }
       }
     )
-    res.status(200).json({ msg: "Password Updated" });
+    res.status(200).json({ msg: "Password Berhasil di Perbarui" });
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

@@ -26,7 +26,7 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
         });
 
         if (filteredData.length === 0) {
-            res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: 'Data Tidak di Temukan' });
         } else {
             const formattedData = filteredData.map((data) => {
                 return {
@@ -46,10 +46,6 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
-
-
-
-
 
 // method untuk melihat laporan gaji pegawai berdasarkan tahun
 export const viewLaporanGajiPegawaiByYear = async (req, res) => {
@@ -91,7 +87,7 @@ export const viewLaporanAbsensiPegawaiByMonth = async (req, res) => {
         });
 
         if (dataAbsensi.length === 0) {
-            res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: 'Data Tidak di Temukan' });
         } else {
             res.json(dataAbsensi);
         }
@@ -121,7 +117,7 @@ export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
         });
 
         if (dataAbsensi.length === 0) {
-            res.status(404).json({ msg: 'Data tidak ditemukan' });
+            res.status(404).json({ msg: 'Data Tidak di Temukan' });
         } else {
             res.json(dataAbsensi);
         }
@@ -129,8 +125,6 @@ export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
         res.status(500).json({ msg: 'Internal Server Error' });
     }
 };
-
-
 
 // method untuk melihat Slip Gaji Pegawai By Name
 // nik, nama_pegawai, jabatan, bulan, tahun, gaji pokok, tunjangan transport, uang makan, potongan, total
@@ -154,7 +148,7 @@ export const viewSlipGajiByMonth = async (req, res) => {
         });
 
         if (filteredData.length === 0) {
-            res.status(404).json({ msg: `Data dengan bulan ${month} tidak ditemukan ` });
+            res.status(404).json({ msg: `Data dengan Bulan ${month} Tidak di Temukan ` });
         } else {
             const formattedData = filteredData.map((data) => {
                 return {

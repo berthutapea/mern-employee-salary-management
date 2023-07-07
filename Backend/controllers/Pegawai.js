@@ -3,8 +3,6 @@ import DataPegawai from "../models/DataPegawaiModel.js";
 // import { getDataGajiPegawai } from "./TransaksiController.js";
 import { verifyUser } from "../middleware/AuthUser.js";
 
-
-
 // method untuk dashboard pegawai
 export const dashboardPegawai = async (req, res) => {
     await verifyUser(req, res, () => {});
@@ -69,7 +67,7 @@ export const viewDataGajiSinglePegawaiByMonth = async (req, res) => {
           return res.json(dataGajiByMonth);
       }
 
-      res.status(404).json({ msg: `Data gaji untuk bulan ${req.params.month} tidak ditemukan pada pegawai ${user.nama_pegawai}` });
+      res.status(404).json({ msg: `Data Gaji Untuk Bulan ${req.params.month} Tidak di Temukan Pada Pegawai ${user.nama_pegawai}` });
   } catch (error) {
       res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -109,7 +107,7 @@ export const viewDataGajiSinglePegawaiByYear = async (req, res) => {
     });
 
     if (dataGajiByYear.length === 0) {
-        return res.status(404).json({ msg: `Data tahun ${year} tidak ditemukan` });
+        return res.status(404).json({ msg: `Data Tahun ${year} Tidak di Temukan` });
     }
     res.json(dataGajiByYear)
   } catch (error) {
