@@ -39,7 +39,7 @@ const SidebarPegawai = ({ sidebarOpen, setSidebarOpen }) => {
         dispatch(logoutUser());
         dispatch(reset())
         Swal.fire({
-          title: 'Logout Sukses',
+          title: 'Logout Berhasil',
           text: 'Anda telah berhasil keluar.',
           icon: 'success',
           timer: 1500,
@@ -131,7 +131,7 @@ const SidebarPegawai = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Data Gaji Pegawai--> */}
               <li>
                 <NavLink
-                  to='/data-gaji'
+                  to='/data-gaji-pegawai'
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('datagaji') &&
                     'bg-graydark dark:bg-meta-4'
                     }`}

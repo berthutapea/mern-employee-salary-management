@@ -4,36 +4,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../../../layout';
 import Swal from 'sweetalert2';
 import { Breadcrumb, ButtonOne, ButtonTwo } from '../../../../../components';
-import { createDataJabatan, getMe } from '../../../../../config/redux/action';
+import { createDataPotongan, getMe } from '../../../../../config/redux/action';
 
-const FormAddDataJabatan = () => {
+const FormAddDataPotongan = () => {
     const [formData, setFormData] = useState({
-        namaJabatan: '',
-        gajiPokok: '',
-        tjTransport: '',
-        uangMakan: '',
+        potongan: '',
+        jmlPotongan: '',
     });
-    
+
     const {
-        namaJabatan,
-        gajiPokok,
-        tjTransport,
-        uangMakan,
+        potongan,
+        jmlPotongan,
     } = formData;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
 
-    const submitDataJabatan = (e) => {
+    const submitDataPotongan = (e) => {
         e.preventDefault();
         const newFormData = new FormData();
-        newFormData.append('nama_jabatan', namaJabatan);
-        newFormData.append('gaji_pokok', gajiPokok);
-        newFormData.append('tj_transport', tjTransport);
-        newFormData.append('uang_makan', uangMakan);
+        newFormData.append('potongan', potongan);
+        newFormData.append('jml_potongan', jmlPotongan);
 
-        dispatch(createDataJabatan(newFormData, navigate))
+        dispatch(createDataPotongan(newFormData, navigate))
             .then((response) => {
                 Swal.fire({
                     icon: 'success',
@@ -92,80 +86,47 @@ const FormAddDataJabatan = () => {
 
     return (
         <Layout>
-            <Breadcrumb pageName='Form Jabatan' />
+            <Breadcrumb pageName='Form Data Potongan' />
 
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>
                     <div className='rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark'>
                         <div className='border-b border-stroke py-4 px-6.5 dark:border-strokedark'>
                             <h3 className='font-medium text-black dark:text-white'>
-                                Form Data Jabatan
+                                Form Data Potongan
                             </h3>
                         </div>
-                        <form onSubmit={submitDataJabatan}>
+                        <form onSubmit={submitDataPotongan}>
                             <div className='p-6.5'>
-                                <div className='mb-4.5 flex flex-col gap-6 xl:flex-row'>
-                                    <div className='w-full xl:w-1/2'>
-                                        <label className='mb-2.5 block text-black dark:text-white'>
-                                            Jabatan <span className='text-meta-1'>*</span>
+                                <div className='mb-4.5 '>
+                                    <div className='w-full mb-4'>
+                                        <label className='mb-4 block text-black dark:text-white'>
+                                            Potongan <span className='text-meta-1'>*</span>
                                         </label>
                                         <input
                                             type='text'
-                                            id='namaJabatan'
-                                            name='namaJabatan'
-                                            value={namaJabatan}
+                                            id='potongan'
+                                            name='potongan'
+                                            value={potongan}
                                             onChange={handleChange}
                                             required={true}
-                                            placeholder='Masukkan jabatan'
-                                            className='w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
-                                        />
-                                    </div>
-                                    <div className='w-full xl:w-1/2'>
-                                        <label className='mb-2.5 block text-black dark:text-white'>
-                                            Gaji Pokok <span className='text-meta-1'>*</span>
-                                        </label>
-                                        <input
-                                            type='number'
-                                            id='gajiPokok'
-                                            name='gajiPokok'
-                                            value={gajiPokok}
-                                            onChange={handleChange}
-                                            required
-                                            placeholder='Masukkan gaji pokok'
-                                            className='w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row mt-10">
-                                    <div className='w-full xl:w-1/2'>
-                                        <label className='mb-2.5 block text-black dark:text-white'>
-                                            Tunjangan Transport <span className='text-meta-1'>*</span>
-                                        </label>
-                                        <input
-                                            type='number'
-                                            id='tjTransport'
-                                            name='tjTransport'
-                                            value={tjTransport}
-                                            onChange={handleChange}
-                                            required
-                                            placeholder='Masukkan tunjangan transport'
+                                            placeholder='Masukkan potongan'
                                             className='w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
                                         />
                                     </div>
 
-                                    <div className='w-full xl:w-1/2'>
-                                        <label className='mb-2.5 block text-black dark:text-white'>
-                                            Uang Makan <span className='text-meta-1'>*</span>
+                                    <div className='w-full mb-4'>
+                                        <label className='mb-4 block text-black dark:text-white'>
+                                            Jumlah Potongan <span className='text-meta-1'>*</span>
                                         </label>
                                         <input
                                             type='number'
-                                            id='uangMakan'
-                                            name='uangMakan'
-                                            value={uangMakan}
+                                            id='jmlPotongan'
+                                            name='jmlPotongan'
+                                            value={jmlPotongan}
                                             onChange={handleChange}
                                             required
-                                            placeholder='Masukkan uang makan'
+                                            placeholder='Masukkan jumlah potongan'
                                             className='w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
                                         />
                                     </div>
@@ -177,7 +138,7 @@ const FormAddDataJabatan = () => {
                                             <span>Save</span>
                                         </ButtonOne>
                                     </div>
-                                    <Link to="/data-jabatan" >
+                                    <Link to="/data-potongan" >
                                         <ButtonTwo  >
                                             <span>Back</span>
                                         </ButtonTwo>
@@ -192,4 +153,4 @@ const FormAddDataJabatan = () => {
     )
 }
 
-export default FormAddDataJabatan;
+export default FormAddDataPotongan;

@@ -6,7 +6,7 @@ import DataPegawai from './MasterData/DataPegawai';
 import UbahPasswordAdmin from './PengaturanAdmin/UbahPasswordAdmin';
 import DataKehadiran from './Transaksi/DataKehadiran';
 import DataGaji from './Transaksi/DataGaji';
-import SettingPotonganGaji from './Transaksi/SettingPotonganGaji';
+import DataPotongan from './Transaksi/DataPotongan';
 
 export {
     LaporanAbsensi,
@@ -17,5 +17,5 @@ export {
     UbahPasswordAdmin,
     DataKehadiran,
     DataGaji,
-    SettingPotonganGaji
+    DataPotongan
 };

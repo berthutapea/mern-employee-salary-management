@@ -51,7 +51,7 @@ const DropdownProfil = () => {
         dispatch(logoutUser());
         dispatch(reset());
         Swal.fire({
-          title: 'Logout Sukses',
+          title: 'Logout Berhasil',
           text: 'Anda telah berhasil keluar.',
           icon: 'success',
           timer: 1500,
