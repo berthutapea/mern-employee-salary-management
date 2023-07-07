@@ -1,15 +1,28 @@
 import { useState, useEffect } from 'react';
 import Layout from '../../../layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import DataGajiPegawaiPeople from '../../../utils/DataGajiPegawaiPeople';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumb } from '../../../components';
 import { getMe } from '../../../config/redux/action';
+import axios from 'axios';
 import { TfiPrinter } from 'react-icons/tfi'
 
 const ITEMS_PER_PAGE = 4;
 
 const DataGajiPegawai = () => {
+    const [data, setData] = useState({
+        tahun: '',
+        bulan: '',
+        nik: '',
+        nama_pegawai: '',
+        jabatan: '',
+        gaji_pokok: '',
+        tj_transport: '',
+        uang_makan: '',
+        potongan: '',
+        total: '',
+    });
+    const { name } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
     const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
@@ -18,11 +31,27 @@ const DataGajiPegawai = () => {
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
 
-    const totalPages = Math.ceil(DataGajiPegawaiPeople.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(dataGajiPegawai.length / ITEMS_PER_PAGE);
+
+    // useEffect(() => {
+    //     setDataGajiPegawai(DataGajiPegawaiPeople.slice(startIndex, endIndex));
+    // }, [startIndex, endIndex]);
 
     useEffect(() => {
-        setDataGajiPegawai(DataGajiPegawaiPeople.slice(startIndex, endIndex));
-    }, [startIndex, endIndex]);
+        const getDataPegawai = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/data_gaji/name/${name}`);
+                const data = response.data;
+
+                setData(data.slice(startIndex, endIndex));
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getDataPegawai();
+    }, [name, startIndex, endIndex]);
+
 
     const goToPrevPage = () => {
         if (currentPage > 1) {
@@ -87,37 +116,37 @@ const DataGajiPegawai = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataGajiPegawai.map((dataGajiPegawai) => {
-                                return (
-                                    <tr key={dataGajiPegawai.id}>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.bulanTahun}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.gajiPokok}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.tunjanganTransport}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.uangMakan}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.jumlahPotongan}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{dataGajiPegawai.totalGaji}</p>
-                                        </td>
-                                        <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark text-center'>
-                                            <div className='items-center '>
-                                                <button className='hover:text-black'>
-                                                    <TfiPrinter className="text-primary text-xl hover:text-black dark:hover:text-white" />
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
+                            {/* {dataGajiPegawai.map((dataGajiPegawai) => { */}
+                            return (
+                            <tr key={data.id}>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.bulan}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.gaji_pokok}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.tj_transport}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.uang_makan}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.potongan}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
+                                    <p className='text-black dark:text-white'>{data.total}</p>
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark text-center'>
+                                    <div className='items-center '>
+                                        <button className='hover:text-black'>
+                                            <TfiPrinter className="text-primary text-xl hover:text-black dark:hover:text-white" />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            );
+                            {/* })} */}
                         </tbody>
                     </table>
                 </div>
@@ -125,7 +154,7 @@ const DataGajiPegawai = () => {
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
                     <div className='flex items-center space-x-2'>
                         <span className='text-gray-5 dark:text-gray-4 text-sm py-4'>
-                            Showing {startIndex}-{endIndex} of {DataGajiPegawaiPeople.length} Data Gaji
+                            Showing {startIndex}-{endIndex} of {dataGajiPegawai.length} Data Gaji
                         </span>
                     </div>
                     <div className='flex space-x-2 py-4'>

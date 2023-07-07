@@ -127,12 +127,12 @@ const FormEditDataPotongan = () => {
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <div>
                                         <ButtonOne  >
-                                            <span>Update</span>
+                                            <span>Perbarui</span>
                                         </ButtonOne>
                                     </div>
                                     <Link to="/data-potongan" >
                                         <ButtonTwo  >
-                                            <span>Back</span>
+                                            <span>Kembali</span>
                                         </ButtonTwo>
                                     </Link>
                                 </div>

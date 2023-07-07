@@ -52,7 +52,7 @@ const DefaultDashboard = () => {
                 <>
                     <div className="mt-6">
                         <h2 className="px-4 py-2 text-meta-3 font-medium text-center md:text-left">
-                            Selamat Datang di SiPeka Anda Login Sebagai Pegawai.
+                            Selamat Datang di SiPeKa Anda Login Sebagai Pegawai.
                         </h2>
                     </div>
                     <div className="py-2 px-4 md:px-6 dark:border-strokedark text-lg">

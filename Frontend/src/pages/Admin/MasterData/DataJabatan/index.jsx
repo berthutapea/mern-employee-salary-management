@@ -8,6 +8,7 @@ import { FaRegEdit, FaPlus } from 'react-icons/fa'
 import { BsTrash3 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { deleteDataJabatan, getDataJabatan, getMe } from '../../../../config/redux/action';
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -233,7 +234,7 @@ const DataJabatan = () => {
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="flex items-center space-x-2">
                         <span className="text-gray-5 dark:text-gray-4 text-sm py-4">
-                            Showing {startIndex + 1}-{Math.min(endIndex, filteredDataJabatan.length)} of {filteredDataJabatan.length} Data Jabatan
+                            Menampilkan {startIndex + 1}-{Math.min(endIndex, filteredDataJabatan.length)} dari {filteredDataJabatan.length} Data Jabatan
                         </span>
                     </div>
                     <div className="flex space-x-2 py-4">
@@ -242,7 +243,7 @@ const DataJabatan = () => {
                             onClick={goToPrevPage}
                             className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50"
                         >
-                            Prev
+                            < MdKeyboardDoubleArrowLeft />
                         </button>
                         {paginationItems()}
                         <button
@@ -250,7 +251,7 @@ const DataJabatan = () => {
                             onClick={goToNextPage}
                             className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50"
                         >
-                            Next
+                            < MdKeyboardDoubleArrowRight />
                         </button>
                     </div>
                 </div>

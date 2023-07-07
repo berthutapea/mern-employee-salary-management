@@ -135,12 +135,12 @@ const FormAddDataPotongan = () => {
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <div>
                                         <ButtonOne  >
-                                            <span>Save</span>
+                                            <span>Simpan</span>
                                         </ButtonOne>
                                     </div>
                                     <Link to="/data-potongan" >
                                         <ButtonTwo  >
-                                            <span>Back</span>
+                                            <span>Kembali</span>
                                         </ButtonTwo>
                                     </Link>
                                 </div>

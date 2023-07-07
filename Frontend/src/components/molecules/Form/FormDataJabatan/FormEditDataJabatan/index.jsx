@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../../../layout';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { Breadcrumb, ButtonOne, ButtonTwo, ButtonThree } from '../../../../../components';
+import { Breadcrumb, ButtonOne, ButtonTwo} from '../../../../../components';
 import { getMe } from '../../../../../config/redux/action';
 
 const FormEditDataJabatan = () => {
@@ -166,12 +166,12 @@ const FormEditDataJabatan = () => {
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <div>
                                         <ButtonOne  >
-                                            <span>Update</span>
+                                            <span>Perbarui</span>
                                         </ButtonOne>
                                     </div>
                                     <Link to="/data-jabatan" >
                                         <ButtonTwo  >
-                                            <span>Back</span>
+                                            <span>Kembali</span>
                                         </ButtonTwo>
                                     </Link>
                                 </div>

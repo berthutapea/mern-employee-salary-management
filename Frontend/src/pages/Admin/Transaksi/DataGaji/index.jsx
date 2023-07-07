@@ -3,13 +3,12 @@ import Layout from '../../../../layout';
 import { Link, useNavigate } from "react-router-dom";
 import { useReactToPrint } from 'react-to-print'
 import { useDispatch, useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
 import { Breadcrumb, ButtonOne } from '../../../../components';
 import { FaRegEye } from 'react-icons/fa'
 import { BiSearch } from 'react-icons/bi'
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
-import { deleteDataGaji, getDataGaji, getMe } from '../../../../config/redux/action';
+import { getDataGaji, getMe } from '../../../../config/redux/action';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -45,8 +44,6 @@ const DataGaji = () => {
         return isMatchBulan && isMatchTahun && isMatchNama;
     });
 
-
-
     const goToPrevPage = () => {
         if (currentPage > 1) {
             setCurrentPage((prev) => prev - 1);
@@ -76,32 +73,6 @@ const DataGaji = () => {
         documentTitle: 'emp-data',
         onAfterPrint: () => alert('Print Succes')
     });
-
-    const onDeleteDataGaji = (id) => {
-        Swal.fire({
-            title: 'Konfirmasi',
-            text: 'Apakah Anda yakin ingin Menghapus?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Ya',
-            cancelButtonText: 'Tidak',
-            reverseButtons: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                dispatch(deleteDataGaji(id)).then(() => {
-                    Swal.fire({
-                        title: 'Berhasil',
-                        text: 'Data kehadiran berhasil dihapus.',
-                        icon: 'success',
-                        timer: 1000,
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                    });
-                    dispatch(getDataGaji());
-                });
-            }
-        });
-    };
 
     useEffect(() => {
         dispatch(getDataGaji(startIndex, endIndex));
@@ -322,19 +293,19 @@ const DataGaji = () => {
                                             <p className='text-black dark:text-white'>{data.jabatan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.gaji_pokok}</p>
+                                            <p className='text-black dark:text-white'>Rp. {data.gaji_pokok}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.tj_transport}</p>
+                                            <p className='text-black dark:text-white'>Rp. {data.tj_transport}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.uang_makan}</p>
+                                            <p className='text-black dark:text-white'>Rp. {data.uang_makan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.potongan}</p>
+                                            <p className='text-black dark:text-white'>Rp. {data.potongan}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
-                                            <p className='text-black dark:text-white'>{data.total}</p>
+                                            <p className='text-black dark:text-white'>Rp. {data.total}</p>
                                         </td>
                                         <td className='border-b border-[#eee] py-5 px-4 text-center dark:border-strokedark'>
                                             <div className='flex items-center space-x-3.5'>
@@ -356,7 +327,7 @@ const DataGaji = () => {
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="flex items-center space-x-2">
                         <span className="text-gray-5 dark:text-gray-4 text-sm py-4">
-                            Showing {startIndex + 1}-{Math.min(endIndex, filteredDataGaji.length)} of {filteredDataGaji.length} Data Gaji
+                            Menampilkan {startIndex + 1}-{Math.min(endIndex, filteredDataGaji.length)} data {filteredDataGaji.length} Data Gaji Pegawai
                         </span>
                     </div>
                     <div className="flex space-x-2 py-4">
@@ -365,7 +336,7 @@ const DataGaji = () => {
                             onClick={goToPrevPage}
                             className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50"
                         >
-                            Prev
+                            < MdKeyboardDoubleArrowLeft />
                         </button>
                         {paginationItems()}
                         <button
@@ -373,7 +344,7 @@ const DataGaji = () => {
                             onClick={goToNextPage}
                             className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50"
                         >
-                            Next
+                            < MdKeyboardDoubleArrowRight />
                         </button>
                     </div>
                 </div>

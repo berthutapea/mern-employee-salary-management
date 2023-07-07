@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Breadcrumb, ButtonOne, ButtonTwo } from '../../../../../components';
 import { BiSearch } from 'react-icons/bi';
 import { getMe } from '../../../../../config/redux/action';
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -320,7 +321,7 @@ const FormAddDataKehadiran = () => {
                     <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                         <div className="flex items-center space-x-2">
                             <span className="text-gray-5 dark:text-gray-4 text-sm py-4">
-                                Showing {startIndex + 1}-{Math.min(endIndex, filteredDataPegawai.length)} of {filteredDataPegawai.length} Data Kehadiran Pegawai
+                                Menampilkan {startIndex + 1}-{Math.min(endIndex, filteredDataPegawai.length)} dari {filteredDataPegawai.length} Data Kehadiran Pegawai
                             </span>
 
                         </div>
@@ -330,7 +331,7 @@ const FormAddDataKehadiran = () => {
                                 onClick={goToPrevPage}
                                 className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Prev
+                                < MdKeyboardDoubleArrowLeft />
                             </button>
                             {paginationItems()}
                             <button
@@ -338,19 +339,19 @@ const FormAddDataKehadiran = () => {
                                 onClick={goToNextPage}
                                 className="py-2 px-6 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-white dark:text-white dark:border-primary dark:hover:bg-primary dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Next
+                                < MdKeyboardDoubleArrowRight />
                             </button>
                         </div>
                     </div>
                     <div className="flex flex-col md:flex-row w-full gap-3 text-center py-4">
                         <div>
                             <ButtonOne type="submit">
-                                <span>Save</span>
+                                <span>Simpan</span>
                             </ButtonOne>
                         </div>
                         <Link to="/data-kehadiran">
                             <ButtonTwo>
-                                <span>Back</span>
+                                <span>Kembali</span>
                             </ButtonTwo>
                         </Link>
                     </div>

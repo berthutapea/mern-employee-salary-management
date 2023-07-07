@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getMe } from '../../../config/redux/action';
 import Layout from '../../../layout';
-import { Breadcrumb, ButtonTwo } from '../../../components';
+import { Breadcrumb, ButtonOne, ButtonTwo } from '../../../components';
+import { TfiPrinter } from 'react-icons/tfi';
 
 const DetailDataGaji = () => {
     const [data, setData] = useState({
@@ -58,12 +59,11 @@ const DetailDataGaji = () => {
             <Breadcrumb pageName='Detail Data Gaji Pegawai' />
             <Link to='/data-gaji'>
                 <ButtonTwo>
-                    <span>Back</span>
+                    <span>Kembali</span>
                 </ButtonTwo>
             </Link>
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
                 <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
-                    {/* Add your content here */}
                 </div>
 
                 <div className='max-w-full overflow-x-auto'>
@@ -115,61 +115,75 @@ const DetailDataGaji = () => {
                         </thead>
                         <tbody>
                             <tr className='bg-gray-50 dark:border-strokedark'>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     {index + 1}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Gaji Pokok
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Rp. {data.gaji_pokok}
                                 </td>
                             </tr>
                             <tr className='bg-gray-50 dark:border-strokedark'>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     {index + 2}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Tunjangan Transportasi
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Rp. {data.tj_transport}
                                 </td>
                             </tr>
                             <tr className='bg-gray-50 dark:border-strokedark'>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     {index + 3}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Uang Makan
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Rp. {data.uang_makan}
                                 </td>
                             </tr>
                             <tr className='bg-gray-50 dark:border-strokedark'>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     {index + 4}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Potongan
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Rp. {data.potongan}
                                 </td>
                             </tr>
                             <tr className='bg-gray-50 dark:border-strokedark'>
-                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                 </td>
-                                <td className='font-medium border-b  border-[#eee] py-5  text-right text-black dark:text-white'>
+                                <td className='font-medium border-b  border-[#eee] dark:border-strokedark py-5 text-right text-black dark:text-white'>
                                     Total Gaji :
                                 </td>
-                                <td className='font-medium border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                <td className='font-medium border-b border-[#eee] dark:border-strokedark py-5 px-4 text-black dark:text-white'>
                                     Rp. {data.total}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div className='w-full md:w-1/2 md:justify-end py-6'>
+                        <div className='w-full md:w-auto'>
+                            <Link to='/data-gaji/cetak-gaji'>
+                                <ButtonOne
+                                // onClick={handlePrint}
+                                >
+                                    <span>Cetak Gaji Pegawai</span>
+                                    <span>
+                                        <TfiPrinter />
+                                    </span>
+                                </ButtonOne>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>

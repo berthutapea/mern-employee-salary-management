@@ -40,6 +40,7 @@ function LoginInput() {
         icon: 'success',
         title: 'Login Berhasil',
         text: message,
+        timer: 1500,
       }).then(() => {
       });
     }

@@ -141,7 +141,7 @@ const FormAddDataPegawai = () => {
 
     return (
         <Layout>
-            <Breadcrumb pageName='Form Pegawai' />
+            <Breadcrumb pageName='Form Data Pegawai' />
             <div className='sm:grid-cols-2'>
                 <div className='flex flex-col gap-9'>
                     <div className='rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark'>
@@ -335,9 +335,9 @@ const FormAddDataPegawai = () => {
                                 </div>
                                 <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                                     <div className="w-full xl:w-1/2">
-                                        <label className="mb-2.5 block text-black dark:text-white">
-                                            Upload Foto ( Format file .png, .jpg, .jpeg, max 2 MB ){" "}
-                                            <span className="text-meta-1">*</span>
+                                        <label className="mb-2.5 block text-black dark:text-white ">
+                                            Upload Foto (<span className='text-meta-1'> Format file png, jpg, jpeg, Max 2 MB </span>)
+                                            <span className="text-meta-1"> *</span>
                                         </label>
                                         <input
                                             type="file"
@@ -370,12 +370,12 @@ const FormAddDataPegawai = () => {
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <div>
                                         <ButtonOne  >
-                                            <span>Save</span>
+                                            <span>Simpan</span>
                                         </ButtonOne>
                                     </div>
                                     <Link to="/data-pegawai" >
                                         <ButtonTwo  >
-                                            <span>Back</span>
+                                            <span>Kembali</span>
                                         </ButtonTwo>
                                     </Link>
                                 </div>

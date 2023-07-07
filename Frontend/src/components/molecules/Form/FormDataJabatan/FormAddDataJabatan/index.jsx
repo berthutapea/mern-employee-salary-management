@@ -13,7 +13,7 @@ const FormAddDataJabatan = () => {
         tjTransport: '',
         uangMakan: '',
     });
-    
+
     const {
         namaJabatan,
         gajiPokok,
@@ -173,13 +173,13 @@ const FormAddDataJabatan = () => {
 
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
                                     <div>
-                                        <ButtonOne  >
-                                            <span>Save</span>
+                                        <ButtonOne>
+                                            <span>Simpan</span>
                                         </ButtonOne>
                                     </div>
                                     <Link to="/data-jabatan" >
-                                        <ButtonTwo  >
-                                            <span>Back</span>
+                                        <ButtonTwo>
+                                            <span>Kembali</span>
                                         </ButtonTwo>
                                     </Link>
                                 </div>
