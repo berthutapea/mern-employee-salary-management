@@ -14,6 +14,8 @@ import Header from './Header';
 import Navbar from './Navbar';
 import NotFound from './NotFound';
 import PrintPdfDataGaji from './PrintPdf/PrintPdfDataGaji';
+import PrintPdfSlipGaji from './PrintPdf/PrintPdfSlipGaji';
+import PrintPdfLaporanAbsensi from './PrintPdf/PrintPdfLaporanAbsensi';
 import SidebarAdmin from './Sidebar/SidebarAdmin';
 import SidebarPegawai from './Sidebar/SidebarPegawai';
 import SidebarLinkGroup from './Sidebar/SidebarLinkGroup';
@@ -35,6 +37,8 @@ export {
     Navbar,
     NotFound,
     PrintPdfDataGaji,
+    PrintPdfSlipGaji,
+    PrintPdfLaporanAbsensi,
     SidebarAdmin,
     SidebarPegawai,
     SidebarLinkGroup

@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 import Layout from '../../../../layout';
 import { Link, useNavigate } from "react-router-dom";
-import { useReactToPrint } from 'react-to-print'
 import { useDispatch, useSelector } from 'react-redux';
 import { Breadcrumb, ButtonOne } from '../../../../components';
 import { FaRegEye } from 'react-icons/fa'
@@ -17,7 +16,6 @@ const DataGaji = () => {
     const [filterTahun, setFilterTahun] = useState("");
     const [filterBulan, setFilterBulan] = useState("");
     const [filterNama, setFilterNama] = useState("");
-    const componentRef = useRef();
 
     const { dataGaji } = useSelector((state) => state.dataGaji);
     const { isError, user } = useSelector((state) => state.auth);
@@ -67,12 +65,6 @@ const DataGaji = () => {
     const handleNamaChange = (event) => {
         setFilterNama(event.target.value);
     };
-
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        documentTitle: 'emp-data',
-        onAfterPrint: () => alert('Print Succes')
-    });
 
     useEffect(() => {
         dispatch(getDataGaji(startIndex, endIndex));
@@ -192,9 +184,7 @@ const DataGaji = () => {
                     <div className='w-full md:w-1/2 flex justify-center md:justify-end'>
                         <div className='w-full md:w-auto'>
                             <Link to='/data-gaji/cetak-gaji'>
-                                <ButtonOne
-                                    onClick={handlePrint}
-                                >
+                                <ButtonOne>
                                     <span>Cetak Daftar Gaji</span>
                                     <span>
                                         <TfiPrinter />

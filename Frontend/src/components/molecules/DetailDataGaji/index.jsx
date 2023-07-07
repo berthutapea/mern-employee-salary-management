@@ -172,9 +172,8 @@ const DetailDataGaji = () => {
                     </table>
                     <div className='w-full md:w-1/2 md:justify-end py-6'>
                         <div className='w-full md:w-auto'>
-                            <Link to='/data-gaji/cetak-gaji'>
+                            <Link to='/data-gaji/cetak-gaji/slip-gaji/name/:name'>
                                 <ButtonOne
-                                // onClick={handlePrint}
                                 >
                                     <span>Cetak Gaji Pegawai</span>
                                     <span>

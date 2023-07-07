@@ -3,10 +3,10 @@ import Logo from "../../../../assets/images/logo/logo.svg";
 import { useReactToPrint } from "react-to-print";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataGaji, getMe } from "../../../../config/redux/action";
+import { getDataKehadiran, getMe } from "../../../../config/redux/action";
 import { ButtonOne, ButtonTwo } from "../../../atoms";
 
-const PrintPdfDataGaji = () => {
+const PrintPdfLaporanAbsensi = () => {
     const componentRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -14,15 +14,15 @@ const PrintPdfDataGaji = () => {
     const [tahun, setTahun] = useState("");
 
     const { isError, user } = useSelector((state) => state.auth);
-    const { dataGaji } = useSelector((state) => state.dataGaji);
+    const { dataKehadiran } = useSelector((state) => state.dataKehadiran);
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
-        documentTitle: "Data_Gaji_Pegawai_PT. Humpuss Karbometil Selulosa",
+        documentTitle: "Laporan_Kehadiran_Pegawai_PT. Humpuss Karbometil Selulosa",
     });
 
     useEffect(() => {
-        dispatch(getDataGaji());
+        dispatch(getDataKehadiran());
         dispatch(getMe());
     }, [dispatch]);
 
@@ -53,7 +53,7 @@ const PrintPdfDataGaji = () => {
                         <span>Cetak</span>
                     </ButtonOne>
                 </div>
-                <Link to="/data-gaji">
+                <Link to="/laporan-absensi">
                     <ButtonTwo>
                         <span>Kembali</span>
                     </ButtonTwo>
@@ -67,7 +67,7 @@ const PrintPdfDataGaji = () => {
                     </h1>
                 </div>
                 <h1 className="text-center text-black my-4 text-2xl font-medium boder py-2 dark:text-white">
-                    Daftar Gaji Pegawai
+                    Laporan Kehadiran Pegawai
                 </h1>
                 <div className="w-full md:text-lg">
                     <h2 className="font-medium mb-4 block text-black dark:text-white">
@@ -100,24 +100,21 @@ const PrintPdfDataGaji = () => {
                                     Jabatan
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
-                                    Gaji <br /> Pokok
+                                    Jenis <br /> Kelamin
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
-                                    Tunjangan <br />Transport
+                                    Hadir
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
-                                    Uang <br /> Makan
-                                </th>
-                                <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
-                                    Potongan
+                                    Sakit
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-r border-black dark:border-white dark:text-white">
-                                    Total <br /> Gaji
+                                    Alpha
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {dataGaji.map((data, index) => {
+                            {dataKehadiran.map((data, index) => {
                                 return (
                                     <tr key={data.id}>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
@@ -130,22 +127,19 @@ const PrintPdfDataGaji = () => {
                                             <p className="text-black dark:text-white">{data.nama_pegawai}</p>
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">{data.jabatan}</p>
+                                            <p className="text-black dark:text-white">{data.jabatan_pegawai}</p>
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">Rp. {data.gaji_pokok}</p>
+                                            <p className="text-black dark:text-white">{data.jenis_kelamin}</p>
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">Rp. {data.tj_transport}</p>
+                                            <p className="text-black dark:text-white">{data.hadir}</p>
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">Rp. {data.uang_makan}</p>
-                                        </td>
-                                        <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">Rp. {data.potongan}</p>
+                                            <p className="text-black dark:text-white">{data.sakit}</p>
                                         </td>
                                         <td className="border-b border-l border-r border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">Rp. {data.total}</p>
+                                            <p className="text-black dark:text-white">{data.alpha}</p>
                                         </td>
                                     </tr>
                                 );
@@ -163,7 +157,7 @@ const PrintPdfDataGaji = () => {
                         <span className="p-8 italic text-black dark:text-white">Tanda Tangan</span>
                     </div>
                 </div>
-                <div className="italic text-black dark:text-white mt-45">
+                <div className="italic text-black dark:text-white mt-70">
                     Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
                 </div>
             </div>
@@ -171,4 +165,4 @@ const PrintPdfDataGaji = () => {
     );
 };
 
-export default PrintPdfDataGaji;
+export default PrintPdfLaporanAbsensi;

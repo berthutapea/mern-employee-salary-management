@@ -16,7 +16,9 @@ import {
   FormAddDataPotongan,
   FormEditDataPotongan,
   PrintPdfDataGaji,
-  DetailDataGaji
+  DetailDataGaji,
+  PrintPdfSlipGaji,
+  PrintPdfLaporanAbsensi
 } from '../../components';
 import {
   DataPegawai,
@@ -41,8 +43,8 @@ const AppRoutes = () => {
       <Route path='/kontak' element={<Contact />} />
       <Route path='/login' element={<Login />} />
       <Route path='/dashboard' element={<Dashboard />} />
-      {/* Route Admin */}
 
+      {/* Route Admin */}
       {/* Master Data Admin */}
       <Route path='/data-pegawai' element={<DataPegawai />} />
       <Route path='/data-pegawai/form-data-pegawai/add' element={<FormAddDataPegawai />} />
@@ -61,11 +63,13 @@ const AppRoutes = () => {
       <Route path='/data-gaji' element={<DataGaji />} />
       <Route path='/data-gaji/detail-data-gaji/name/:name' element={<DetailDataGaji />} />
       <Route path='/data-gaji/cetak-gaji' element={<PrintPdfDataGaji />} />
+      <Route path='/data-gaji/cetak-gaji/slip-gaji/name/:name' element={<PrintPdfSlipGaji />} />
 
       {/* Laporan Admin */}
-      <Route path='/laporan/laporan-gaji' element={<LaporanGaji />} />
-      <Route path='/laporan/laporan-absensi' element={<LaporanAbsensi />} />
-      <Route path='/laporan/slip-gaji' element={<SlipGaji />} />
+      <Route path='/laporan-gaji' element={<LaporanGaji />} />
+      <Route path='/laporan-absensi' element={<LaporanAbsensi />} />
+      <Route path='/laporan-absensi/cetak-laporan-absensi' element={<PrintPdfLaporanAbsensi />} />
+      <Route path='/slip-gaji' element={<SlipGaji />} />
 
       {/* Pengaturan Admin */}
       <Route path='/pengaturan/ubah-password' element={<UbahPasswordAdmin />} />

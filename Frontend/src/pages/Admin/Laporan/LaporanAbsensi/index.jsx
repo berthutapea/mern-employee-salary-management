@@ -71,7 +71,7 @@ const LaporanAbsensi = () => {
                                 </div>
 
                                 <div className='flex flex-col md:flex-row w-full gap-3 text-center'>
-                                    <Link to="" >
+                                    <Link to="/laporan-absensi/cetak-laporan-absensi" >
                                         <ButtonOne  >
                                             <span>Cetak Laporan Absensi</span>
                                             <span>
