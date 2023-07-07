@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
-import Layout from '../../../layout';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Breadcrumb, ButtonTwo } from '../../../components';
 import axios from 'axios';
 import { getMe } from '../../../config/redux/action';
+import Layout from '../../../layout';
+import { Breadcrumb, ButtonTwo } from '../../../components';
 
 const DetailDataGaji = () => {
-    const [tahun, setTahun] = useState('');
-    const [bulan, setBulan] = useState('');
-    const [nik, setNik] = useState('');
-    const [nama_pegawai, setNamaPegawai] = useState('');
-    const [jabatan, setJabatan] = useState('');
-    const [gaji_pokok, setGajiPokok] = useState('');
-    const [tj_transport, setTjTransport] = useState('');
-    const [uang_makan, setUangMakan] = useState('');
-    const [potongan, setPotongan] = useState('');
-    const [total, setTotal] = useState('');
+    const [data, setData] = useState({
+        tahun: '',
+        bulan: '',
+        nik: '',
+        nama_pegawai: '',
+        jabatan: '',
+        gaji_pokok: '',
+        tj_transport: '',
+        uang_makan: '',
+        potongan: '',
+        total: '',
+    });
     const { name } = useParams();
-
+    const [index] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
@@ -29,16 +31,7 @@ const DetailDataGaji = () => {
                 const response = await axios.get(`http://localhost:5000/data_gaji/name/${name}`);
                 const data = response.data;
 
-                setTahun(data.tahun);
-                setBulan(data.bulan);
-                setNik(data.nik);
-                setNamaPegawai(data.nama_pegawai);
-                setJabatan(data.jabatan);
-                setGajiPokok(data.gaji_pokok);
-                setTjTransport(data.tj_transport);
-                setUangMakan(data.uang_makan);
-                setPotongan(data.potongan);
-                setTotal(data.total);
+                setData(data);
             } catch (error) {
                 console.log(error);
             }
@@ -46,7 +39,6 @@ const DetailDataGaji = () => {
 
         getDataPegawai();
     }, [name]);
-
 
     useEffect(() => {
         dispatch(getMe());
@@ -64,89 +56,124 @@ const DetailDataGaji = () => {
     return (
         <Layout>
             <Breadcrumb pageName='Detail Data Gaji Pegawai' />
-            <Link to="/data-gaji" >
-                <ButtonTwo  >
+            <Link to='/data-gaji'>
+                <ButtonTwo>
                     <span>Back</span>
                 </ButtonTwo>
             </Link>
             <div className='rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6'>
-                <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
+                <div className='flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between'>
+                    {/* Add your content here */}
                 </div>
 
-                <div className='max-w-full overflow-x-auto py-4'>
+                <div className='max-w-full overflow-x-auto'>
+                    <div className='md:w-2/3'>
+                        <div className='w-full md:text-lg'>
+                            <h2 className='font-medium mb-4 block text-black dark:text-white'>
+                                <span className='inline-block w-32 md:w-40'>Nama</span>
+                                <span className='inline-block w-7'>:</span>
+                                {data.nama_pegawai}
+                            </h2>
+                            <h2 className='font-medium mb-4 block text-black dark:text-white'>
+                                <span className='inline-block w-32 md:w-40'>NIK</span>
+                                <span className='inline-block w-6'>:</span>{' '}
+                                <span className='pl-[-10] md:pl-0'></span>
+                                {data.nik}
+                            </h2>
+                            <h2 className='font-medium mb-4 block text-black dark:text-white'>
+                                <span className='inline-block w-32 md:w-40'>Jabatan</span>
+                                <span className='inline-block w-7'>:</span>
+                                {data.jabatan}
+                            </h2>
+                            <h2 className='font-medium mb-4 block text-black dark:text-white'>
+                                <span className='inline-block w-32 md:w-40'>Bulan</span>
+                                <span className='pl-[-8] md:pl-0'></span>
+                                <span className='inline-block w-7'>:</span>
+                                {data.bulan}
+                            </h2>
+                            <h2 className='font-medium mb-4 block text-black dark:text-white'>
+                                <span className='inline-block w-32 md:w-40'>Tahun</span>
+                                <span className='inline-block w-7'>:</span>
+                                {data.tahun}
+                                <span className='pl-[-8] md:pl-0'></span>
+                            </h2>
+                        </div>
+                    </div>
                     <table className='w-full table-auto'>
                         <thead>
                             <tr className='bg-gray-2 text-left dark:bg-meta-4'>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Tahun
+                                    No
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Bulan
+                                    Keterangan
                                 </th>
                                 <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    NIK
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Nama Pegawai
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Jabatan
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Gaji Pokok
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Tunjangan Transport
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Uang Makan
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Potongan
-                                </th>
-                                <th className='py-4 px-4 font-medium text-black dark:text-white'>
-                                    Total
+                                    Jumlah
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-               
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{tahun}</p>
+                            <tr className='bg-gray-50 dark:border-strokedark'>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    {index + 1}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{bulan}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Gaji Pokok
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{nik}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Rp. {data.gaji_pokok}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{nama_pegawai}</p>
+                            </tr>
+                            <tr className='bg-gray-50 dark:border-strokedark'>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    {index + 2}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{jabatan}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Tunjangan Transportasi
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{gaji_pokok}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Rp. {data.tj_transport}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{tj_transport}</p>
+                            </tr>
+                            <tr className='bg-gray-50 dark:border-strokedark'>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    {index + 3}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{uang_makan}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Uang Makan
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{potongan}</p>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Rp. {data.uang_makan}
                                 </td>
-                                <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{total}</p>
+                            </tr>
+                            <tr className='bg-gray-50 dark:border-strokedark'>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    {index + 4}
                                 </td>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Potongan
+                                </td>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Rp. {data.potongan}
+                                </td>
+                            </tr>
+                            <tr className='bg-gray-50 dark:border-strokedark'>
+                                <td className='border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                </td>
+                                <td className='font-medium border-b  border-[#eee] py-5  text-right text-black dark:text-white'>
+                                    Total Gaji :
+                                </td>
+                                <td className='font-medium border-b border-[#eee] py-5 px-4 text-black dark:text-white'>
+                                    Rp. {data.total}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </Layout>
-    )
-}
+    );
+};
 
 export default DetailDataGaji;
