@@ -28,6 +28,7 @@ import {
     updateDataKehadiran,
     deleteDataKehadiran,
     viewDataKehadiranByID,
+    viewDataGajiByName,
 } from "../controllers/TransaksiController.js";
 
 import {
@@ -97,6 +98,7 @@ router.patch('/data_potongan/update/:id', adminOnly, verifyUser, updateDataPoton
 router.delete('/data_potongan/:id', adminOnly, verifyUser, deleteDataPotongan);
 // Data Gaji
 router.get('/data_gaji_pegawai', viewDataGajiPegawai);
+router.get('/data_gaji/name/:name', viewDataGajiByName);
 router.get('/data_gaji_pegawai/month/:month', viewDataGajiPegawaiByMonth);
 router.get('/data_gaji_pegawai/year/:year', viewDataGajiPegawaiByYear);
 
