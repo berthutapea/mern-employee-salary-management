@@ -54,7 +54,7 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
 // method untuk melihat laporan gaji pegawai berdasarkan tahun
 export const viewLaporanGajiPegawaiByYear = async (req, res) => {
     try {
-        await viewDataGajiPegawaiByYear(req, res);
+         await viewDataGajiPegawaiByYear(req, res);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
@@ -107,9 +107,9 @@ export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
         const dataAbsensiByYear = await getDataKehadiran();
         const { year } = req.params;
 
-        const dataAbsensi = dataAbsensiByYear.filter((absensi) => absensi.year.toString() === year.toString()).map((absensi) => {
+        const dataAbsensi = dataAbsensiByYear.filter((absensi) => absensi.tahun.toString() === year.toString()).map((absensi) => {
             return {
-                tahun: absensi.year,
+                tahun: absensi.tahun,
                 bulan: absensi.bulan,
                 nik: absensi.nik,
                 nama_pegawai: absensi.nama_pegawai,
