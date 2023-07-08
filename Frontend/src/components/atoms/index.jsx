@@ -11,7 +11,6 @@ import ChartOne from './Chart/ChartOne';
 import ChartTwo from './Chart/ChartTwo';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownDefault from './Dropdown/DropdownDefault';
-import DropdownNotification from './Dropdown/DropdownNotification';
 import DropdownProfil from './Dropdown/DropdownProfil';
 import LoginInput from "./Input/LoginInput";
 
@@ -29,7 +28,6 @@ export {
     ChartTwo,
     DarkModeSwitcher,
     DropdownDefault,
-    DropdownNotification,
     DropdownProfil,
     LoginInput
 };

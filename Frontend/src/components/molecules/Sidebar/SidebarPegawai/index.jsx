@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import SidebarLinkGroup from '../SidebarLinkGroup'
-import Logo from '../../../../assets/images/logo/logo.svg'
+import LogoSipeka from '../../../../assets/images/logo/logo-sipeka.png'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
@@ -96,7 +96,12 @@ const SidebarPegawai = ({ sidebarOpen, setSidebarOpen }) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className='flex items-center justify-center px-6 py-5.5 lg:py-6.5 object-cover'>
         <NavLink to='/dashboard'>
-          <img src={Logo} alt='Logo' />
+          <img
+            src={LogoSipeka}
+            alt='Logo SiPeKa'
+            className='w-50'
+            title='Logo SiPeKa'
+          />
         </NavLink>
 
         <button

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import Logo from "../../../../assets/images/logo/logo.svg";
+import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
+import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,13 +61,21 @@ const PrintPdfDataGaji = () => {
                 </Link>
             </div >
             <div ref={componentRef} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
-                <div className="flex items-center gap-25 object-cover border-b-4 border-black dark:border-white">
-                    <img className="w-30" src={Logo} alt="Logo" />
-                    <h1 className="text-black text-3xl font-bold boder py-2 dark:text-white">
+                <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
+                    <img className="w-35"
+                        src={LogoSipeka}
+                        title="Logo SiPeKa"
+                        alt="Logo SiPeKa" />
+                    <h1 className="text-black text-2xl font-bold boder  dark:text-white">
                         PT. Humpuss Karbometil Selulosa
                     </h1>
+                    <img className="w-35"
+                        src={LogoPt}
+                        title="Logo PT.Humpuss Karbometil Selulosa"
+                        alt="Logo PT.Humpuss Karbometil Selulosa"
+                    />
                 </div>
-                <h1 className="text-center text-black my-4 text-2xl font-medium boder py-2 dark:text-white">
+                <h1 className="text-center text-black my-4 text-xl font-medium boder py-2 dark:text-white">
                     Daftar Gaji Pegawai
                 </h1>
                 <div className="w-full md:text-lg">
@@ -163,7 +172,7 @@ const PrintPdfDataGaji = () => {
                         <span className="p-8 italic text-black dark:text-white">Tanda Tangan</span>
                     </div>
                 </div>
-                <div className="italic text-black dark:text-white mt-45">
+                <div className="italic text-black dark:text-white mt-40">
                     Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
                 </div>
             </div>

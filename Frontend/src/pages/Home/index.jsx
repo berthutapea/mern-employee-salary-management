@@ -7,11 +7,13 @@ import Contact from "../Contact";
 const Home = () => {
     return (
         <>
-            <Navbar />
-            <Banner />
-            <About />
-            <Contact />
-            <Footer />
+            <div className="dark:bg-boxdark">
+                <Navbar />
+                <Banner />
+                <About />
+                <Contact />
+                <Footer />
+            </div>
         </>
     );
 };

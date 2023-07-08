@@ -4,6 +4,7 @@ import Layout from '../../../../layout';
 import { Breadcrumb, ButtonOne } from '../../../../components';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
+import { BiSearch } from 'react-icons/bi';
 
 const LaporanGaji = () => {
     return (
@@ -52,19 +53,15 @@ const LaporanGaji = () => {
                                             Tahun <span className='text-meta-1'>*</span>
                                         </label>
                                         <div className='relative z-20 bg-transparent dark:bg-form-input'>
-                                            <select className='relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'>
-                                                <option value=''>Pilih Tahun</option>
-                                                <option value=''>2020</option>
-                                                <option value=''>2021</option>
-                                                <option value=''>2022</option>
-                                                <option value=''>2023</option>
-                                                <option value=''>2024</option>
-                                                <option value=''>2025</option>
-                                                <option value=''>2026</option>
-                                                <option value=''>2027</option>
-                                            </select>
+                                            <input
+                                                type="number"
+                                                placeholder="Masukkan tahun"
+                                                // value={searchKeyword}
+                                                // onChange={handleSearch}
+                                                className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
                                             <span className='absolute top-1/2 right-4 z-30 -translate-y-1/2 text-2xl'>
-                                                <MdOutlineKeyboardArrowDown />
+                                                <BiSearch/>
                                             </span>
                                         </div>
                                     </div>

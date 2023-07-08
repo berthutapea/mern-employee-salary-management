@@ -35,53 +35,123 @@ import {
 } from '../../pages'
 
 const AppRoutes = () => {
-
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/tentang' element={<About />} />
-      <Route path='/kontak' element={<Contact />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/dashboard' element={<Dashboard />} />
+  
+  <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/tentang' element={<About />} />
+    <Route path='/kontak' element={<Contact />} />
+    <Route path='/login' element={<Login />} />
+    <Route path='/dashboard' element={<Dashboard />} />
 
-      {/* Route Admin */}
-      {/* Master Data Admin */}
-      <Route path='/data-pegawai' element={<DataPegawai />} />
-      <Route path='/data-pegawai/form-data-pegawai/add' element={<FormAddDataPegawai />} />
-      <Route path='/data-pegawai/form-data-pegawai/edit/:id' element={<FormEditDataPegawai />} />
-      <Route path='/data-jabatan' element={<DataJabatan />} />
-      <Route path='/data-jabatan/form-data-jabatan/add' element={<FormAddDataJabatan />} />
-      <Route path='/data-jabatan/form-data-jabatan/edit/:id' element={<FormEditDataJabatan />} />
+    {/* Route Admin */}
+    {/* Master Data Admin */}
+    <Route
+      path='/data-pegawai'
+      element={<DataPegawai />}
+    />
+    <Route
+      path='/data-pegawai/form-data-pegawai/add'
+      element={<FormAddDataPegawai />}
+    />
+    <Route
+      path='/data-pegawai/form-data-pegawai/edit/:id'
+      element={<FormEditDataPegawai />}
+    />
+    <Route
+      path='/data-jabatan'
+      element={<DataJabatan />}
+    />
+    <Route
+      path='/data-jabatan/form-data-jabatan/add'
+      element={<FormAddDataJabatan />}
+    />
+    <Route
+      path='/data-jabatan/form-data-jabatan/edit/:id'
+      element={<FormEditDataJabatan />}
+    />
 
-      {/* Transaksi Admin */}
-      <Route path='/data-kehadiran' element={<DataKehadiran />} />
-      <Route path='/data-kehadiran/form-data-kehadiran/add' element={<FormAddDataKehadiran />} />
-      <Route path='/data-kehadiran/form-data-kehadiran/edit/:id' element={<FormEditDataKehadiran />} />
-      <Route path='/data-potongan' element={<DataPotongan />} />
-      <Route path='/data-potongan/form-data-potongan/add' element={<FormAddDataPotongan />} />
-      <Route path='/data-potongan/form-data-potongan/edit/:id' element={<FormEditDataPotongan />} />
-      <Route path='/data-gaji' element={<DataGaji />} />
-      <Route path='/data-gaji/detail-data-gaji/name/:name' element={<DetailDataGaji />} />
-      <Route path='/data-gaji/cetak-gaji' element={<PrintPdfDataGaji />} />
-      <Route path='/data-gaji/cetak-gaji/slip-gaji/name/:name' element={<PrintPdfSlipGaji />} />
+    {/* Transaksi Admin */}
+    <Route
+      path='/data-kehadiran'
+      element={<DataKehadiran />}
+    />
+    <Route
+      path='/data-kehadiran/form-data-kehadiran/add'
+      element={<FormAddDataKehadiran />}
+    />
+    <Route
+      path='/data-kehadiran/form-data-kehadiran/edit/:id'
+      element={<FormEditDataKehadiran />}
+    />
+    <Route
+      path='/data-potongan'
+      element={<DataPotongan />}
+    />
+    <Route
+      path='/data-potongan/form-data-potongan/add'
+      element={<FormAddDataPotongan />} />
+    <Route
+      path='/data-potongan/form-data-potongan/edit/:id'
+      element={<FormEditDataPotongan />} />
+    <Route
+      path='/data-gaji'
+      element={<DataGaji />}
+    />
+    <Route
+      path='/data-gaji/detail-data-gaji/name/:name'
+      element={<DetailDataGaji />}
+    />
+    <Route
+      path='/data-gaji/cetak-gaji'
+      element={<PrintPdfDataGaji />}
+    />
+    <Route
+      path='/data-gaji/cetak-gaji/slip-gaji/name/:name'
+      element={<PrintPdfSlipGaji />}
+    />
 
-      {/* Laporan Admin */}
-      <Route path='/laporan-gaji' element={<LaporanGaji />} />
-      <Route path='/laporan-absensi' element={<LaporanAbsensi />} />
-      <Route path='/laporan-absensi/cetak-laporan-absensi' element={<PrintPdfLaporanAbsensi />} />
-      <Route path='/slip-gaji' element={<SlipGaji />} />
+    {/* Laporan Admin */}
+    <Route
+      path='/laporan-gaji'
+      element={<LaporanGaji />}
+    />
+    <Route
+      path='/laporan-absensi'
+      element={<LaporanAbsensi />}
+    />
+    <Route
+      path='/laporan-absensi/cetak-laporan-absensi'
+      element={<PrintPdfLaporanAbsensi />}
+    />
+    <Route
+      path='/slip-gaji'
+      element={<SlipGaji />}
+    />
 
-      {/* Pengaturan Admin */}
-      <Route path='/pengaturan/ubah-password' element={<UbahPasswordAdmin />} />
+    {/* Pengaturan Admin */}
+    <Route
+      path='/pengaturan/ubah-password'
+      element={<UbahPasswordAdmin />}
+    />
 
-      {/* Route Pegawai */}
-      {/* Dashboard Data Gaji Pegawai */}
-      <Route exact path='/data-gaji-pegawai' element={<DataGajiPegawai />} />
-      <Route exact path='/pengaturan/ubah-password' element={<UbahPasswordPegawai />} />
+    {/* Route Pegawai */}
+    {/* Dashboard Data Gaji Pegawai */}
+    <Route
+      path='/data-gaji-pegawai'
+      element={<DataGajiPegawai />}
+    />
+    <Route
+      path='/pengaturan/ubah-password'
+      element={<UbahPasswordPegawai />}
+    />
 
-      {/* Route Not Found/404 */}
-      <Route exact path="*" element={<NotFound />} />
-    </Routes>
+    {/* Route Not Found 404 */}
+    <Route
+      path="*"
+      element={<NotFound />}
+    />
+  </Routes>
   )
 }
 

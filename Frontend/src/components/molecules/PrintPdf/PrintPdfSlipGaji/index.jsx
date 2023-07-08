@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import Logo from "../../../../assets/images/logo/logo.svg";
+import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
+import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -63,6 +64,8 @@ const PrintPdfSlipGaji = () => {
         }
         if (user && user.hak_akses !== "admin") {
             navigate("/dashboard");
+        } else {
+            handlePrint();
         }
     }, [isError, user, navigate, handlePrint]);
 
@@ -89,13 +92,21 @@ const PrintPdfSlipGaji = () => {
                 </Link>
             </div >
             <div ref={componentRef} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
-                <div className="flex items-center gap-25 object-cover border-b-4 border-black dark:border-white">
-                    <img className="w-30" src={Logo} alt="Logo" />
-                    <h1 className="text-black text-3xl font-bold boder py-2 dark:text-white">
+                <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
+                    <img className="w-35"
+                        src={LogoSipeka}
+                        title="Logo SiPeKa"
+                        alt="Logo SiPeKa" />
+                    <h1 className="text-black text-2xl font-bold boder  dark:text-white">
                         PT. Humpuss Karbometil Selulosa
                     </h1>
+                    <img className="w-35"
+                        src={LogoPt}
+                        title="Logo PT.Humpuss Karbometil Selulosa"
+                        alt="Logo PT.Humpuss Karbometil Selulosa"
+                    />
                 </div>
-                <h1 className="text-center text-black dark:text-white my-4 text-2xl font-medium boder py-2">
+                <h1 className="text-center text-black dark:text-white my-4 text-xl font-medium boder py-2">
                     Daftar Gaji Pegawai
                 </h1>
                 <div className="w-full md:text-lg">
@@ -231,7 +242,7 @@ const PrintPdfSlipGaji = () => {
                         <span className="p-8 italic text-black dark:text-white">Tanda Tangan</span>
                     </div>
                 </div>
-                <div className="italic text-black dark:text-white mt-35">
+                <div className="italic text-black dark:text-white mt-30">
                     Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
                 </div>
             </div>

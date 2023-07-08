@@ -1,8 +1,7 @@
 import React from 'react'
-import LogoIcon from '../../../assets/images/logo/logo-icon.svg'
-import { DropdownNotification, DropdownProfil, DarkModeSwitcher } from '../../../components'
+import LogoSipeka from '../../../assets/images/logo/logo-sipeka.png'
+import { DropdownProfil, DarkModeSwitcher } from '../../../components'
 import { Link } from 'react-router-dom'
-import { BiSearch } from 'react-icons/bi'
 
 const Header = (
     props
@@ -52,40 +51,25 @@ const Header = (
                     {/* <!-- Hamburger Toggle BTN --> */}
 
                     <Link className='block flex-shrink-0 lg:hidden' to='/dashboard'>
-                        <img src={LogoIcon} alt='Logo PT. Humpus Karbometil Selulosa' />
+                        <img
+                            src={LogoSipeka}
+                            className='w-25'
+                            title='Logo SiPeKa'
+                            alt='Logo SiPeKa'
+                        />
                     </Link>
                 </div>
 
                 <div className='hidden sm:block'>
                     <form action='https://formbold.com/s/unique_form_id' method='POST'>
-                        {/* <div className='relative'>
-                            <button className='absolute top-1/2 left-0 -translate-y-1/2'>
-                                <BiSearch className='fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary text-xl' />
-                            </button>
-
-                            <input
-                                type='text'
-                                placeholder='Type to search...'
-                                className='w-full bg-transparent pr-4 pl-9 focus:outline-none'
-                            />
-                        </div> */}
                     </form>
                 </div>
 
                 <div className='flex items-center gap-3 2xsm:gap-7'>
                     <ul className='flex items-center gap-2 2xsm:gap-4'>
-                        {/* <!-- Dark Mode Toggler --> */}
                         <DarkModeSwitcher />
-                        {/* <!-- Dark Mode Toggler --> */}
-
-                        {/* <!-- Notification Menu Area --> */}
-                        {/* <DropdownNotification /> */}
-                        {/* <!-- Notification Menu Area --> */}
                     </ul>
-
-                    {/* <!-- User Area --> */}
                     <DropdownProfil />
-                    {/* <!-- User Area --> */}
                 </div>
             </div>
         </header>
