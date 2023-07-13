@@ -417,12 +417,12 @@ export const getDataGajiPegawai = async () => {
     const potongan_pegawai = resultDataKehadiran.map((kehadiran) => {
       const potonganAlpha = kehadiran.alpha > 0 ?
         resultDataPotongan
-          .filter((potongan) => potongan.nama_potongan === "alpha")
+          .filter((potongan) => potongan.nama_potongan.toLowerCase() === "alpha")
           .reduce((total, potongan) => total + potongan.jml_potongan * kehadiran.alpha, 0) : 0;
 
       const potonganSakit = kehadiran.sakit > 0 ?
         resultDataPotongan
-          .filter((potongan) => potongan.nama_potongan === "sakit")
+          .filter((potongan) => potongan.nama_potongan.toLowerCase() === "sakit")
           .reduce((total, potongan) => total + potongan.jml_potongan * kehadiran.sakit, 0) : 0;
 
       return {
