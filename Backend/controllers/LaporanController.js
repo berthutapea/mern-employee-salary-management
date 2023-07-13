@@ -1,7 +1,6 @@
 import {
     getDataGajiPegawai,
     getDataKehadiran,
-    viewDataGajiPegawaiByName,
     viewDataGajiPegawaiByYear
 } from "./TransaksiController.js"
 
@@ -26,7 +25,7 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
         });
 
         if (filteredData.length === 0) {
-            res.status(404).json({ msg: 'Data Tidak di Temukan' });
+            res.status(404).json({ msg: 'Data tidak ditemukan' });
         } else {
             const formattedData = filteredData.map((data) => {
                 return {
@@ -47,6 +46,10 @@ export const viewLaporanGajiPegawaiByMonth = async (req, res) => {
     }
 };
 
+
+
+
+
 // method untuk melihat laporan gaji pegawai berdasarkan tahun
 export const viewLaporanGajiPegawaiByYear = async (req, res) => {
     try {
@@ -58,14 +61,28 @@ export const viewLaporanGajiPegawaiByYear = async (req, res) => {
 
 
 // method untuk melihat laporan gaji pegawai berdasarkan nama
-export const viewLaporanGajiPegawaiByName = async(req, res) => {
+export const viewLaporanGajiPegawaiByName = async (req, res) => {
     try {
-        const laporanGajiPegawaiByName = await viewDataGajiPegawaiByName(req, res);
-        res.status(200).json(laporanGajiPegawaiByName);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-}
+        const dataGajiPegawai = await getDataGajiPegawai(req, res);
+        const name = req.params.name.toLowerCase();
+
+        const foundData = dataGajiPegawai.filter((data) => {
+          const formattedName = data.nama_pegawai.toLowerCase();
+          const searchKeywords = name.split(" ");
+
+          return searchKeywords.every((keyword) => formattedName.includes(keyword));
+        });
+
+        if (foundData.length === 0) {
+          res.status(404).json({ msg: "Data not found" });
+        } else {
+          res.json(foundData);
+        }
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "Internal server error" });
+      }
+  };
 
 // method untuk melihat laporan absensi pegawai berdasarkan bulan (menggunakan DROP DOWN)
 export const viewLaporanAbsensiPegawaiByMonth = async (req, res) => {
@@ -87,7 +104,7 @@ export const viewLaporanAbsensiPegawaiByMonth = async (req, res) => {
         });
 
         if (dataAbsensi.length === 0) {
-            res.status(404).json({ msg: 'Data Tidak di Temukan' });
+            res.status(404).json({ msg: 'Data tidak ditemukan' });
         } else {
             res.json(dataAbsensi);
         }
@@ -117,7 +134,7 @@ export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
         });
 
         if (dataAbsensi.length === 0) {
-            res.status(404).json({ msg: 'Data Tidak di Temukan' });
+            res.status(404).json({ msg: 'Data tidak ditemukan' });
         } else {
             res.json(dataAbsensi);
         }
@@ -126,15 +143,30 @@ export const viewLaporanAbsensiPegawaiByYear = async (req, res) => {
     }
 };
 
+
+
 // method untuk melihat Slip Gaji Pegawai By Name
-// nik, nama_pegawai, jabatan, bulan, tahun, gaji pokok, tunjangan transport, uang makan, potongan, total
 export const viewSlipGajiByName = async (req, res) => {
     try {
-        const slipGajiPegawai = await viewDataGajiPegawaiByName(req, res);
-        res.status(200).json(slipGajiPegawai);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+        const dataGajiPegawai = await getDataGajiPegawai(req, res);
+        const name = req.params.name.toLowerCase();
+
+        const foundData = dataGajiPegawai.filter((data) => {
+          const formattedName = data.nama_pegawai.toLowerCase();
+          const searchKeywords = name.split(" ");
+
+          return searchKeywords.every((keyword) => formattedName.includes(keyword));
+        });
+
+        if (foundData.length === 0) {
+          res.status(404).json({ msg: "Data not found" });
+        } else {
+          res.json(foundData);
+        }
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: "Internal server error" });
+      }
 }
 
 // method untuk melihat Slip Gaji Pegawai By Month
@@ -148,7 +180,7 @@ export const viewSlipGajiByMonth = async (req, res) => {
         });
 
         if (filteredData.length === 0) {
-            res.status(404).json({ msg: `Data dengan Bulan ${month} Tidak di Temukan ` });
+            res.status(404).json({ msg: `Data dengan bulan ${month} tidak ditemukan ` });
         } else {
             const formattedData = filteredData.map((data) => {
                 return {
