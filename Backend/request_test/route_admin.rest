@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 
 ### Delete Data Pegawai
-DELETE   http://localhost:5000/data_pegawai/1
+DELETE   http://localhost:5000/data_pegawai/
 
 
 /////// Data Jabatan //////
@@ -191,7 +191,7 @@ DELETE http://localhost:5000/data_kehadiran/8
 GET  http://localhost:5000/data_potongan
 
 ### Get Data Potongan Gaji By ID
-GET  http://localhost:5000/data_potongan/21
+GET  http://localhost:5000/data_potongan/23
 
 ### Create Data Potongan
 POST  http://localhost:5000/data_potongan
