@@ -15,6 +15,7 @@ const LaporanGaji = () => {
     const [showMessage, setShowMessage] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const { isError, user } = useSelector((state) => state.auth);
 
     const handleSearchMonth = (event) => {
@@ -51,6 +52,7 @@ const LaporanGaji = () => {
                 icon: 'error',
                 title: 'Data tidak ditemukan',
                 text: 'Maaf, data yang anda cari tidak ditemukan',
+                timer: 2000,
             });
         }
     };

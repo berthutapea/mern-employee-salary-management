@@ -121,11 +121,11 @@ const AppRoutes = () => {
         element={<PrintPdfLaporanGaji />}
       />
       <Route
-        path='/laporan-absensi'
+        path='/laporan/absensi'
         element={<LaporanAbsensi />}
       />
       <Route
-        path='/laporan-absensi/cetak-laporan-absensi'
+        path='/laporan/absensi/print-page'
         element={<PrintPdfLaporanAbsensi />}
       />
       <Route

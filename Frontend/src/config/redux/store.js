@@ -5,6 +5,7 @@ import dataJabatanReducer from './reducer/dataJabatanReducer';
 import dataKehadiranReucer from './reducer/dataKehadiranReducer';
 import dataPotonganReducer from './reducer/dataPotonganReducer';
 import dataGajiReducer from './reducer/dataGajiReducer';
+import laporanAbsensiReducer from './reducer/laporanAbsensiReducer';
 import laporanGajiReducer from './reducer/laporanGajiReducer';
 
 const store = configureStore({
@@ -15,6 +16,7 @@ const store = configureStore({
         dataKehadiran: dataKehadiranReucer,
         dataPotongan: dataPotonganReducer,
         dataGaji: dataGajiReducer,
+        laporanAbsensi: laporanAbsensiReducer,
         laporanGaji: laporanGajiReducer,
     },
 });

@@ -19,6 +19,7 @@ const PrintPdfLaporanGaji = () => {
   const searchParams = new URLSearchParams(location.search);
   const month = searchParams.get("month");
   const year = searchParams.get("year");
+
   const { isError, user } = useSelector((state) => state.auth);
   const { dataLaporanGaji } = useSelector((state) => state.laporanGaji);
 

@@ -1,21 +1,35 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
 import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataKehadiran, getMe } from "../../../../config/redux/action";
+import {
+    fetchLaporanAbsensiByMonth,
+    fetchLaporanAbsensiByYear,
+    getMe
+} from "../../../../config/redux/action";
 import { ButtonOne, ButtonTwo } from "../../../atoms";
 
 const PrintPdfLaporanAbsensi = () => {
     const componentRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [bulan, setBulan] = useState("");
-    const [tahun, setTahun] = useState("");
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const month = searchParams.get("month");
+    const year = searchParams.get("year");
 
     const { isError, user } = useSelector((state) => state.auth);
-    const { dataKehadiran } = useSelector((state) => state.dataKehadiran);
+    const { dataLaporanAbsensi } = useSelector((state) => state.laporanAbsensi);
+
+    const getDataByYear = async (selectedYear) => {
+        dispatch(fetchLaporanAbsensiByYear(selectedYear));
+    };
+
+    const getDataByMonth = async (selectedMonth) => {
+        dispatch(fetchLaporanAbsensiByMonth(selectedMonth));
+    };
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -23,7 +37,11 @@ const PrintPdfLaporanAbsensi = () => {
     });
 
     useEffect(() => {
-        dispatch(getDataKehadiran());
+        getDataByYear(year);
+        getDataByMonth(month);
+    }, [year, month]);
+
+    useEffect(() => {
         dispatch(getMe());
     }, [dispatch]);
 
@@ -38,14 +56,6 @@ const PrintPdfLaporanAbsensi = () => {
         }
     }, [isError, user, navigate, handlePrint]);
 
-    useEffect(() => {
-        const today = new Date();
-        const month = today.toLocaleString("default", { month: "long" });
-        const year = today.getFullYear();
-        setBulan(month);
-        setTahun(year);
-    }, []);
-
     return (
         <>
             <div className="flex flex-col md:flex-row w-full gap-3 text-center p-6 bg-white dark:bg-meta-4">
@@ -54,7 +64,7 @@ const PrintPdfLaporanAbsensi = () => {
                         <span>Cetak</span>
                     </ButtonOne>
                 </div>
-                <Link to="/laporan-absensi">
+                <Link to="/laporan/absensi">
                     <ButtonTwo>
                         <span>Kembali</span>
                     </ButtonTwo>
@@ -83,12 +93,12 @@ const PrintPdfLaporanAbsensi = () => {
                         <span className="inline-block w-32 md:w-40">Bulan</span>
                         <span className="pl-[-8] md:pl-0"></span>
                         <span className="inline-block w-7">:</span>
-                        {bulan}
+                        {month}
                     </h2>
                     <h2 className="font-medium mb-4 block text-black dark:text-white">
                         <span className="inline-block w-32 md:w-40">Tahun</span>
                         <span className="inline-block w-7">:</span>
-                        {tahun}
+                        {year}
                         <span className="pl-[-8] md:pl-0"></span>
                     </h2>
                 </div>
@@ -109,9 +119,6 @@ const PrintPdfLaporanAbsensi = () => {
                                     Jabatan
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
-                                    Jenis <br /> Kelamin
-                                </th>
-                                <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
                                     Hadir
                                 </th>
                                 <th className="font-medium text-black border-t border-l border-b border-black dark:border-white dark:text-white">
@@ -123,7 +130,7 @@ const PrintPdfLaporanAbsensi = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataKehadiran.map((data, index) => {
+                            {dataLaporanAbsensi.map((data, index) => {
                                 return (
                                     <tr key={data.id}>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
@@ -137,9 +144,6 @@ const PrintPdfLaporanAbsensi = () => {
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
                                             <p className="text-black dark:text-white">{data.jabatan_pegawai}</p>
-                                        </td>
-                                        <td className="border-b border-l border-black dark:border-white py-5 text-center">
-                                            <p className="text-black dark:text-white">{data.jenis_kelamin}</p>
                                         </td>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
                                             <p className="text-black dark:text-white">{data.hadir}</p>
@@ -158,7 +162,7 @@ const PrintPdfLaporanAbsensi = () => {
                 </div>
                 <div className="py-6">
                     <div className="font-medium text-black text-right dark:text-white">
-                        <span>Karawang, {`${new Date().getDate()} ${bulan} ${tahun}`}</span>
+                        <span>Karawang, {`${new Date().getDate()} ${month} ${year}`}</span>
                         <br />
                         <span className="p-26">Finance</span>
                         <br />
@@ -167,7 +171,7 @@ const PrintPdfLaporanAbsensi = () => {
                     </div>
                 </div>
                 <div className="italic text-black dark:text-white mt-70">
-                    Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
+                    Dicetak Pada : {`${new Date().getDate()} ${month} ${year}`}
                 </div>
             </div>
         </>
