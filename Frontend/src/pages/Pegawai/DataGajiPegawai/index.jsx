@@ -75,10 +75,10 @@ const DataGajiPegawai = () => {
 
     useEffect(() => {
         if (isError) {
-            navigate("/");
+            navigate("/login");
         }
         if (user && user.hak_akses !== 'pegawai') {
-            navigate("/login");
+            navigate("/dasboard");
         }
     }, [isError, user, navigate]);
 

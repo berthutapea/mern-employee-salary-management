@@ -135,7 +135,7 @@ const AppRoutes = () => {
 
       {/* Pengaturan Admin */}
       <Route
-        path='/pengaturan/ubah-password'
+        path='/ubah-password'
         element={<UbahPasswordAdmin />}
       />
 
@@ -146,7 +146,7 @@ const AppRoutes = () => {
         element={<DataGajiPegawai />}
       />
       <Route
-        path='/pengaturan/ubah-password'
+        path='/ubah-password-pegawai'
         element={<UbahPasswordPegawai />}
       />
 

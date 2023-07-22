@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
 import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchLaporanGajiByMonth,
@@ -78,11 +78,13 @@ const PrintPdfLaporanGaji = () => {
             <span>Cetak</span>
           </ButtonOne>
         </div>
-        <Link to="/laporan/gaji">
-          <ButtonTwo>
+        <div>
+          <ButtonTwo
+            onClick={() => navigate(-1)}
+          >
             <span>Kembali</span>
           </ButtonTwo>
-        </Link>
+        </div>
       </div >
       <div ref={componentRef} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
         <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">

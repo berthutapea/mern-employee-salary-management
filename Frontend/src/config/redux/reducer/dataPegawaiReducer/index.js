@@ -14,8 +14,8 @@ import {
     CREATE_DATA_PEGAWAI_FAILURE,
     UPDATE_DATA_PEGAWAI_SUCCESS,
     UPDATE_DATA_PEGAWAI_FAILURE,
-    CHANGE_PASSWORD_ADMIN_SUCCESS,
-    CHANGE_PASSWORD_ADMIN_FAILURE,
+    // CHANGE_PASSWORD_ADMIN_SUCCESS,
+    // CHANGE_PASSWORD_ADMIN_FAILURE,
     DELETE_DATA_PEGAWAI_SUCCESS,
     DELETE_DATA_PEGAWAI_FAILURE
 } from '../../action/dataPegawaiAction/dataPegawaiActionTypes';
@@ -124,18 +124,18 @@ const dataPegawaiReducer = (state = initialState, action) => {
                 error: action.payload.message,
                 message: null,
             };
-        case CHANGE_PASSWORD_ADMIN_SUCCESS:
-            return {
-                ...state,
-                message: action.payload.message,
-                error: null,
-            };
-        case CHANGE_PASSWORD_ADMIN_FAILURE:
-            return {
-                ...state,
-                error: action.payload.message,
-                message: null,
-            };
+        // case CHANGE_PASSWORD_ADMIN_SUCCESS:
+        //     return {
+        //         ...state,
+        //         message: action.payload.message,
+        //         error: null,
+        //     };
+        // case CHANGE_PASSWORD_ADMIN_FAILURE:
+        //     return {
+        //         ...state,
+        //         error: action.payload.message,
+        //         message: null,
+        //     };
         case DELETE_DATA_PEGAWAI_SUCCESS:
             return {
                 ...state,

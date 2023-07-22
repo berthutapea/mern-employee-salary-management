@@ -126,7 +126,7 @@ const LaporanGaji = () => {
                                         <div className='relative z-20 bg-transparent dark:bg-form-input'>
                                             <input
                                                 type="number"
-                                                placeholder="Masukkan tahun"
+                                                placeholder="Masukkan Tahun..."
                                                 value={searchYear}
                                                 onChange={handleSearchYear}
                                                 required

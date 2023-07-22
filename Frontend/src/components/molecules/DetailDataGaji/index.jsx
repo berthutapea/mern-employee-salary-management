@@ -30,7 +30,7 @@ const DetailDataGaji = () => {
         const getDataPegawai = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/data_gaji/name/${name}`);
-                const data = response.data;
+                const data = response.data[0];
 
                 setData(data);
             } catch (error) {

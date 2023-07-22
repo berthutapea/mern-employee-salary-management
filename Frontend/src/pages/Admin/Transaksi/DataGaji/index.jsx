@@ -1,13 +1,14 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../../../../layout';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { Breadcrumb, ButtonOne } from '../../../../components';
 import { FaRegEye } from 'react-icons/fa'
 import { BiSearch } from 'react-icons/bi'
+import Swal from 'sweetalert2';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { TfiPrinter } from 'react-icons/tfi'
-import { getDataGaji, getMe } from '../../../../config/redux/action';
+import { fetchLaporanGajiByMonth, fetchLaporanGajiByYear, getDataGaji, getMe } from '../../../../config/redux/action';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -16,6 +17,7 @@ const DataGaji = () => {
     const [filterTahun, setFilterTahun] = useState("");
     const [filterBulan, setFilterBulan] = useState("");
     const [filterNama, setFilterNama] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
 
     const { dataGaji } = useSelector((state) => state.dataGaji);
     const { isError, user } = useSelector((state) => state.auth);
@@ -64,6 +66,37 @@ const DataGaji = () => {
 
     const handleNamaChange = (event) => {
         setFilterNama(event.target.value);
+    };
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
+
+        const selectedMonth = filterBulan;
+        const selectedYear = filterTahun;
+
+        let yearDataFound = false;
+        let monthDataFound = false;
+
+        await Promise.all([
+            dispatch(fetchLaporanGajiByYear(selectedYear, () => (yearDataFound = true))),
+            dispatch(fetchLaporanGajiByMonth(selectedMonth, () => (monthDataFound = true))),
+        ]);
+        setShowMessage(true);
+
+        if (yearDataFound && monthDataFound) {
+            setShowMessage(false);
+            navigate(
+                `/laporan/gaji/print-page?month=${selectedMonth}&year=${selectedYear}`
+            );
+        } else {
+            setShowMessage(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Data tidak ditemukan',
+                text: 'Maaf, data yang anda cari tidak ditemukan',
+                timer: 2000,
+            });
+        }
     };
 
     useEffect(() => {
@@ -137,63 +170,67 @@ const DataGaji = () => {
                         Filter Data Gaji Pegawai
                     </h3>
                 </div>
-
-                <div className='flex flex-col md:flex-row md:justify-between items-center mt-4'>
-                    <div className='relative w-full md:w-1/2 md:mr-2 mb-4 md:mb-0'>
-                        <div className='relative'>
-                            <span className='px-6'>Bulan</span>
-                            <span className='absolute top-1/2 left-70 z-30 -translate-y-1/2 text-xl'>
-                                <MdOutlineKeyboardArrowDown />
-                            </span>
-                            <select
-                                value={filterBulan}
-                                onChange={handleBulanChange}
-                                className='relative appearance-none rounded border border-stroke bg-transparent py-2 px-18 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'
-                            >
-                                <option value=''>Pilih Bulan</option>
-                                <option value='Januari'>Januari</option>
-                                <option value='Februari'>Februari</option>
-                                <option value='Maret'>Maret</option>
-                                <option value='April'>April</option>
-                                <option value='Mei'>Mei</option>
-                                <option value='Juni'>Juni</option>
-                                <option value='Juli'>Juli</option>
-                                <option value='Agustus'>Agustus</option>
-                                <option value='September'>September</option>
-                                <option value='Oktober'>Oktober</option>
-                                <option value='November'>November</option>
-                                <option value='Desember'>Desember</option>
-                            </select>
+                <form onSubmit={handleSearch}>
+                    {showMessage && (
+                        <p className="text-meta-1">Data tidak ditemukan</p>
+                    )}
+                    <div className='flex flex-col md:flex-row md:justify-between items-center mt-4'>
+                        <div className='relative w-full md:w-1/2 md:mr-2 mb-4 md:mb-0'>
+                            <div className='relative'>
+                                <span className='px-6'>Bulan</span>
+                                <span className='absolute top-1/2 left-70 z-30 -translate-y-1/2 text-xl'>
+                                    <MdOutlineKeyboardArrowDown />
+                                </span>
+                                <select
+                                    value={filterBulan}
+                                    onChange={handleBulanChange}
+                                    required
+                                    className='relative appearance-none rounded border border-stroke bg-transparent py-2 px-18 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input'
+                                >
+                                    <option value=''>Pilih Bulan</option>
+                                    <option value='Januari'>Januari</option>
+                                    <option value='Februari'>Februari</option>
+                                    <option value='Maret'>Maret</option>
+                                    <option value='April'>April</option>
+                                    <option value='Mei'>Mei</option>
+                                    <option value='Juni'>Juni</option>
+                                    <option value='Juli'>Juli</option>
+                                    <option value='Agustus'>Agustus</option>
+                                    <option value='September'>September</option>
+                                    <option value='Oktober'>Oktober</option>
+                                    <option value='November'>November</option>
+                                    <option value='Desember'>Desember</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div className='relative w-full md:w-1/2 md:mr-2 mb-4 md:mb-0'>
-                        <div className='relative'>
-                            <span className='px-6'>Tahun</span>
-                            <input
-                                type='number'
-                                placeholder='Masukkan Tahun...'
-                                value={filterTahun}
-                                onChange={handleTahunChange}
-                                className='rounded border-[1.5px] border-stroke bg-transparent py-2 pl-10 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary left-0'
-                            />
-                            <span className='absolute left-25 py-3 text-xl '>
-                                <BiSearch />
-                            </span>
+                        <div className='relative w-full md:w-1/2 md:mr-2 mb-4 md:mb-0'>
+                            <div className='relative'>
+                                <span className='px-6'>Tahun</span>
+                                <input
+                                    type='number'
+                                    placeholder='Masukkan Tahun...'
+                                    value={filterTahun}
+                                    onChange={handleTahunChange}
+                                    required
+                                    className='rounded border-[1.5px] border-stroke bg-transparent py-2 pl-10 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary left-0'
+                                />
+                                <span className='absolute left-25 py-3 text-xl '>
+                                    <BiSearch />
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div className='w-full md:w-1/2 flex justify-center md:justify-end'>
-                        <div className='w-full md:w-auto'>
-                            <Link to='/data-gaji/cetak-gaji'>
-                                <ButtonOne>
+                        <div className='w-full md:w-1/2 flex justify-center md:justify-end'>
+                            <div className='w-full md:w-auto'>
+                                <ButtonOne type='submit'>
                                     <span>Cetak Daftar Gaji</span>
                                     <span>
                                         <TfiPrinter />
                                     </span>
                                 </ButtonOne>
-                            </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div className="bg-gray-2 text-left dark:bg-meta-4 mt-6">
                     {filteredDataGaji
                         .reduce((uniqueEntries, data) => {

@@ -15,8 +15,8 @@ import {
     CREATE_DATA_PEGAWAI_FAILURE,
     UPDATE_DATA_PEGAWAI_SUCCESS,
     UPDATE_DATA_PEGAWAI_FAILURE,
-    CHANGE_PASSWORD_ADMIN_SUCCESS,
-    CHANGE_PASSWORD_ADMIN_FAILURE,
+    // CHANGE_PASSWORD_ADMIN_SUCCESS,
+    // CHANGE_PASSWORD_ADMIN_FAILURE,
     DELETE_DATA_PEGAWAI_SUCCESS,
     DELETE_DATA_PEGAWAI_FAILURE
 } from './dataPegawaiActionTypes';
@@ -151,22 +151,22 @@ export const updateDataPegawai = (id, data) => {
     };
 };
 
-export const changePasswordAdmin = (id, data) => {
-    return async (dispatch) => {
-        try {
-            const response = await axios.put(`${API_URL}/change_password/${id}`, data);
-            dispatch({
-                type: CHANGE_PASSWORD_ADMIN_SUCCESS,
-                payload: response.data
-            });
-        } catch (error) {
-            dispatch({
-                type: CHANGE_PASSWORD_ADMIN_FAILURE,
-                payload: error.message
-            });
-        }
-    };
-};
+// export const changePasswordAdmin = (id, data) => {
+//     return async (dispatch) => {
+//         try {
+//             const response = await axios.put(`${API_URL}/change_password/${id}`, data);
+//             dispatch({
+//                 type: CHANGE_PASSWORD_ADMIN_SUCCESS,
+//                 payload: response.data
+//             });
+//         } catch (error) {
+//             dispatch({
+//                 type: CHANGE_PASSWORD_ADMIN_FAILURE,
+//                 payload: error.message
+//             });
+//         }
+//     };
+// };
 
 export const deleteDataPegawai = (id) => {
     return async (dispatch) => {

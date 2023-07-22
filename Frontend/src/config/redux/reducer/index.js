@@ -7,3 +7,4 @@ export * from './dataPotonganReducer';
 export * from './laporanAbsensiReducer';
 export * from './laporanGajiReducer';
 export * from './slipGajiReducer';
+export * from './ubahPasswordReducer';
