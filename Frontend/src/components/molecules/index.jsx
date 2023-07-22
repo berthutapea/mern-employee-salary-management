@@ -13,7 +13,7 @@ import FormEditDataPotongan from "./Form/FormDataPotongan/FormEditDataPotongan";
 import Header from './Header';
 import Navbar from './Navbar';
 import NotFound from './NotFound';
-import PrintPdfDataGaji from './PrintPdf/PrintPdfDataGaji';
+import PrintPdfLaporanGaji from './PrintPdf/PrintPdfLaporanGaji';
 import PrintPdfSlipGaji from './PrintPdf/PrintPdfSlipGaji';
 import PrintPdfLaporanAbsensi from './PrintPdf/PrintPdfLaporanAbsensi';
 import SidebarAdmin from './Sidebar/SidebarAdmin';
@@ -36,7 +36,7 @@ export {
     Header,
     Navbar,
     NotFound,
-    PrintPdfDataGaji,
+    PrintPdfLaporanGaji,
     PrintPdfSlipGaji,
     PrintPdfLaporanAbsensi,
     SidebarAdmin,

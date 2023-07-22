@@ -4,3 +4,4 @@ export * from './dataJabatanReducer';
 export * from './dataKehadiranReducer';
 export * from './dataPegawaiReducer';
 export * from './dataPotonganReducer';
+export * from './laporanGajiReducer';

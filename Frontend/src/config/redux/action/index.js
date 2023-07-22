@@ -4,3 +4,4 @@ export * from './dataJabatanAction';
 export * from './dataKehadiranAction';
 export * from './dataPegawaiAction';
 export * from './dataPotonganAction';
+export * from './laporanGajiAction';
