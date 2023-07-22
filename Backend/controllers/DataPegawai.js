@@ -1,7 +1,6 @@
 import DataPegawai from "../models/DataPegawaiModel.js";
 import argon2 from "argon2";
 import path from "path";
-import fs from "fs";
 
 // menampilkan semua data Pegawai
 export const getDataPegawai = async (req, res) => {

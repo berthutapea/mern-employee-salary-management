@@ -12,7 +12,6 @@ import {
     deleteDataPegawai,
     getDataPegawaiByNik,
     getDataPegawaiByName,
-    changePasswordAdmin
 } from '../controllers/DataPegawai.js';
 
 import {
@@ -78,7 +77,7 @@ router.get('/data_pegawai/name/:name', verifyUser, getDataPegawaiByName);
 router.post('/data_pegawai', createDataPegawai);
 router.patch('/data_pegawai/:id', verifyUser, adminOnly, updateDataPegawai);
 router.delete('/data_pegawai/:id', verifyUser, adminOnly, deleteDataPegawai);
-router.patch('/data_pegawai/:id/change_password', verifyUser, adminOnly, changePasswordAdmin);
+router.patch('/data_pegawai/:id/change_password', verifyUser, adminOnly, changePassword);
 // Data Jabatan
 router.get('/data_jabatan', verifyUser, adminOnly, getDataJabatan);
 router.get('/data_jabatan/:id', verifyUser, adminOnly, getDataJabatanByID);

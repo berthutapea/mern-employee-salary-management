@@ -18,25 +18,27 @@ export const changePasswordFailure = (error) => ({
 
 export const changePassword = (password, confPassword) => async (dispatch) => {
     try {
-        dispatch(changePasswordRequest());
+      dispatch(changePasswordRequest());
 
-        if (password !== confPassword) {
-            dispatch(changePasswordFailure('Password dan Konfirmasi Password Tidak Cocok'));
-            return;
-        }
+      if (password !== confPassword) {
+        dispatch(changePasswordFailure('Password dan Konfirmasi Password Tidak Cocok'));
+        return;
+      }
 
-        const response = await axios.post(`${API_BASE_URL}/change_password`, {
-            headers: {
-                "Content-type": "multipart/form-data"
-            }
-        });
+      const response = await axios.patch(`${API_BASE_URL}/change_password`, {
+        password,
+        confPassword,
+      }, {
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
 
-        dispatch(changePasswordSuccess(response.data.msg));
+      dispatch(changePasswordSuccess(response.data.msg));
     } catch (error) {
-        dispatch(changePasswordFailure(error.message));
+      dispatch(changePasswordFailure(error.message));
     }
-};
-
+  };
 
 
 // import axios from 'axios';
