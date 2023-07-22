@@ -227,9 +227,6 @@ export const viewDataPotonganByID = async (req, res) => {
         id: req.params.id,
       },
     });
-    if (dataPotongan === null){
-      res.status(404).json("data tidak ditemukan.");
-    }
     res.json(dataPotongan);
   } catch (error) {
     console.log(error);

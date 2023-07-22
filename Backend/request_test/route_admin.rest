@@ -222,6 +222,9 @@ DELETE http://localhost:5000/data_potongan/3
 ### get All Data Gaji Pegawai
 GET http://localhost:5000/data_gaji_pegawai
 
+### get Data Gaji Pegawai By Name
+GET http://localhost:5000/data_gaji/name/Aldi Ramdani
+
 ### get All Data Gaji Pegawai By Month
 GET http://localhost:5000/data_gaji_pegawai/month/Juni
 
