@@ -11,6 +11,9 @@ Content-Type: application/json
     "password": "update"
 }
 
+### Get Me
+GET http://localhost:5000/me
+
 ### Logout User
 DELETE   http://localhost:5000/logout
 

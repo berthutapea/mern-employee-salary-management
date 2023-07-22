@@ -5,82 +5,73 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumb } from '../../../components';
 import { getMe } from '../../../config/redux/action';
 import axios from 'axios';
-import { TfiPrinter } from 'react-icons/tfi'
+import { TfiPrinter } from 'react-icons/tfi';
 
 const ITEMS_PER_PAGE = 4;
 
 const DataGajiPegawai = () => {
-    const [data, setData] = useState({
-        tahun: '',
-        bulan: '',
-        nik: '',
-        nama_pegawai: '',
-        jabatan: '',
-        gaji_pokok: '',
-        tj_transport: '',
-        uang_makan: '',
-        potongan: '',
-        total: '',
-    });
-    const { name } = useParams();
-    const [currentPage, setCurrentPage] = useState(1);
-    const [startIndex, setStartIndex] = useState(0);
-    const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
-    const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { isError, user } = useSelector((state) => state.auth);
+  const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(ITEMS_PER_PAGE);
 
-    const totalPages = Math.ceil(dataGajiPegawai.length / ITEMS_PER_PAGE);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError, user } = useSelector((state) => state.auth);
 
-    // useEffect(() => {
-    //     setDataGajiPegawai(DataGajiPegawaiPeople.slice(startIndex, endIndex));
-    // }, [startIndex, endIndex]);
+  const { nama_pegawai } = useSelector((state) => state.auth.user);
 
-    useEffect(() => {
-        const getDataPegawai = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/data_gaji/name/${name}`);
-                const data = response.data;
+  // Hitung jumlah halaman total
+  const totalPages = Math.ceil(dataGajiPegawai.length / ITEMS_PER_PAGE);
 
-                setData(data.slice(startIndex, endIndex));
-            } catch (error) {
-                console.log(error);
-            }
-        };
+  useEffect(() => {
+    const getDataPegawai = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/data_gaji/name/${nama_pegawai}`);
+        const data = response.data;
 
-        getDataPegawai();
-    }, [name, startIndex, endIndex]);
-
-
-    const goToPrevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage((prev) => prev - 1);
-            setStartIndex((prev) => prev - ITEMS_PER_PAGE);
-            setEndIndex((prev) => prev - ITEMS_PER_PAGE);
-        }
+        setDataGajiPegawai(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    const goToNextPage = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage((prev) => prev + 1);
-            setStartIndex((prev) => prev + ITEMS_PER_PAGE);
-            setEndIndex((prev) => prev + ITEMS_PER_PAGE);
-        }
-    };
+    getDataPegawai();
+  }, [nama_pegawai]);
 
-    useEffect(() => {
-        dispatch(getMe());
-    }, [dispatch]);
+  // Event handler untuk tombol Prev
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+      setStartIndex((prev) => prev - ITEMS_PER_PAGE);
+      setEndIndex((prev) => prev - ITEMS_PER_PAGE);
+    }
+  };
 
-    useEffect(() => {
-        if (isError) {
-            navigate("/login");
-        }
-        if (user && user.hak_akses !== 'pegawai') {
-            navigate("/dasboard");
-        }
-    }, [isError, user, navigate]);
+  // Event handler untuk tombol Next
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+      setStartIndex((prev) => prev + ITEMS_PER_PAGE);
+      setEndIndex((prev) => prev + ITEMS_PER_PAGE);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/login");
+    }
+    if (user && user.hak_akses !== 'pegawai') {
+      navigate("/dasboard");
+    }
+  }, [isError, user, navigate]);
+
+  // Ambil data gaji pegawai yang sesuai dengan halaman saat ini
+  const displayedData = dataGajiPegawai.slice(startIndex, endIndex);
 
 
     return (
@@ -116,11 +107,11 @@ const DataGajiPegawai = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {dataGajiPegawai.map((dataGajiPegawai) => { */}
+                            {displayedData.map((data) => {
                             return (
                             <tr key={data.id}>
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
-                                    <p className='text-black dark:text-white'>{data.bulan}</p>
+                                    <p className='text-black dark:text-white'>{data.bulan} / {data.tahun}</p>
                                 </td>
                                 <td className='border-b border-[#eee] py-5 px-4 dark:border-strokedark'>
                                     <p className='text-black dark:text-white'>{data.gaji_pokok}</p>
@@ -146,7 +137,7 @@ const DataGajiPegawai = () => {
                                 </td>
                             </tr>
                             );
-                            {/* })} */}
+                            })}
                         </tbody>
                     </table>
                 </div>
