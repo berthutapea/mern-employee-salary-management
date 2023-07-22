@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
 import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
@@ -19,6 +19,8 @@ const PrintPdfLaporanAbsensi = () => {
     const searchParams = new URLSearchParams(location.search);
     const month = searchParams.get("month");
     const year = searchParams.get("year");
+    const [bulan, setBulan] = useState("");
+    const [tahun, setTahun] = useState("");
 
     const { isError, user } = useSelector((state) => state.auth);
     const { dataLaporanAbsensi } = useSelector((state) => state.laporanAbsensi);
@@ -55,6 +57,18 @@ const PrintPdfLaporanAbsensi = () => {
             handlePrint();
         }
     }, [isError, user, navigate, handlePrint]);
+
+    useEffect(() => {
+        const today = new Date();
+        const monthNames = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+        const month = monthNames[today.getMonth()];
+        const year = today.getFullYear();
+        setBulan(month);
+        setTahun(year);
+    }, []);
 
     return (
         <>
@@ -162,7 +176,7 @@ const PrintPdfLaporanAbsensi = () => {
                 </div>
                 <div className="py-6">
                     <div className="font-medium text-black text-right dark:text-white">
-                        <span>Karawang, {`${new Date().getDate()} ${month} ${year}`}</span>
+                        <span>Karawang, {`${new Date().getDate()} ${bulan} ${tahun}`}</span>
                         <br />
                         <span className="p-26">Finance</span>
                         <br />
@@ -171,7 +185,7 @@ const PrintPdfLaporanAbsensi = () => {
                     </div>
                 </div>
                 <div className="italic text-black dark:text-white mt-70">
-                    Dicetak Pada : {`${new Date().getDate()} ${month} ${year}`}
+                    Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
                 </div>
             </div>
         </>

@@ -7,6 +7,7 @@ import dataPotonganReducer from './reducer/dataPotonganReducer';
 import dataGajiReducer from './reducer/dataGajiReducer';
 import laporanAbsensiReducer from './reducer/laporanAbsensiReducer';
 import laporanGajiReducer from './reducer/laporanGajiReducer';
+import slipGajiReducer from './reducer/slipGajiReducer';
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         dataGaji: dataGajiReducer,
         laporanAbsensi: laporanAbsensiReducer,
         laporanGaji: laporanGajiReducer,
+        slipGaji: slipGajiReducer,
     },
 });
 

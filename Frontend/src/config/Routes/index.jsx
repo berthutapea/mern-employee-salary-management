@@ -102,10 +102,6 @@ const AppRoutes = () => {
         path='/data-gaji/detail-data-gaji/name/:name'
         element={<DetailDataGaji />}
       />
-      {/* <Route
-        path='/data-gaji/cetak-gaji'
-        element={<PrintPdfLaporanGaji />}
-      /> */}
       <Route
         path='/data-gaji/cetak-gaji/slip-gaji/name/:name'
         element={<PrintPdfSlipGaji />}
@@ -129,8 +125,12 @@ const AppRoutes = () => {
         element={<PrintPdfLaporanAbsensi />}
       />
       <Route
-        path='/slip-gaji'
+        path='/laporan/slip-gaji'
         element={<SlipGaji />}
+      />
+      <Route
+        path='/laporan/slip-gaji/print-page'
+        element={<PrintPdfSlipGaji />}
       />
 
       {/* Pengaturan Admin */}

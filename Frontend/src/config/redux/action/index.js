@@ -6,3 +6,4 @@ export * from './dataPegawaiAction';
 export * from './dataPotonganAction';
 export * from './laporanAbsensiAction';
 export * from './laporanGajiAction';
+export * from './slipGajiAction';
