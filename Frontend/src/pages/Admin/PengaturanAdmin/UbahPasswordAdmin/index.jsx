@@ -13,7 +13,7 @@ const UbahPasswordAdmin = () => {
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
 
-    const { isError, user, errorMessage } = useSelector((state) => state.auth);
+    const { isError, user, } = useSelector((state) => state.auth);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,8 +39,9 @@ const UbahPasswordAdmin = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal',
-                text: 'Password tidak sesuai.',
+                text: 'Password dan Konfirmasi Password Tidak Cocok',
                 confirmButtonText: 'Ok',
+                timer: 1500,
             });
         }
     };

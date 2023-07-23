@@ -31,39 +31,3 @@ const ubahPasswordReducer = (state = initialState, action) => {
 };
 
 export default ubahPasswordReducer;
-
-
-
-
-// import {
-//     CHANGE_PASSWORD_SUCCESS,
-//     CHANGE_PASSWORD_FAILURE,
-// } from '../../action/ubahPasswordAction/ubahPasswordActionTypes';
-
-// const initialState = {
-//     ubahPassword: [],
-//     message: null,
-//     error: null
-// };
-
-// const ubahPasswordReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case CHANGE_PASSWORD_SUCCESS:
-//             return {
-//                 ...state,
-//                 message: action.payload.message,
-//                 error: null,
-//             };
-//         case CHANGE_PASSWORD_FAILURE:
-//             return {
-//                 ...state,
-//                 error: action.payload.message,
-//                 message: null,
-//             };
-//         default:
-//             return state;
-//     }
-// };
-
-// export default ubahPasswordReducer;
-
