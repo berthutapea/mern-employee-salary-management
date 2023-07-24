@@ -1,5 +1,6 @@
 export * from './authAction';
 export * from './dataGajiAction';
+export * from './dataGajiPegawaiPrintAction';
 export * from './dataJabatanAction';
 export * from './dataKehadiranAction';
 export * from './dataPegawaiAction';

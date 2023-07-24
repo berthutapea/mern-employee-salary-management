@@ -1,4 +1,5 @@
 export * from './authReducer';
+export * from './dataGajiPegawaiPrintReducer';
 export * from './dataGajiReducer';
 export * from './dataJabatanReducer';
 export * from './dataKehadiranReducer';

@@ -18,7 +18,8 @@ import {
   PrintPdfLaporanGaji,
   DetailDataGaji,
   PrintPdfSlipGaji,
-  PrintPdfLaporanAbsensi
+  PrintPdfLaporanAbsensi,
+  PrintPdfDataGajiPegawai
 } from '../../components';
 import {
   DataPegawai,
@@ -144,6 +145,10 @@ const AppRoutes = () => {
       <Route
         path='/data-gaji-pegawai'
         element={<DataGajiPegawai />}
+      />
+      <Route
+        path='/data-gaji-pegawai/print-page'
+        element={<PrintPdfDataGajiPegawai />}
       />
       <Route
         path='/ubah-password-pegawai'
