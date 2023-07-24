@@ -14,10 +14,25 @@ export const viewDataGajiSinglePegawaiFailure = (error) => ({
 });
 
 
-export const viewGajiSinglePegawaiByYear = (selectedYear, onDataFound) => async (dispatch) => {
+export const viewGajiSinglePegawaiByYear = (dataYear, onDataFound) => async (dispatch) => {
     try {
         const response = await axios.get(
-            `http://localhost:5000/data_gaji/month/${selectedYear}`
+            `http://localhost:5000/data_gaji/month/${dataYear}`
+        );
+        const data = response.data;
+        dispatch(viewDataGajiSinglePegawaiSuccess({data}));
+        onDataFound();
+    } catch (error) {
+        if (error.response && error.response.data) {
+            dispatch(viewDataGajiSinglePegawaiFailure("Terjadi kesalahan saat memuat data."));
+        }
+    }
+};
+
+export const viewGajiSinglePegawaiByMonth = (dataMonth, onDataFound) => async (dispatch) => {
+    try {
+        const response = await axios.get(
+            `http://localhost:5000/data_gaji/month/${dataMonth}`
         );
         const data = response.data;
         dispatch(viewDataGajiSinglePegawaiSuccess(data));
@@ -29,20 +44,6 @@ export const viewGajiSinglePegawaiByYear = (selectedYear, onDataFound) => async 
     }
 };
 
-export const viewGajiSinglePegawaiByMonth = (selectedMonth, onDataFound) => async (dispatch) => {
-    try {
-        const response = await axios.get(
-            `http://localhost:5000/data_gaji/month/${selectedMonth}`
-        );
-        const data = response.data;
-        dispatch(viewDataGajiSinglePegawaiSuccess(data));
-        onDataFound();
-    } catch (error) {
-        if (error.response && error.response.data) {
-            dispatch(viewDataGajiSinglePegawaiFailure("Terjadi kesalahan saat memuat data."));
-        }
-    }
-};
 
 export const viewGajiSinglePegawaiByName = (nama_pegawai, onDataFound) => async (dispatch) => {
     try {
@@ -58,8 +59,6 @@ export const viewGajiSinglePegawaiByName = (nama_pegawai, onDataFound) => async 
         }
     }
 };
-
-
 
 
 // import axios from 'axios';

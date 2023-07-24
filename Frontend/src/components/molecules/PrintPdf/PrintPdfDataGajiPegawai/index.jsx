@@ -22,20 +22,20 @@ const PrintPdfDataGajiPegawai = () => {
     const month = searchParams.get("month");
     const year = searchParams.get("year");
     // const name = searchParams.get("nama_pegawai");
-    // const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
+    const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
     const [index] = useState('');
     const [bulan, setBulan] = useState("");
     const [tahun, setTahun] = useState("");
 
     const { isError, user } = useSelector((state) => state.auth);
-    const { dataGajiPegawaiPrint } = useSelector((state) => state.dataGajiPegawaiPrint);
+    // const { dataGajiPegawaiPrint } = useSelector((state) => state.dataGajiPegawaiPrint);
 
-    const getDataByYear = async (selectedYear) => {
-        dispatch(viewGajiSinglePegawaiByYear(selectedYear));
+    const getDataByYear = async (dataYear) => {
+        dispatch(viewGajiSinglePegawaiByYear(dataYear));
     };
 
-    const getDataByMonth = async (selectedMonth) => {
-        dispatch(viewGajiSinglePegawaiByMonth(selectedMonth));
+    const getDataByMonth = async (dataMonth) => {
+        dispatch(viewGajiSinglePegawaiByMonth(dataMonth));
     };
 
     const getDataByName = async (nama_pegawai) => {
@@ -111,7 +111,7 @@ const PrintPdfDataGajiPegawai = () => {
                 </Link>
             </div >
             <div ref={componentRef} >
-                {dataGajiPegawaiPrint.map((data) => {
+                {dataGajiPegawai.map((data) => {
                     return (
                         <div className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
                             <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
