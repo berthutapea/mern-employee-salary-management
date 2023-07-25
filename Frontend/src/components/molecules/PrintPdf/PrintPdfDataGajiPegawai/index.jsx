@@ -81,8 +81,10 @@ const PrintPdfDataGajiPegawai = () => {
         }
         if (user && user.hak_akses !== "pegawai") {
             navigate("/dashboard");
+        } else {
+            handlePrint();
         }
-    }, [isError, user, navigate]);
+    }, [isError, user, navigate, handlePrint]);
 
     useEffect(() => {
         const today = new Date();

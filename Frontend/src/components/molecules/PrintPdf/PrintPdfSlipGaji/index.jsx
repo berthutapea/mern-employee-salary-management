@@ -86,11 +86,11 @@ const PrintPdfSlipGaji = () => {
                         <span>Cetak</span>
                     </ButtonOne>
                 </div>
-                <Link to="/laporan/slip-gaji">
-                    <ButtonTwo>
-                        <span>Kembali</span>
-                    </ButtonTwo>
-                </Link>
+                <ButtonTwo
+                    onClick={() => navigate(-1)}
+                >
+                    <span>Kembali</span>
+                </ButtonTwo>
             </div >
             <div ref={componentRef} >
                 {dataSlipGaji.map((data) => {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Breadcrumb } from "../../../components";
 import Swal from "sweetalert2";
-import { getMe, viewGajiSinglePegawaiByMonth, viewGajiSinglePegawaiByName, viewGajiSinglePegawaiByYear } from "../../../config/redux/action";
+import { getMe } from "../../../config/redux/action";
 import axios from "axios";
 import { TfiPrinter } from "react-icons/tfi";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
@@ -16,7 +16,7 @@ const DataGajiPegawai = () => {
   const [dataMonth, setDataMonth] = useState([]);
   const [dataYear, setDataYear] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [showMessage, setShowMessage] = useState(false);
+  // const [showMessage, setShowMessage] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
@@ -52,11 +52,10 @@ const DataGajiPegawai = () => {
         <button
           key={page}
           onClick={() => setCurrentPage(page)}
-          className={`border border-gray-2 px-4 py-2 font-semibold text-black dark:border-strokedark dark:text-white ${
-            currentPage === page
+          className={`border border-gray-2 px-4 py-2 font-semibold text-black dark:border-strokedark dark:text-white ${currentPage === page
               ? "bg-primary text-white hover:bg-primary dark:bg-primary dark:hover:bg-primary"
               : "hover:bg-gray-2 dark:hover:bg-stroke"
-          } rounded-lg`}
+            } rounded-lg`}
         >
           {page}
         </button>
@@ -159,11 +158,11 @@ const DataGajiPegawai = () => {
     };
 
     try {
-        const yearData = await viewGajiSinglePegawaiByYear(dataYear);
-        const monthData = await viewGajiSinglePegawaiByMonth(dataMonth);
-        const nameData = await viewGajiSinglePegawaiByName(nama_pegawai);
+      const yearData = await viewGajiSinglePegawaiByYear(dataYear);
+      const monthData = await viewGajiSinglePegawaiByMonth(dataMonth);
+      const nameData = await viewGajiSinglePegawaiByName(nama_pegawai);
 
-      if (yearData.length > 0 && monthData.length > 0 && nameData.length > 0 ) {
+      if (yearData.length > 0 && monthData.length > 0 && nameData.length > 0) {
         navigate(`/data-gaji-pegawai/print-page?month=${dataMonth}&year=${dataYear}&name=${nama_pegawai}`);
       } else {
         console.log("Data not found!");
