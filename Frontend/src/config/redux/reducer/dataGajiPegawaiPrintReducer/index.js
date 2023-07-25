@@ -28,29 +28,3 @@ const dataGajiPegawaiPrintReducer = (state = initialState, action) => {
 };
 
 export default dataGajiPegawaiPrintReducer;
-
-
-
-
-// import {
-//     GET_GAJI_SUCCESS,
-//     GET_GAJI_ERROR
-// } from '../../action/dataGajiPegawaiPrintAction';
-
-// const initialState = {
-//     dataGajiPegawaiPrint: [],
-//     error: null,
-// };
-
-// const dataGajiPegawaiPrintReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case GET_GAJI_SUCCESS:
-//             return { ...state, dataGajiPegawaiPrint: action.payload, error: null };
-//         case GET_GAJI_ERROR:
-//             return { ...state, dataGajiPegawaiPrint: [], error: action.payload };
-//         default:
-//             return state;
-//     }
-// };
-
-// export default dataGajiPegawaiPrintReducer;
