@@ -1,25 +1,26 @@
 import {
     GET_DATA_GAJI_SINGLE_PEGAWAI_SUCCESS,
     GET_DATA_GAJI_SINGLE_PEGAWAI_FAILURE,
-} from "../../action/dataGajiPegawaiPrintAction";
+} from "../../action/dataGajiPegawaiPrintAction/dataGajiPegawaiPrintActionTypes";
 
 const initialState = {
-    dataGajiPegawaiPrint: [],
+    dataGajiPegawaiPrint: [], 
     error: null,
-};
+  };
+  
 
 const dataGajiPegawaiPrintReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_DATA_GAJI_SINGLE_PEGAWAI_SUCCESS:
             return {
                 ...state,
-                dataSlipGaji: action.payload,
+                dataGajiPegawaiPrint: action.payload,
                 error: null,
             };
         case GET_DATA_GAJI_SINGLE_PEGAWAI_FAILURE:
             return {
                 ...state,
-                dataSlipGaji: [],
+                dataGajiPegawaiPrint: null,
                 error: action.payload,
             };
         default:

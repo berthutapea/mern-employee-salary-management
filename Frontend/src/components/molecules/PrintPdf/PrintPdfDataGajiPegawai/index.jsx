@@ -5,12 +5,8 @@ import { useReactToPrint } from "react-to-print";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    getMe,
-    viewGajiSinglePegawaiByMonth,
-    viewGajiSinglePegawaiByName,
-    viewGajiSinglePegawaiByYear
+    getMe, viewGajiSinglePegawaiByName,
 } from "../../../../config/redux/action";
-import axios from 'axios';
 import { ButtonOne, ButtonTwo } from "../../../atoms";
 
 const PrintPdfDataGajiPegawai = () => {
@@ -21,28 +17,14 @@ const PrintPdfDataGajiPegawai = () => {
     const searchParams = new URLSearchParams(location.search);
     const month = searchParams.get("month");
     const year = searchParams.get("year");
-    // const name = searchParams.get("nama_pegawai");
-    const [dataGajiPegawai, setDataGajiPegawai] = useState([]);
     const [index] = useState('');
+    const [id] = useState('');
     const [bulan, setBulan] = useState("");
     const [tahun, setTahun] = useState("");
 
     const { isError, user } = useSelector((state) => state.auth);
-    // const { dataGajiPegawaiPrint } = useSelector((state) => state.dataGajiPegawaiPrint);
-
-    const getDataByYear = async (dataYear) => {
-        dispatch(viewGajiSinglePegawaiByYear(dataYear));
-    };
-
-    const getDataByMonth = async (dataMonth) => {
-        dispatch(viewGajiSinglePegawaiByMonth(dataMonth));
-    };
-
-    const getDataByName = async (nama_pegawai) => {
-        dispatch(viewGajiSinglePegawaiByName(nama_pegawai));
-    };
-
-    const { nama_pegawai } = useSelector((state) => state.auth.user) || "";
+    const { nama_pegawai } = useSelector((state) => state.auth.user) || {};
+    const dataGajiPegawai = useSelector((state) => state.dataGajiPegawaiPrint.dataGajiPegawaiPrint);
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -50,30 +32,15 @@ const PrintPdfDataGajiPegawai = () => {
     });
 
     useEffect(() => {
-        const getDataPegawai = async () => {
-            try {
-                const response = await axios.get(
-                    `http://localhost:5000/data_gaji/name/${nama_pegawai}`
-                );
-                const data = response.data;
-                setDataGajiPegawai(data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        if (nama_pegawai) { getDataPegawai(); };
-    }, [nama_pegawai]);
-
-    useEffect(() => {
-        getDataByYear(year);
-        getDataByMonth(month);
-        getDataByName(nama_pegawai)
-    }, [year, month]);
+        if (nama_pegawai && typeof nama_pegawai === "string" && nama_pegawai.trim() !== "") {
+            dispatch(viewGajiSinglePegawaiByName(nama_pegawai));
+        }
+    }, [dispatch, nama_pegawai]);
 
     useEffect(() => {
         dispatch(getMe());
     }, [dispatch]);
+
 
     useEffect(() => {
         if (isError) {
@@ -92,10 +59,10 @@ const PrintPdfDataGajiPegawai = () => {
             "Januari", "Februari", "Maret", "April", "Mei", "Juni",
             "Juli", "Agustus", "September", "Oktober", "November", "Desember"
         ];
-        const month = monthNames[today.getMonth()];
-        const year = today.getFullYear();
-        setBulan(month);
-        setTahun(year);
+        const currentMonth = monthNames[today.getMonth()];
+        const currentYear = today.getFullYear();
+        setBulan(currentMonth);
+        setTahun(currentYear);
     }, []);
 
     return (
@@ -115,7 +82,7 @@ const PrintPdfDataGajiPegawai = () => {
             <div ref={componentRef} >
                 {dataGajiPegawai.map((data) => {
                     return (
-                        <div className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
+                        <div key={id} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
                             <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
                                 <img className="w-35"
                                     src={LogoSipeka}

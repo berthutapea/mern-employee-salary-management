@@ -21,6 +21,7 @@ const PrintPdfSlipGaji = () => {
     const month = searchParams.get("month");
     const year = searchParams.get("year");
     const name = searchParams.get("name");
+
     const [index] = useState('');
     const [bulan, setBulan] = useState("");
     const [tahun, setTahun] = useState("");
@@ -86,11 +87,13 @@ const PrintPdfSlipGaji = () => {
                         <span>Cetak</span>
                     </ButtonOne>
                 </div>
-                <ButtonTwo
-                    onClick={() => navigate(-1)}
-                >
-                    <span>Kembali</span>
-                </ButtonTwo>
+                <div>
+                    <ButtonTwo
+                        onClick={() => navigate(-1)}
+                    >
+                        <span>Kembali</span>
+                    </ButtonTwo>
+                </div>
             </div >
             <div ref={componentRef} >
                 {dataSlipGaji.map((data) => {
