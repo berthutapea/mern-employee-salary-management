@@ -16,7 +16,6 @@ const DataGajiPegawai = () => {
   const [dataMonth, setDataMonth] = useState([]);
   const [dataYear, setDataYear] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [showMessage, setShowMessage] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
