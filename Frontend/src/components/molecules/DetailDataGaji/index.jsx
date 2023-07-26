@@ -26,6 +26,10 @@ const DetailDataGaji = () => {
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
 
+    const onSubmitPrint = () => {
+        navigate(`/laporan/slip-gaji/print-page?month=${data.bulan}&year=${data.tahun}&name=${name}`);
+    };
+
     useEffect(() => {
         const getDataPegawai = async () => {
             try {
@@ -172,15 +176,14 @@ const DetailDataGaji = () => {
                     </table>
                     <div className='w-full md:w-1/2 md:justify-end py-6'>
                         <div className='w-full md:w-auto'>
-                            <Link to='/data-gaji/cetak-gaji/slip-gaji/name/:name'>
-                                <ButtonOne
-                                >
-                                    <span>Cetak Gaji Pegawai</span>
-                                    <span>
-                                        <TfiPrinter />
-                                    </span>
-                                </ButtonOne>
-                            </Link>
+                            <ButtonOne
+                                onClick={onSubmitPrint}
+                            >
+                                <span>Cetak Gaji Pegawai</span>
+                                <span>
+                                    <TfiPrinter />
+                                </span>
+                            </ButtonOne>
                         </div>
                     </div>
                 </div>

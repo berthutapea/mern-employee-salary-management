@@ -146,7 +146,7 @@ const PrintPdfLaporanAbsensi = () => {
                         <tbody>
                             {dataLaporanAbsensi.map((data, index) => {
                                 return (
-                                    <tr key={data.id}>
+                                    <tr key={index}>
                                         <td className="border-b border-l border-black dark:border-white py-5 text-center">
                                             <p className="text-black dark:text-white">{index + 1}</p>
                                         </td>

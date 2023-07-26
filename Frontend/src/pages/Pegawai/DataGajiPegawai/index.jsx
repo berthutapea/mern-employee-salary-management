@@ -39,7 +39,7 @@ const DataGajiPegawai = () => {
     }
   };
 
-  const handleSearch = async () => {
+  const onSubmitPrint = async () => {
 
     try {
       const yearData = viewGajiSinglePegawaiByYear(dataYear);
@@ -228,7 +228,7 @@ const DataGajiPegawai = () => {
                         <div className="items-center ">
                           <button className="hover:text-black">
                             <TfiPrinter
-                              onClick={handleSearch}
+                              onClick={onSubmitPrint}
                               className="text-xl text-primary hover:text-black dark:hover:text-white"
                             />
                           </button>

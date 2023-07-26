@@ -17,8 +17,6 @@ const PrintPdfDataGajiPegawai = () => {
     const searchParams = new URLSearchParams(location.search);
     const month = searchParams.get("month");
     const year = searchParams.get("year");
-    const [index] = useState('');
-    const [id] = useState('');
     const [bulan, setBulan] = useState("");
     const [tahun, setTahun] = useState("");
 
@@ -40,7 +38,6 @@ const PrintPdfDataGajiPegawai = () => {
     useEffect(() => {
         dispatch(getMe());
     }, [dispatch]);
-
 
     useEffect(() => {
         if (isError) {
@@ -80,9 +77,9 @@ const PrintPdfDataGajiPegawai = () => {
                 </Link>
             </div >
             <div ref={componentRef} >
-                {dataGajiPegawai.map((data) => {
+                {dataGajiPegawai.map((data, index) => {
                     return (
-                        <div key={id} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
+                        <div key={index} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
                             <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
                                 <img className="w-35"
                                     src={LogoSipeka}

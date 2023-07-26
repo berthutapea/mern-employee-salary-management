@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
 import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
     fetchSlipGajiByMonth,
@@ -22,7 +22,6 @@ const PrintPdfSlipGaji = () => {
     const year = searchParams.get("year");
     const name = searchParams.get("name");
 
-    const [index] = useState('');
     const [bulan, setBulan] = useState("");
     const [tahun, setTahun] = useState("");
 
@@ -96,9 +95,9 @@ const PrintPdfSlipGaji = () => {
                 </div>
             </div >
             <div ref={componentRef} >
-                {dataSlipGaji.map((data) => {
+                {dataSlipGaji.map((data, index) => {
                     return (
-                        <div className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
+                        <div key={index} className="w-200% h-100% p-10 bg-white dark:bg-meta-4">
                             <div className="flex items-center gap-24 object-cover border-b-4 border-black dark:border-white">
                                 <img className="w-35"
                                     src={LogoSipeka}
