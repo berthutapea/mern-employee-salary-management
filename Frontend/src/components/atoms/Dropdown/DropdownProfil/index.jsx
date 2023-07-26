@@ -123,7 +123,6 @@ const DropdownProfil = () => {
         </Link>
       )}
 
-      {/* <!-- Dropdown Start --> */}
       {dropdownOpen && (
         <div
           ref={dropdown}
@@ -132,7 +131,7 @@ const DropdownProfil = () => {
           <ul className='flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark'>
             <li>
               <Link
-                to='/ubah-password'
+                to={user?.hak_akses === 'admin' ? '/ubah-password' : '/ubah-password-pegawai'}
                 className='flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base'
               >
                 <FiSettings className='text-xl' />
@@ -151,7 +150,6 @@ const DropdownProfil = () => {
           </ul>
         </div>
       )}
-      {/* <!-- Dropdown End --> */}
     </div>
   );
 };
