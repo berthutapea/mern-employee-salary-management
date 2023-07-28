@@ -1,6 +1,6 @@
-<H1 align ="center" > MERN EMPLOYEE SALARY MANAGEMENT </h1>
+<H1 align ="center" > MERN EMPLOYEE SALARY MANAGEMENT </h1><br/> SiPeka
 <h5  align ="center"> 
-SiPeKa (Employee Payroll System) is a system used by companies to manage employee payroll processes efficiently and accurately. This system plays a key role in automating various tasks related to payroll, such as calculating payroll, processing attendance, and paying employee wages. In SiPeKa, employee information such as personal data, position and salary level is stored centrally. Every month, the system will retrieve employee attendance data and perform salary calculations based on the available information. This includes factors such as relevant hours worked, leave, overtime and deductions.<br/> </h5>
+SiPeKa (Employee Payroll System) is a system used by companies to manage employee payroll processes efficiently and accurately. This system plays a key role in automating various tasks related to payroll, such as calculating payroll, processing attendance, and paying employee wages.<br/> In SiPeKa, employee information such as personal data, position and salary level is stored centrally. Every month, the system will retrieve employee attendance data and perform salary calculations based on the available information. This includes factors such as relevant hours worked, leave, overtime and deductions.</h5>
 <br/>
 
   * [Configuration and Setup](#configuration-and-setup)
