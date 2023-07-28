@@ -1,4 +1,7 @@
 import React from "react";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { ButtonThree } from "../../atoms";
 
 const NotFound = () => {
     return (
@@ -9,6 +12,14 @@ const NotFound = () => {
                 <h2 className="text-2xl text-center mb-4">
                     Maaf, halaman ini tidak tersedia !
                 </h2>
+                <Link to="/">
+                    <ButtonThree>
+                        <span>Kembali Ke Beranda</span>
+                        <span>
+                            <FaHome></FaHome>
+                        </span>
+                    </ButtonThree>
+                </Link>
             </div>
         </div>
     );

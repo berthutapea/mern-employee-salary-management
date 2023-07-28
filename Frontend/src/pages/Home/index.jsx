@@ -1,5 +1,5 @@
 import React from "react";
-import { Banner, Footer, Navbar } from "../../components";
+import { Banner, Navbar } from "../../components";
 import About from "../About";
 import Contact from "../Contact";
 
@@ -12,7 +12,6 @@ const Home = () => {
                 <Banner />
                 <About />
                 <Contact />
-                <Footer />
             </div>
         </>
     );
