@@ -10,6 +10,7 @@ SiPeKa (Employee Payroll System) is a system used by companies to manage employe
       - [Backend](#backend)
       - [Database](#database)
   * [📸 Screenshots](#screenshots)
+  * [Meet The Teams](#meet-the-teams)
   * [Author](#author)
   * [License](#license)
 
@@ -170,7 +171,7 @@ This project was created using the following technologies.
           <img width="200"  src="https://res.cloudinary.com/du541igfh/image/upload/v1690573793/Blog%20Portfolio%20Gilbert/Project/mern-penggajian-karyawan/Gilbert_zx9rbq.jpg" alt=""><br/>
           <b>Gilbert Hutapea</b>
         </a>
-      </td>~
+      </td>
     </tr>
   </table>
 </center>
