@@ -24,28 +24,6 @@ const FormEditDataPegawai = () => {
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
 
-    useEffect(() => {
-        const getUserById = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/data_pegawai/id/${id}`);
-                const data = response.data;
-                setNik(data.nik);
-                setNamaPegawai(data.nama_pegawai);
-                setUsername(data.username);
-                setJenisKelamin(data.jenis_kelamin);
-                setJabatan(data.jabatan);
-                setTanggalMasuk(data.tanggal_masuk);
-                setStatus(data.status);
-                setHakAkses(data.hak_akses);
-            } catch (error) {
-                if (error.response) {
-                    setMsg(error.response.data.msg);
-                }
-            }
-        };
-        getUserById();
-    }, [id]);
-
     const updateUser = async (e) => {
         e.preventDefault();
         try {
@@ -81,6 +59,28 @@ const FormEditDataPegawai = () => {
             });
         }
     };
+    
+    useEffect(() => {
+        const getUserById = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/data_pegawai/id/${id}`);
+                const data = response.data;
+                setNik(data.nik);
+                setNamaPegawai(data.nama_pegawai);
+                setUsername(data.username);
+                setJenisKelamin(data.jenis_kelamin);
+                setJabatan(data.jabatan);
+                setTanggalMasuk(data.tanggal_masuk);
+                setStatus(data.status);
+                setHakAkses(data.hak_akses);
+            } catch (error) {
+                if (error.response) {
+                    setMsg(error.response.data.msg);
+                }
+            }
+        };
+        getUserById();
+    }, [id]);
 
     useEffect(() => {
         dispatch(getMe());

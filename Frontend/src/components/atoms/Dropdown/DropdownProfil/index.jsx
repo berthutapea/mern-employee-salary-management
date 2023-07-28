@@ -19,24 +19,6 @@ const DropdownProfil = () => {
   const { user } = useSelector((state) => state.auth);
   const [dataPegawai, setDataPegawai] = useState(null);
 
-  useEffect(() => {
-    const getDataPegawai = async () => {
-      try {
-        if (user && user.nama_pegawai) {
-          const response = await axios.get(
-            `http://localhost:5000/data_pegawai/name/${user.nama_pegawai}`
-          );
-          const data = response.data;
-          setDataPegawai(data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getDataPegawai();
-  }, [user]);
-
   const onLogout = () => {
     Swal.fire({
       title: 'Konfirmasi',
@@ -63,6 +45,24 @@ const DropdownProfil = () => {
       }
     });
   };
+
+  useEffect(() => {
+    const getDataPegawai = async () => {
+      try {
+        if (user && user.nama_pegawai) {
+          const response = await axios.get(
+            `http://localhost:5000/data_pegawai/name/${user.nama_pegawai}`
+          );
+          const data = response.data;
+          setDataPegawai(data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getDataPegawai();
+  }, [user]);
 
   useEffect(() => {
     const clickHandler = (event) => {
@@ -109,7 +109,6 @@ const DropdownProfil = () => {
             <span className='block text-xs'>{dataPegawai.hak_akses}</span>
           </span>
 
-
           <div className='h-12 w-12 rounded-full overflow-hidden'>
             <img
               className='h-full w-full object-cover'
@@ -117,8 +116,6 @@ const DropdownProfil = () => {
               alt='Profil'
             />
           </div>
-
-
           <MdKeyboardArrowDown className='text-xl' />
         </Link>
       )}

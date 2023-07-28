@@ -65,7 +65,6 @@ const DataKehadiran = () => {
         setFilterNama(event.target.value);
     };
 
-
     const onDeleteDataKehadiran = (id) => {
         Swal.fire({
             title: 'Konfirmasi',

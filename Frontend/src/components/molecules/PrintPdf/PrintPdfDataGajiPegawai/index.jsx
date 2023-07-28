@@ -5,7 +5,8 @@ import { useReactToPrint } from "react-to-print";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    getMe, viewGajiSinglePegawaiByName,
+    getMe, 
+    viewGajiSinglePegawaiByName,
 } from "../../../../config/redux/action";
 import { ButtonOne, ButtonTwo } from "../../../atoms";
 

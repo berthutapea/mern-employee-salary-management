@@ -18,21 +18,6 @@ const FormEditDataPotongan = () => {
 
     const { isError, user } = useSelector((state) => state.auth);
 
-    useEffect(() => {
-        const getDataById = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/data_potongan/${id}`);
-                setPotongan(response.data.potongan);
-                setJmlPotongan(response.data.jml_potongan);
-            } catch (error) {
-                if (error.response) {
-                    setMsg(error.response.data.msg);
-                }
-            }
-        }
-        getDataById();
-    }, [id]);
-
     const updateDataPotongan = async (e) => {
         e.preventDefault();
         try {
@@ -62,6 +47,22 @@ const FormEditDataPotongan = () => {
             });
         }
     };
+    
+    useEffect(() => {
+        const getDataById = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/data_potongan/${id}`);
+                setPotongan(response.data.potongan);
+                setJmlPotongan(response.data.jml_potongan);
+            } catch (error) {
+                if (error.response) {
+                    setMsg(error.response.data.msg);
+                }
+            }
+        }
+        getDataById();
+    }, [id]);
+
 
     useEffect(() => {
         dispatch(getMe());

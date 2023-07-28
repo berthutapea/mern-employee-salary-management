@@ -8,24 +8,21 @@ import { useNavigate } from 'react-router-dom';
 function LoginInput() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isError, isSuccess, isLoading, message } = useSelector(
-    (state) => state.auth
-  );
+
+  const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    dispatch(loginUser({ username, password }));
+  }
 
   useEffect(() => {
     if (user || isSuccess) {
       navigate("/dashboard");
     }
   }, [user, isSuccess, dispatch, navigate]);
-
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    dispatch(loginUser({ username, password }));
-  }
 
   useEffect(() => {
     if (isError) {

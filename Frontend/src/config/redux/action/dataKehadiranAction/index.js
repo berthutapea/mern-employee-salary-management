@@ -28,7 +28,6 @@ export const getDataKehadiran = () => {
     };
 };
 
-
 export const createDataKehadiran = (dataPegawai, dataKehadiran, navigate) => async (dispatch) => {
     try {
         for (let i = 0; i < dataPegawai.length; i++) {
@@ -64,31 +63,6 @@ export const createDataKehadiran = (dataPegawai, dataKehadiran, navigate) => asy
         throw error;
     }
 };
-
-
-// export const createDataKehadiran = (formData, navigate) => {
-//     return async (dispatch) => {
-//         try {
-//             const response = await axios.post('http://localhost:5000/data_kehadiran', formData, {
-//                 headers: {
-//                     "Content-type": "multipart/form-data"
-//                 }
-//             });
-//             dispatch({
-//                 type: CREATE_DATA_KEHADIRAN_SUCCESS,
-//                 payload: response.data
-//             });
-//             navigate("/data-jabatan");
-//             return response.data;
-//         } catch (error) {
-//             dispatch({
-//                 type: CREATE_DATA_KEHADIRAN_FAILURE,
-//                 payload: error.message
-//             });
-//             throw error;
-//         }
-//     };
-// };
 
 export const updateDataKehadiran = (id, dataKehadiran) => {
     return async (dispatch) => {

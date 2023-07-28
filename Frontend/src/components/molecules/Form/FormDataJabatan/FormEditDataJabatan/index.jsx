@@ -37,7 +37,6 @@ const FormEditDataJabatan = () => {
         getUserById();
     }, [id]);
 
-
     const updateDataJabatan = async (e) => {
         e.preventDefault();
         try {

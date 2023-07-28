@@ -29,7 +29,6 @@ const FormAddDataKehadiran = () => {
         pegawai.nama_pegawai.toLowerCase().includes(searchKeyword.toLowerCase())
     );
 
-
     const getDataPegawai = async () => {
         const response = await axios.get("http://localhost:5000/data_pegawai");
         setDataPegawai(response.data);

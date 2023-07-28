@@ -26,14 +26,6 @@ const Contact = () => {
     const [viewDiv, setViewDiv] = useState(false);
     const animation = useAnimation();
 
-    useEffect(() => {
-        if (inView) {
-            setViewDiv(true);
-        } else {
-            setViewDiv(false);
-        }
-    }, [inView, animation]);
-
     const handleSend = (e) => {
         e.preventDefault();
         emailjs
@@ -61,6 +53,15 @@ const Contact = () => {
             );
         e.target.reset();
     };
+    
+    useEffect(() => {
+        if (inView) {
+            setViewDiv(true);
+        } else {
+            setViewDiv(false);
+        }
+    }, [inView, animation]);
+
     return (
         <>
             <div className="dark:bg-boxdark">
