@@ -100,41 +100,39 @@ This project was created using the following technologies.
  - [MySQL ](https://www.mysql.com/) - It provides a free cloud service to store MongoDB collections.
  ##  Screenshots
 
-![img-1](https://user-images.githubusercontent.com/111676859/235832711-0f2a0109-16e3-489b-88d4-d5748d8a59fa.png)
+![img-1](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/a3f72509-8ca0-452b-b121-ff4ecf94580d)
 ---- -
-![img-2](https://user-images.githubusercontent.com/111676859/235832714-000e5f37-df68-47f6-b1da-3052792880fa.png)
+![img-2](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/e7998109-d53d-4c93-80eb-f6e9c05f44b4)
 --- -
-![img-3](https://user-images.githubusercontent.com/111676859/235832716-dc76e523-e7b7-4240-91e3-6cdff34c2ff6.png)
+![img-3](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/f7424cc9-2b63-49af-a2b7-37bd9e79e342)
 --- -
-![img-4](https://user-images.githubusercontent.com/111676859/235832718-796b87a3-beb7-4046-88ec-161d9ac5f354.png)
+![img-4](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/0c2859cb-2d56-447c-bd19-fabe707988aa)
 --- -
-![img-5](https://user-images.githubusercontent.com/111676859/235832720-ac4dea3f-e5bf-41e0-99c8-396e5595dccd.png)
+![img-5](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/ed0af932-ea78-44ac-ba91-48eb91449517)
 --- -
-![img-6](https://user-images.githubusercontent.com/111676859/235832723-d863ce12-7cf4-476f-a5c0-56e678645fdb.png)
+![img-6](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/3efac0b3-b2d5-45ec-b82c-82b9b191ffd2)
 --- -
-![img-7](https://user-images.githubusercontent.com/111676859/235832725-a4d07a15-1f5f-4bab-aaf7-005bf38923f1.png)
+![img-7](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/5d6f9974-7b8e-4c12-a049-44368640dc62)
 --- -
-![img-8](https://user-images.githubusercontent.com/111676859/235832731-3e4e818f-2103-4bd6-be89-3ae65098550a.png)
+![img-8](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/be9c67c6-376f-450a-9ba3-c968bd9ec063)
 --- -
-![img-9](https://user-images.githubusercontent.com/111676859/235832732-536ff72a-a58d-45b5-9edc-76cbbaf63709.png)
+![img-9](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/8ffef668-7cb1-4004-980c-d2463683ba3b)
 --- -
-![img-10](https://user-images.githubusercontent.com/111676859/235832734-5c29980a-1ede-4967-9af3-afd282df4be6.png)
+![img-10](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/8067acac-dc49-4f6e-a6aa-f4baae2fa8a5)
 --- -
-![img-11](https://user-images.githubusercontent.com/111676859/235832735-44bf0343-5404-41d5-b71d-fef4565730e3.png)
+![img-11](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/ecd09fb0-1f97-4856-ba4d-28170927e070)
 --- -
-![img-12](https://user-images.githubusercontent.com/111676859/235832741-6ee41c05-31a8-4c01-a6f5-f08a17ef21f6.png)
+![img-12](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/ecdafe57-1b4a-4ddf-9802-7a4c5d3be141)
 --- -
-![img-13](https://user-images.githubusercontent.com/111676859/235832743-21f553f7-3a48-4508-8a03-6623dd9e50f5.png)
+![img-13](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/f5831815-3cd7-4f83-8193-12c16f859023)
 --- -
-![img-14](https://user-images.githubusercontent.com/111676859/235832747-24b460c6-ec8a-4c13-9cee-5bb36900f007.png)
+![img-14](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/8539843c-39f1-4642-84b6-cb9a2a4b09b9)
 --- -
-![img-15](https://user-images.githubusercontent.com/111676859/235832750-01f3f60f-a76d-46bc-a760-ae1fb437c915.png)
+![img-15](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/fd0e75e7-b0d5-4fe8-a477-1a1c8b709ca8)
 --- -
-![img-16](https://user-images.githubusercontent.com/111676859/235832699-614c80b2-00b9-4e08-a516-1d99f49298d1.png)
+![img-16](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/90f57d70-6547-4a55-8045-f51aa596061a)
 --- -
-![img-17](https://user-images.githubusercontent.com/111676859/235832705-350fe58f-0419-474e-86fa-9bedeb7bd627.png)
---- -
-![img-18](https://user-images.githubusercontent.com/111676859/235832707-2c9d7c1a-9174-441c-9c9a-2992b91b46e8.png)
+![img-17](https://github.com/berthutapea/mern-employee-salary-management/assets/111676859/7e0c9850-7c71-4fc3-aa7b-86b323fb1b8b)
 
 ## Author
 - Portfolio: [berthutapea](https://berthutapea.vercel.app/)
