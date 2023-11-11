@@ -1,3 +1,4 @@
+Contoh
 import React, { useEffect, useRef, useState } from "react";
 import "./Contact.css";
 import { motion, useAnimation } from "framer-motion";
