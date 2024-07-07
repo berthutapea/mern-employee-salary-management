@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import "./About.css";
-import aboutImg from '../../assets/images/aboutSipeka.svg'
+import aboutImg from '../../Assets/images/aboutSipeka.svg'
 import '../../shared/Shared.css'
 import { BottomLine } from "../../components/atoms";
 import { Footer, Navbar } from "../../components";

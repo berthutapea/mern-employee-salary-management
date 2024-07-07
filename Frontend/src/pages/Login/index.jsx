@@ -1,6 +1,6 @@
 import React from "react";
-import LogoSipeka from "../../assets/images/logo/logo-sipeka.png";
-import LoginImg from "../../assets/images/LoginImg/login.svg";
+import LogoSipeka from "../../Assets/images/logo/logo-sipeka.png";
+import LoginImg from "../../Assets/images/LoginImg/login.svg";
 import { Footer, LoginInput, Navbar } from "../../components";
 
 function Login() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import LogoSipeka from '../../../assets/images/logo/logo-sipeka.png'
+import LogoSipeka from '../../../Assets/images/logo/logo-sipeka.png'
 import { DropdownProfil, DarkModeSwitcher } from '../../../components'
 import { Link } from 'react-router-dom'
 

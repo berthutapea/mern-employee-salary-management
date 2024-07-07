@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import SidebarLinkGroup from '../SidebarLinkGroup'
-import LogoSipeka from '../../../../assets/images/logo/logo-sipeka.png'
+import LogoSipeka from '../../../../Assets/images/logo/logo-sipeka.png'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { RxDashboard } from 'react-icons/rx'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import bannerImg from "../../../assets/images/bannerImg.png";
+import bannerImg from "../../../Assets/images/bannerImg.png";
 import { ButtonThree } from "../../atoms";
 import "../../../shared/Shared.css";
 

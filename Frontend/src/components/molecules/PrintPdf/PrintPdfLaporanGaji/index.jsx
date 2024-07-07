@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import LogoPt from "../../../../assets/images/logo/logo-dark.svg";
-import LogoSipeka from "../../../../assets/images/logo/logo-sipeka.png";
+import LogoPt from "../../../../Assets/images/logo/logo-dark.svg";
+import LogoSipeka from "../../../../Assets/images/logo/logo-sipeka.png";
 import { useReactToPrint } from "react-to-print";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

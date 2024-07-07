@@ -9,7 +9,7 @@ import { GiCrossMark } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
-import LogoSipeka from '../../../assets/images/logo/logo-sipeka.png'
+import LogoSipeka from '../../../Assets/images/logo/logo-sipeka.png'
 import { ButtonThree, DarkModeSwitcher } from "../../atoms";
 
 export default function Navbar() {
