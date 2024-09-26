@@ -90,7 +90,7 @@ This project was created using the following technologies.
 - [React Vite](https://vitejs.dev/guide/) - Improved website speed
 - [Redux Toolkit](https://redux-toolkit.js.org/) - To facilitate the development of web applications using Redux
 - [Apexcharts](https://www.npmjs.com/package/apexcharts) - An open source library used to create interactive graphics on websites or web applications
-- [Match Sorter](https://www.npmjs.com/package/match-sorter) - An open source library used to create interactive graphics on websites or web applications
+- [Match Sorter](https://www.npmjs.com/package/match-sorter) - A library that helps with filtering, sorting, and searching data in a user-friendly way.
 - [Email JS](https://www.emailjs.com/) - For User Interface
 - [Framer Motion](https://www.framer.com/motion/) - For User Interface
 - [React Redux](https://react-redux.js.org/) - Managing complex application state
