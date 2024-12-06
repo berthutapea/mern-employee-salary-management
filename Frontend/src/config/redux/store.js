@@ -26,5 +26,5 @@
 //         ubahPassword: ubahPasswordReducer,
 //     },
 // });
-// // 
+
 // export default store;
