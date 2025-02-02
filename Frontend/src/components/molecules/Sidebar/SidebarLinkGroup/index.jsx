@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-const SidebarLinkGroup = ({ children, activeCondition }) => {
-  const [open, setOpen] = useState(activeCondition)
+// const SidebarLinkGroup = ({ children, activeCondition }) => {
+//   const [open, setOpen] = useState(activeCondition)
 
-  const handleClick = () => {
-    setOpen(!open)
-  }
+//   const handleClick = () => {
+//     setOpen(!open)
+//   }
 
-  return (
-    <li>
-      {children(handleClick, open)}
-    </li>
-  )
-}
+//   return (
+//     <li>
+//       {children(handleClick, open)}
+//     </li>
+//   )
+// }
 
-export default SidebarLinkGroup;
+// export default SidebarLinkGroup;
